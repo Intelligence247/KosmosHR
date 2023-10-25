@@ -1,9 +1,9 @@
 .navWrapper {
-  @apply w-full h-20 flex justify-between items-center;
+  @apply w-full h-20 flex justify-between items-center  lg:px-20 px-2;
 }
 
 .leftNav {
-  @apply flex items-center space-x-[8px];
+  @apply flex items-center lg:space-x-2 space-x-1;
 }
 
 .leftNav p {
@@ -14,9 +14,8 @@
   @apply flex;
 }
 
-.centerNav p:first-child,
-.centerNav p:nth-child(2) {
-  @apply border-[#F5DE75] border-[1px] w-40 h-12 flex justify-center items-center rounded-l-lg;
+.centerNav p {
+  @apply border-[#F5DE75] border-[1px] lg:w-40 w-20 lg:h-12 h-8 flex justify-center items-center rounded-l-lg;
 }
 
 .centerNav p:nth-child(2) {
@@ -24,13 +23,13 @@
 }
 
 .centerNav p b {
- @apply w-2 h-2 rounded-full bg-[#91790A] mr-4
+ @apply w-2 h-2 rounded-full bg-[#91790A] lg:mr-4 mr-1
 }
 .rightNav{
-    @apply text-[1.5rem] w-16 h-16 bg-gray-200 rounded-full flex justify-center
+    @apply lg:text-[1.5rem] text-[1rem] lg:w-16 lg:h-16 w-11 h-11 bg-gray-200 rounded-full flex justify-center
      items-center relative
 }
 
 .rightNav p{
-    @apply w-4 h-4 bg-[#4CAF50] absolute rounded-full top-0 right-0
+    @apply lg:w-4 lg:h-4 w-3 h-3 bg-[#4CAF50] absolute rounded-full top-0 right-0
 }

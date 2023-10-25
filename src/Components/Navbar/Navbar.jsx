@@ -6,7 +6,7 @@ const Navbar = () => {
   const [switchs, setswitchs] = useState(0);
   console.log(switchs);
   return (
-    <div className="navWrapper px-20 py-6">
+    <div className="navWrapper">
       <div className="leftNav">
         <img src="/Logo2.png" alt="" />
         <p>SecureBot</p>
