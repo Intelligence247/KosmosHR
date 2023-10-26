@@ -1,0 +1,39 @@
+.homeWrapper {
+  @apply flex py-9 
+}
+
+.rightHomepageWrapper {
+  @apply px-20 w-full
+}
+.rightHomepageWrapper header{
+    @apply flex justify-between items-center
+}
+.searchInputs {
+  @apply w-[28rem] flex space-x-2.5 items-center h-12 border-[#1D70C9] border-[1px]
+  rounded-lg px-3;
+}
+.searchInputs button{
+    @apply opacity-70
+}
+.searchInputs input{
+    @apply w-full h-8 outline-none
+}
+.notifications{
+    @apply flex space-x-4 w-max justify-center items-center
+}
+.rightHomepageWrapper .welcome{
+    @apply text-xl 
+}
+.rightHomepageWrapper .welcome h1{
+    @apply font-bold 
+}
+.Info{
+    @apply flex justify-between items-center
+}
+.Info .eachInfo{
+@apply w-[16rem] h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
+ flex flex-col space-y-6 justify-center pl-6 font-bold
+}
+.Info .eachInfo .value{
+    @apply flex items-center space-x-4
+}
