@@ -3,7 +3,7 @@
 }
 
 .rightHomepageWrapper {
-  @apply px-20 w-full
+  @apply px-20 w-full flex flex-col space-y-8
 }
 .rightHomepageWrapper header{
     @apply flex justify-between items-center
@@ -22,13 +22,13 @@
     @apply flex space-x-4 w-max justify-center items-center
 }
 .rightHomepageWrapper .welcome{
-    @apply text-xl 
+    @apply text-xl
 }
 .rightHomepageWrapper .welcome h1{
     @apply font-bold 
 }
 .Info{
-    @apply flex justify-between items-center
+    @apply flex justify-between items-center pt-8
 }
 .Info .eachInfo{
 @apply w-[16rem] h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
