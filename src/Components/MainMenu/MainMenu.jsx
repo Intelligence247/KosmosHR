@@ -23,6 +23,8 @@ const MainMenu = () => {
             {" "}
             <img src="/people.svg" alt="" />
             Manage Staff
+            <img src="/arrowdown.png" alt="" />
+
           </li>
           <ul className={`pl-6 ${view ? "h-[10rem]" : "h-0 overflow-hidden"}`}>
             <li>

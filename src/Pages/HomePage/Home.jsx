@@ -1,23 +1,14 @@
 import React from "react";
 import MainMenu from "../../Components/MainMenu/MainMenu";
 import "./Home.css";
+import Header from "../../Components/Header/Header";
+import Employees from "../../Components/Employees/Employees";
 const Home = () => {
   return (
     <div className="homeWrapper">
       <MainMenu />
       <div className="rightHomepageWrapper">
-        <header>
-          <div className="searchInputs">
-            <button>Search</button>
-            <img src="/search.png" alt="" />
-            <input type="text" name="" id="" />
-          </div>
-          <div className="notifications">
-            <img src="notification.png" alt="" />
-            <img src="/profile.png" alt="" />
-            <p>HR Admin</p>
-          </div>
-        </header>
+        <Header />
         <div className="welcome">
           <h1>Welcome Back</h1>
           <p>Use the navigation bar for quick access to all our features.</p>
@@ -47,6 +38,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        {/* <Employees /> */}
       </div>
     </div>
   );
