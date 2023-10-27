@@ -2,7 +2,6 @@ import React from "react";
 import MainMenu from "../../Components/MainMenu/MainMenu";
 import "./Home.css";
 import Header from "../../Components/Header/Header";
-import Employees from "../../Components/Employees/Employees";
 const Home = () => {
   return (
     <div className="homeWrapper">
@@ -38,7 +37,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* <Employees /> */}
       </div>
     </div>
   );

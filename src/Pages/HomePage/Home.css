@@ -5,13 +5,12 @@
 .rightHomepageWrapper {
   @apply px-20 w-full flex flex-col space-y-8
 }
-.rightHomepageWrapper header{
+ header{
     @apply flex justify-between items-center
 }
-.searchInputs {
-  @apply w-[28rem] flex space-x-2.5 items-center h-12 border-[#1D70C9] border-[1px]
-  rounded-lg px-3;
-}
+/* .searchInputs {
+  @apply ;
+} */
 .searchInputs button{
     @apply opacity-70
 }

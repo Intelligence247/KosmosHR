@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MainMenu.css";
+import { Link } from "react-router-dom";
 const MainMenu = () => {
   const [view, setToggle] = useState(true);
   return (
@@ -8,16 +9,19 @@ const MainMenu = () => {
 
       <h2>Main Menu</h2>
       <ul className="ul">
-        <li>
+       <Link to="/"> <li>
           {" "}
           <img src="/home.png" alt="" />
           Home
         </li>
+        </Link>
+        <Link to='/employee'>
         <li>
           {" "}
           <img src="/note.png" alt="" />
           Employee
         </li>
+        </Link>
         <ul className="manageStaff">
           <li onClick={() => setToggle(!view)}>
             {" "}
