@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Home from './Pages/HomePage/Home'
 import Login from './Pages/LoginPage/Login'
 import Pricing from "./Pages/Pricing_SubscriptionPage/Pricing";
+import Employees from "./Pages/Employees/Employees";
 
 
 function App() {
