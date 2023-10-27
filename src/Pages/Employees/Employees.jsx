@@ -3,6 +3,7 @@ import "./Employees.css";
 import Header from "../../Components/Header/Header";
 import MainMenu from "../../Components/MainMenu/MainMenu";
 import EmployeeTableCard from "./EmployeeTableCard";
+import { employeeData } from "../../utility/data2";
 
 const Employees = () => {
   return (
@@ -25,7 +26,10 @@ const Employees = () => {
           </div>
         </section>
 
-        <EmployeeTableCard />
+        <EmployeeTableCard
+        employeeDataProps={employeeData}
+        hideViewall={'hidden'}
+         />
         <div className="dataController flex justify-center items-center space-x-8">
           <p>
             <img src="/displayLeft.png" alt="" />

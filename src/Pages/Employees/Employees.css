@@ -56,10 +56,10 @@
 
 }
 .tableSection .eachInfo p:last-child{
-  @apply text-primary_SkyBlue
+  @apply text-primary_SkyBlue underline cursor-pointer
 }
 .tableSection .eachInfo .staffInfo p:last-child{
-  @apply text-black opacity-50
+  @apply text-black opacity-50 
 }
 .tableSection .eachInfo .staffInfo img{
   @apply rounded-full w-10 h-10 

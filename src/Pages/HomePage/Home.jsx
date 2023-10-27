@@ -2,6 +2,8 @@ import React from "react";
 import MainMenu from "../../Components/MainMenu/MainMenu";
 import "./Home.css";
 import Header from "../../Components/Header/Header";
+import EmployeeTableCard from "../Employees/EmployeeTableCard";
+import { employeeData } from "../../utility/data2";
 const Home = () => {
   return (
     <div className="homeWrapper">
@@ -37,6 +39,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <EmployeeTableCard employeeDataProps={employeeData.slice(0, 3)} />
       </div>
     </div>
   );
