@@ -19,7 +19,6 @@ rounded-lg px-3 bg-white"
       </div>
       <div className="tableHeader">
         <p>Staff</p>
-
         <p>Department</p>
         <p>Position</p>
         <p>Phone Number</p>
@@ -31,7 +30,7 @@ rounded-lg px-3 bg-white"
           <div className="staffInfo">
             <img src={`${e.avartar}`} alt="" />
             <div className="nameAndMail">
-              <p>{e.staffName}</p>
+              <p>{`${e.staffName} ${i}`}</p>
               <p>{e.email}</p>
             </div>
           </div>
