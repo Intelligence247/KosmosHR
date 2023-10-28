@@ -1,16 +1,18 @@
-.mainMenuWrapper{
-    @apply flex flex-col space-y-3 w-60 justify-center pl-6 py-9
+.mainMenuWrapper {
+  @apply flex flex-col space-y-3 h-[100vh] fixed overflow-y-auto w-[17rem] shadow-2xl bg-white justify-between gap-3 pl-6 pt-[3rem] pb-3;
 }
-.mainMenuWrapper h2{
-    @apply opacity-50 pt-10
+.mainMenuWrapper h2 {
+  @apply opacity-50 py-3;
 }
-.ul{
-    @apply flex flex-col space-y-3 pb-28 border-b 
+.list {
+  @apply flex flex-col space-y-3 overflow-y-auto;
 }
-.ul li, .mainMenuWrapper button{
-    @apply w-[12.5rem] h-12 hover:bg-[#E9F2FC] flex items-center
-     gap-2.5 cursor-auto rounded-lg pl-7
+.list li,
+.mainMenuWrapper button {
+  @apply w-[12.5rem] h-12 hover:bg-[#E9F2FC] flex items-center
+     gap-2.5 cursor-auto rounded-lg pl-7;
 }
-.manageStaff, .manageStaff ul{
-    @apply flex flex-col space-y-3 
+.manageStaff,
+.manageStaff ul {
+  @apply flex-col space-y-3;
 }
