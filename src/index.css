@@ -5,3 +5,16 @@
 * {
   @apply p-0 m-0 box-border lg:text-base text-sm transition-all ease-in-out duration-300;
 }
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-left: 0.5px solid #c1c1c1;
+  border-right: 0.5px solid #c1c1c1;
+  border-radius: 10px;
+}

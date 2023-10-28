@@ -1,4 +1,3 @@
-import React from "react";
 import { pricing } from "../../utility/data";
 
 const Prices = () => {
@@ -45,13 +44,13 @@ const Prices = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         stroke="currentColor"
-                        class="w-3 h-3"
+                        className="w-3 h-3"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M4.5 12.75l6 6 9-13.5"
                         />
                       </svg>
@@ -60,13 +59,13 @@ const Prices = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6"
+                        className="w-6 h-6"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M6 18L18 6M6 6l12 12"
                         />
                       </svg>
@@ -83,7 +82,7 @@ const Prices = () => {
               /month
             </sub>
           </div>
-          <button className="text-[#fff] w-[100%] mt-4 py-2 bg-blue-600 rounded-[1.2rem]">
+          <button className="text-[#fff] w-[100%] mt-4 py-2 bg-primary_DeepBlue rounded-[1.2rem]">
             Choose Plan
           </button>
         </div>

@@ -1,6 +1,4 @@
-import React from "react";
 import "./Employees.css";
-import { employeeData } from "../../utility/data2";
 import { Link } from "react-router-dom";
 
 const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
@@ -19,14 +17,13 @@ rounded-lg px-3 bg-white"
       </div>
       <div className="tableHeader">
         <p>Staff</p>
-
         <p>Department</p>
         <p>Position</p>
         <p>Phone Number</p>
         <p>City</p>
         <p>Action</p>
       </div>
-      {employeeDataProps.map((e,i) => (
+      {employeeDataProps.map((e, i) => (
         <div key={i} className="eachInfo">
           <div className="staffInfo">
             <img src={`${e.avartar}`} alt="" />
@@ -44,9 +41,15 @@ rounded-lg px-3 bg-white"
           </p>
         </div>
       ))}
-      <Link to="/employee" className={`flex items-center 
+      <Link
+        to="/employee"
+        className={`flex items-center 
       justify-center h-16
-       text-primary_SkyBlue underline cursor-pointer ${hideViewall}`}>View all<img src="/slantArrow.png" alt="" /></Link>
+       text-primary_SkyBlue underline cursor-pointer ${hideViewall}`}
+      >
+        View all
+        <img src="/slantArrow.png" alt="" />
+      </Link>
     </section>
   );
 };

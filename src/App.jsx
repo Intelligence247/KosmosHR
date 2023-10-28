@@ -1,24 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 // import {BrowserRouter as Route, Routes } from 'react-router-dom'
-import Home from './Pages/HomePage/Home'
-import Login from './Pages/LoginPage/Login'
+import Home from "./Pages/HomePage/Home";
+import Login from "./Pages/LoginPage/Login";
 import Pricing from "./Pages/Pricing_SubscriptionPage/Pricing";
 import Employees from "./Pages/Employees/Employees";
-
+import Task from "./Pages/TaskPage/Task";
 
 function App() {
   return (
-      <div className='body'>
-        {/* <Navbar/> */}
-
+    <div className="body">
+      {/* <Navbar/> */}
       <Router>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path="/employee" element={<Employees/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/employee" element={<Employees />} />
+          <Route path="/task" element={<Task />} />
           <Route path="/pricing_subscription" element={<Pricing />} />
-
         </Routes>
       </Router>
     </div>
