@@ -1,4 +1,3 @@
-import React from "react";
 import Prices from "../../Components/Pricing/Prices";
 
 const Pricing = () => {

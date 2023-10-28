@@ -1,17 +1,12 @@
-import React from "react";
 import "./Employees.css";
-import Header from "../../Components/Header/Header";
-import MainMenu from "../../Components/MainMenu/MainMenu";
 import EmployeeTableCard from "./EmployeeTableCard";
-import { employeeData } from "../../utility/data2";
+import { employeeData } from "../../utility/data";
+import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 
 const Employees = () => {
   return (
-    <div className="employeesWrapper">
-      <MainMenu />
+    <HomeLayout>
       <div className="employeeRight">
-        <Header />
-
         <section className="employeeSection">
           <div className="employee">
             <img src="/back.png" alt="" />
@@ -27,9 +22,9 @@ const Employees = () => {
         </section>
 
         <EmployeeTableCard
-        employeeDataProps={employeeData}
-        hideViewall={'hidden'}
-         />
+          employeeDataProps={employeeData}
+          hideViewall={"hidden"}
+        />
         <div className="dataController flex justify-center items-center space-x-8">
           <p>
             <img src="/displayLeft.png" alt="" />
@@ -38,11 +33,11 @@ const Employees = () => {
           <p>2</p>
           <p>3</p>
           <p>
-          <img src="/displayRight.png" alt="" />
+            <img src="/displayRight.png" alt="" />
           </p>
         </div>
       </div>
-    </div>
+    </HomeLayout>
   );
 };
 

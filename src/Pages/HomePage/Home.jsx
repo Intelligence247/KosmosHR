@@ -1,15 +1,12 @@
-import React from "react";
-import MainMenu from "../../Components/MainMenu/MainMenu";
 import "./Home.css";
-import Header from "../../Components/Header/Header";
 import EmployeeTableCard from "../Employees/EmployeeTableCard";
-import { employeeData } from "../../utility/data2";
+import { employeeData, taskData } from "../../utility/data";
+import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
+import TaskTable from "../TaskPage/TaskTable";
 const Home = () => {
   return (
-    <div className="homeWrapper">
-      <MainMenu />
+    <HomeLayout>
       <div className="rightHomepageWrapper">
-        <Header />
         <div className="welcome">
           <h1>Welcome Back</h1>
           <p>Use the navigation bar for quick access to all our features.</p>
@@ -39,9 +36,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <TaskTable tableDataProps={taskData.slice(0, 3)} />
         <EmployeeTableCard employeeDataProps={employeeData.slice(0, 3)} />
       </div>
-    </div>
+    </HomeLayout>
   );
 };
 

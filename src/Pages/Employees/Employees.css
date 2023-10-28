@@ -1,9 +1,5 @@
-.employeesWrapper {
-  @apply flex;
-}
-.employeeRight{
-  @apply flex space-y-8 flex-col w-full py-9 px-16 bg-gray-100
-
+.employeeRight {
+  @apply flex space-y-8 flex-col w-full;
 }
 .employeeSection {
   @apply flex justify-between items-center;
@@ -44,29 +40,28 @@
 .tableSection .eachInfo {
   @apply grid grid-cols-7 space-x-2 h-16 border-[1px];
 }
-.tableSection .tableHeader p:first-child{
-  @apply pl-6
+.tableSection .tableHeader p:first-child {
+  @apply pl-6;
 }
 .tableSection .eachInfo .staffInfo {
   @apply flex space-x-1 pl-2;
 }
 
-.tableSection .eachInfo p{
-  @apply text-[12px] flex justify-start items-center text-primary_DeepBlue ;
-
+.tableSection .eachInfo p {
+  @apply text-[12px] flex justify-start items-center text-primary_DeepBlue;
 }
-.tableSection .eachInfo p:last-child{
-  @apply text-primary_SkyBlue underline cursor-pointer
+.tableSection .eachInfo p:last-child {
+  @apply text-primary_SkyBlue underline cursor-pointer;
 }
-.tableSection .eachInfo .staffInfo p:last-child{
-  @apply text-black opacity-50 
+.tableSection .eachInfo .staffInfo p:last-child {
+  @apply text-black opacity-50;
 }
-.tableSection .eachInfo .staffInfo img{
-  @apply rounded-full w-10 h-10 
+.tableSection .eachInfo .staffInfo img {
+  @apply rounded-full w-10 h-10;
 }
 /* bg-[#E8E8E8] */
-.dataController p{
+.dataController p {
   @apply h-12 w-12 hover:bg-primary_SkyBlue 
   hover:bg-opacity-30 flex justify-center
-   items-center rounded-lg
+   items-center rounded-lg;
 }

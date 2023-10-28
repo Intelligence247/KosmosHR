@@ -1,38 +1,38 @@
 .homeWrapper {
-  @apply flex py-9 
+  @apply flex;
 }
 
 .rightHomepageWrapper {
-  @apply px-20 w-full flex flex-col space-y-8
+  @apply w-full flex flex-col space-y-8;
 }
- header{
-    @apply flex justify-between items-center
+header {
+  @apply flex justify-between items-center;
 }
 /* .searchInputs {
   @apply ;
 } */
-.searchInputs button{
-    @apply opacity-70
+.searchInputs button {
+  @apply opacity-70;
 }
-.searchInputs input{
-    @apply w-full h-8 outline-none
+.searchInputs input {
+  @apply w-full h-8 outline-none;
 }
-.notifications{
-    @apply flex space-x-4 w-max justify-center items-center
+.notifications {
+  @apply flex space-x-4 w-max justify-center items-center;
 }
-.rightHomepageWrapper .welcome{
-    @apply text-xl
+.rightHomepageWrapper .welcome {
+  @apply text-xl;
 }
-.rightHomepageWrapper .welcome h1{
-    @apply font-bold 
+.rightHomepageWrapper .welcome h1 {
+  @apply font-bold;
 }
-.Info{
-    @apply flex justify-between items-center pt-8
+.Info {
+  @apply flex justify-between items-center pt-8;
 }
-.Info .eachInfo{
-@apply w-[16rem] h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
- flex flex-col space-y-6 justify-center pl-6 font-bold
+.Info .eachInfo {
+  @apply w-[16rem] h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
+ flex flex-col space-y-6 justify-center pl-6 font-bold;
 }
-.Info .eachInfo .value{
-    @apply flex items-center space-x-4
+.Info .eachInfo .value {
+  @apply flex items-center space-x-4;
 }
