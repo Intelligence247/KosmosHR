@@ -23,7 +23,7 @@ const Employees = () => {
               Get insight into full list of employees registered wip pe company
             </p>
           </div>
-          <div className="onboard">
+          <div className="employeeonboard">
             <p>Onboard New Staff</p>
             <img src="/front.png" alt="" />
           </div>
@@ -44,7 +44,6 @@ const Employees = () => {
             <img src="/displayRight.png" alt="" />
           </p>
         </div>
-       
       </div>
     </HomeLayout>
   );

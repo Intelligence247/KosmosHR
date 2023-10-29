@@ -3,9 +3,11 @@ import Onboard from '../../Components/Onboard/Onboard'
 
 const LoginSignLayout = ({ children }) => {
   return (
-    <div className='flex'>
-      <Onboard/>
-      <div className='w-[47%] lg:px-32 flex flex-col justify-center space-y-6'>{children}</div>
+    <div className='lg:flex'>
+      <Onboard
+      bghidden="lg:flex hidden"
+      />
+      <div className='lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-6'>{children}</div>
     </div>
   )
 }

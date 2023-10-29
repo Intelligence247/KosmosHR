@@ -13,11 +13,11 @@
 .employeeSection .employee h1 {
   @apply font-bold lg:block;
 }
-.employeeSection .onboard {
+.employeeSection .employeeonboard {
   @apply text-primary_DeepBlue bg-[#BAD6F4] lg:flex hidden space-x-2 justify-center
      items-center text-[14px] h-12 py-3 px-6 rounded-xl;
 }
-.employeeSection .onboard p {
+.employeeSection .employeeonboard p {
   @apply whitespace-nowrap;
 }
 .tableSection {

@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <LoginSignLayout>
-      <h1 className="lg:text-2xl font-bold">Sign Into Company Account</h1>
+      <div className="flex justify-center w-full items-center pb-4">
+      <img src="/kosmos.png" alt="" />
+      </div>
+      <h1 className="lg:text-2xl text-base font-bold">Sign Into Company Account</h1>
       <div className="inputs">
         <label htmlFor="email ">Email:</label>
         <input type="email" placeholder="Enter Your Email " />
