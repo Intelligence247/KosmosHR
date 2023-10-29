@@ -1,16 +1,20 @@
 .mainMenuWrapper {
-  @apply flex flex-col space-y-3 h-[100vh] fixed overflow-y-auto w-[17rem] shadow-2xl bg-white justify-between gap-3 pl-6 pt-[3rem] pb-3;
+  @apply flex flex-col lg:space-y-3 space-y-0
+   lg:h-[100vh] h-20 bg-white
+   fixed lg:overflow-y-auto lg:w-[17rem] w-full shadow-2xl
+     lg:gap-3 lg:pl-6 pl-0 lg:pt-[3rem] lg:pb-3 z-10;
 }
 .mainMenuWrapper h2 {
-  @apply opacity-50 py-3;
+  @apply opacity-50 py-3 lg:block hidden;
 }
 .list {
-  @apply flex flex-col space-y-3 overflow-y-auto;
+  @apply flex lg:flex-col flex-row lg:justify-start overflow-x-hidden justify-between items-center lg:h-full  h-20 lg:w-full
+   w-screen lg:space-y-3 overflow-y-auto px-4;
 }
 .list li,
 .mainMenuWrapper button {
-  @apply w-[12.5rem] h-12 hover:bg-[#E9F2FC] flex items-center
-     gap-2.5 cursor-auto rounded-lg pl-7;
+  @apply lg:w-[12.5rem] h-12 hover:bg-[#E9F2FC] flex lg:flex-row flex-col items-center
+     gap-2.5 cursor-auto rounded-lg lg:pl-7; 
 }
 .manageStaff,
 .manageStaff ul {

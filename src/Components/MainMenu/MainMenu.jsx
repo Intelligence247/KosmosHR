@@ -6,10 +6,10 @@ const MainMenu = () => {
   return (
     <div className="mainMenuWrapper">
       <div>
-        <img src="/kosmos.png" className="w-max" alt="Logo" />
+        <img src="/kosmos.png" className="w-max lg:block hidden" alt="Logo" />
       </div>
       <div className="h-[100%]">
-        <h2>Main Menu</h2>
+        <h2 className="lg:block hidden">Main Menu</h2>
         <ul className="list">
           <Link to="/">
             {" "}
@@ -63,7 +63,7 @@ const MainMenu = () => {
                 </svg>
               )}
             </li>
-            <ul className={`pl-6 ${view ? "flex" : "hidden"}`}>
+            <ul className={`lg:pl-6 ${view ? "flex" : "hidden"}`}>
               <Link to="/task">
                 <li>
                   {" "}
@@ -90,7 +90,7 @@ const MainMenu = () => {
           </li>
         </ul>
       </div>
-      <div className="w-[100%] pt-3 border-t">
+      <div className="w-[100%] pt-3 border-t lg:block hidden">
         <button>
           <img src="/login.png" alt="" />
           <p>Log Out</p>

@@ -1,12 +1,12 @@
 .homeWrapper {
-  @apply flex;
+  @apply flex lg:flex-row flex-col;
 }
 
 .rightHomepageWrapper {
   @apply w-full flex flex-col space-y-8;
 }
 header {
-  @apply flex justify-between items-center;
+  @apply flex justify-between items-center w-full bg-white;
 }
 /* .searchInputs {
   @apply ;
@@ -18,7 +18,7 @@ header {
   @apply w-full h-8 outline-none;
 }
 .notifications {
-  @apply flex space-x-4 w-max justify-center items-center;
+  @apply flex lg:space-x-4 w-max justify-center items-center ;
 }
 .rightHomepageWrapper .welcome {
   @apply text-xl;
@@ -27,10 +27,10 @@ header {
   @apply font-bold;
 }
 .Info {
-  @apply flex justify-between items-center pt-8;
+  @apply flex lg:flex-row flex-col lg:space-y-0 space-y-6 justify-between items-center pt-8;
 }
 .Info .eachInfo {
-  @apply w-[16rem] h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
+  @apply lg:w-[16rem] w-full h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
  flex flex-col space-y-6 justify-center pl-6 font-bold;
 }
 .Info .eachInfo .value {

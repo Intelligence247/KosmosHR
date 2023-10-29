@@ -2,7 +2,7 @@
   @apply flex space-y-8 flex-col w-full;
 }
 .employeeSection {
-  @apply flex justify-between items-center;
+  @apply flex lg:flex-row flex-col justify-between items-center;
 }
 .employeeSection .employee {
   @apply flex flex-col justify-center items-start space-y-2.5;
@@ -11,10 +11,10 @@
   @apply text-[14px];
 }
 .employeeSection .employee h1 {
-  @apply font-bold;
+  @apply font-bold lg:block;
 }
 .employeeSection .onboard {
-  @apply text-primary_DeepBlue bg-[#BAD6F4] flex space-x-2 justify-center
+  @apply text-primary_DeepBlue bg-[#BAD6F4] lg:flex hidden space-x-2 justify-center
      items-center text-[14px] h-12 py-3 px-6 rounded-xl;
 }
 .employeeSection .onboard p {
@@ -28,7 +28,7 @@
 } */
 .tableSection .tableHeader {
   /* grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; */
-  @apply grid-cols-7 grid h-12 bg-[#E8E8E8] space-x-2;
+  @apply grid-cols-7 lg:grid h-12 bg-[#E8E8E8] space-x-2 hidden;
 }
 .tableSection .tableHeader p {
   @apply flex justify-start items-center text-[12px] text-primary_DeepBlue font-bold;
@@ -38,26 +38,34 @@
   @apply col-span-2 flex justify-start items-center;
 }
 .tableSection .eachInfo {
-  @apply grid grid-cols-7 space-x-2 h-16 border-[1px];
+  @apply lg:grid lg:grid-cols-7 flex 
+  justify-between items-center lg:pl-2 lg:px-0 px-2  h-16 w-full border-[1px];
 }
 .tableSection .tableHeader p:first-child {
   @apply pl-6;
 }
 .tableSection .eachInfo .staffInfo {
-  @apply flex space-x-1 pl-2;
+  @apply flex space-x-1;
 }
 
 .tableSection .eachInfo p {
-  @apply text-[12px] flex justify-start items-center text-primary_DeepBlue;
+  @apply lg:text-[12px] text-[9px] flex justify-start items-center text-primary_DeepBlue;
 }
-.tableSection .eachInfo p:last-child {
+.tableSection .eachInfo p:nth-child(5),
+.tableSection .eachInfo p:nth-child(4),
+.tableSection .eachInfo p:nth-child(6),
+.tableSection .eachInfo p:nth-child(3),
+.tableSection .eachInfo p.department {
+  @apply lg:grid hidden;
+}
+.tableSection .eachInfo p.action {
   @apply text-primary_SkyBlue underline cursor-pointer;
 }
 .tableSection .eachInfo .staffInfo p:last-child {
   @apply text-black opacity-50;
 }
 .tableSection .eachInfo .staffInfo img {
-  @apply rounded-full w-10 h-10;
+  @apply rounded-full w-10 h-10 lg:block hidden;
 }
 /* bg-[#E8E8E8] */
 .dataController p {

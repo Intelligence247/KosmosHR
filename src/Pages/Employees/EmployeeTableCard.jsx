@@ -5,10 +5,12 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
   return (
     <section className="tableSection">
       <div className="tableSectionTop flex justify-between h-20 items-center px-4">
-        <h1 className="font-bold">Employees</h1>
+        <h1 className="font-bold lg:block hidden">Employees</h1>
         <div
-          className="searchInputs w-[28rem] flex space-x-2.5 items-center h-12 border-[#1D70C9] border-[1px]
-rounded-lg px-3 bg-white"
+          className="searchInputs lg:w-[28rem] flex
+           space-x-2.5 items-center lg:h-12 border-[#1D70C9]
+            border-[1px]
+          rounded-lg px-3 bg-white"
         >
           <button>Search</button>
           <img src="/search.png" alt="" />
@@ -32,13 +34,17 @@ rounded-lg px-3 bg-white"
               <p>{e.email}</p>
             </div>
           </div>
-          <p>{e.department}</p>
+          <p className="department">{e.department}</p>
           <p>{e.position}</p>
           <p>{e.phone_no}</p>
           <p>{e.city}</p>
-          <p className="items-center">
+          <p className="action items-center">
             {e.action} <img src="/slantArrow.png" alt="" />
           </p>
+          <div className="mobileview lg:hidden">
+            <p>{e.department}</p>
+            <p>{e.position}</p>
+          </div>
         </div>
       ))}
       <Link
