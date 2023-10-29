@@ -1,7 +1,7 @@
 .onboard {
   background-position: center center;
   background-size: 100% 100%;
-  @apply h-screen lg:w-[57%] lg:bg-[url(/onboard1.png)] bg-[url(/onboardmobile1.png)] bg-no-repeat;
+  
 }
 .onboardContents {
   /* filter: blur(10px); */
