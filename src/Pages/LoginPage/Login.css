@@ -1,0 +1,21 @@
+.onboard {
+  background-position: center center;
+  background-size: 100% 100%;
+  @apply h-screen lg:w-[57%] lg:bg-[url(/onboard1.png)] bg-[url(/onboardmobile1.png)] bg-no-repeat;
+}
+.onboardContents {
+  /* filter: blur(10px); */
+  /* backdrop-filter: blur(10px); */
+  /* backdrop-filter: blur(10px); */
+  /* background-color: rgba(255, 255, 255, 0.8) */
+}
+.inputs {
+  @apply flex gap-1.5 flex-col;
+}
+.inputs input {
+  @apply h-12 border-[1px] border-black/30 
+  rounded-lg pl-2 outline-none 
+}
+.inputs label{
+    @apply font-bold
+}

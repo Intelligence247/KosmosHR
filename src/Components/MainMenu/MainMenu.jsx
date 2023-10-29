@@ -63,7 +63,7 @@ const MainMenu = () => {
                 </svg>
               )}
             </li>
-            <ul className={`lg:pl-6 ${view ? "flex" : "hidden"}`}>
+            <ul className={`lg:pl-6 ${view ? "lg:flex hidden" : "hidden"}`}>
               <Link to="/task">
                 <li>
                   {" "}

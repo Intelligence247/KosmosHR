@@ -1,12 +1,27 @@
-import React from 'react'
-
+import React from "react";
+import LoginSignLayout from "../../Layouts/LoginSignLayout/LoginSignLayout";
+import "./Login.css";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur placeat explicabo eos dolore dolores possimus ipsum aliquam iusto magnam voluptate cumque quae commodi delectus, iure fugiat nihil neque officiis accusamus.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio aspernatur vel earum, doloremque fugit nemo accusantium et nostrum, unde nisi mollitia possimus eaque esse, beatae necessitatibus dolor voluptatum tenetur. Ratione?
-    </div>
-  )
-}
+    <LoginSignLayout>
+      <h1 className="lg:text-2xl font-bold">Sign Into Company Account</h1>
+      <div className="inputs">
+        <label htmlFor="email ">Email:</label>
+        <input type="email" placeholder="Enter Your Email " />
+      </div>
+      <div className="inputs">
+        <label htmlFor="password ">Password:</label>
+        <input type="password" placeholder="Enter Your Password " />
+      <button className="text-right text-black/70 text-[12px]">Click if  You Lost Your Password</button>
+      </div>
+      <button className="h-12 bg-primary_SkyBlue text-white rounded-xl">Login</button>
+<div className="notAmember">
+  <p>Not a member? <Link to='' className="text-primary_SkyBlue">Create an Account</Link></p>
+</div>
+    </LoginSignLayout>
+  );
+};
 
-export default Login
+export default Login;
+// 22, 24.8
