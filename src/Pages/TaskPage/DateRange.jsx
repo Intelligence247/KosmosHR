@@ -1,10 +1,12 @@
-const DateRange = () => {
+const DateRange = ({ h }) => {
   return (
     <div
       className="flex items-center
 rounded-lg bg-white border-[1px] border-gray-300"
     >
-      <div className="relative text-[13px] w-[9rem] h-[2rem] flex justify-center rounded-l-lg items-center bg-[#fff]">
+      <div
+        className={`relative text-[13px] w-[9rem] flex justify-center rounded-l-lg items-center bg-[#fff] ${h}`}
+      >
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none ">
           <svg
             className="w-3 h-3 text-primary_DeepBlue"
@@ -19,7 +21,7 @@ rounded-lg bg-white border-[1px] border-gray-300"
         <input
           name="start"
           type="date"
-          className="text-[13px] h-[100%] text-gray-900 text-sm rounded-l-lg focus:ring-blue-600 focus:border-blue-500 block w-full pl-8"
+          className="text-[13px] h-[100%] focus:outline-0 text-gray-900 rounded-l-lg focus:ring-blue-600 focus:border-blue-500 block w-full pl-8"
           placeholder="From: Start Date"
         />
       </div>
@@ -39,7 +41,7 @@ rounded-lg bg-white border-[1px] border-gray-300"
         <input
           name="end"
           type="date"
-          className="text-gray-900 h-[100%] text-sm rounded-r-lg focus:ring-blue-600 focus:border-blue-500 block w-full pl-8"
+          className="text-gray-900 h-[100%] focus:outline-0 text-[13px] rounded-r-lg focus:ring-blue-600 focus:border-blue-500 block w-full pl-8"
           placeholder="To: Start Date"
         />
       </div>
