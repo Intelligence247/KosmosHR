@@ -37,7 +37,7 @@ rounded-lg bg-white"
           <img src="/search.png" alt="" /> */}
           {/* <input type="text" name="" id="" /> */}
         </div>
-        <DateRange />
+        <DateRange h={"h-[2rem]"} />
       </div>
       <table className="w-[100%] border-spacing-x-[1rem] text-primary_DeepBlue table-auto">
         <thead className="bg-[#E8E8E8] h-12">
