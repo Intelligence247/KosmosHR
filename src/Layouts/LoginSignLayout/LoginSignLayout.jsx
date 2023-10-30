@@ -23,13 +23,14 @@ const LoginSignLayout = ({ children }) => {
        reverse={'flex-row-reverse'}
        title={'Task, Report, Connect'}
        desc={'Revolutionizing Employee Management:'}
-       
+
        /> :
         <Onboard 
         bghidden="lg:flex hidden lg:bg-[url(/onboard2.png)] bg-[url(/onboardmobile2.png)]" 
        reverse={'flex-row'}
        title={'Fostering Management-Staff Harmony!'}
        desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
+       
         />}
       <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-6">
         {children}
