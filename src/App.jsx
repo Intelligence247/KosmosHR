@@ -6,6 +6,8 @@ import Login from "./Pages/LoginPage/Login";
 import Pricing from "./Pages/Pricing_SubscriptionPage/Pricing";
 import Employees from "./Pages/Employees/Employees";
 import Task from "./Pages/TaskPage/Task";
+import Splash from "./Pages/Splash/Splash";
+import OnboardPage from "./Pages/OnboardPage/OnboardPage";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/employee" element={<Employees />} />
           <Route path="/task" element={<Task />} />
           <Route path="/pricing_subscription" element={<Pricing />} />
+          <Route path="/splash" element={<Splash />} />
+          <Route path="/onboardpage" element={<OnboardPage />} />
         </Routes>
       </Router>
     </div>
