@@ -6,7 +6,7 @@ import { taskData } from "../../utility/data";
 import TaskTable from "./TaskTable";
 
 const Task = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <HomeLayout>
       <TaskModal isVisible={showModal} onClose={() => setShowModal(false)} />
