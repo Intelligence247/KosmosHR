@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
   console.log(sliceOption);
-  console.log(employeeData.length);
+  // console.log(employeeData.length);
   return (
     <HomeLayout>
       <div className="employeeRight">
@@ -30,17 +30,29 @@ const Employees = () => {
         </section>
 
         <EmployeeTableCard
-          employeeDataProps={employeeData.slice(2, 8)}
+          employeeDataProps={employeeData.slice(sliceOption, sliceOption + 8)}
           hideViewall={"hidden"}
         />
         <div className="dataController flex justify-center items-center space-x-8">
-          <p onClick={() => setsliceOption(sliceOption - 8)}>
+          <p
+            onClick={() => {
+              sliceOption <= 8
+                ? setsliceOption(sliceOption - 0)
+                : setsliceOption(sliceOption - 8);
+            }}
+          >
             <img src="/displayLeft.png" alt="" />
           </p>
           <p onClick={() => setsliceOption(8)}>1</p>
           <p onClick={() => setsliceOption(16)}>2</p>
           <p onClick={() => setsliceOption(24)}>3</p>
-          <p onClick={() => setsliceOption(sliceOption + 8)}>
+          <p
+            onClick={() => {
+              employeeData.length - 8 <= sliceOption
+                ? setsliceOption(sliceOption + 0)
+                : setsliceOption(sliceOption + 8);
+            }}
+          >
             <img src="/displayRight.png" alt="" />
           </p>
         </div>
