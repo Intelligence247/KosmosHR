@@ -4,13 +4,21 @@ import EmployeeTableCard from "./EmployeeTableCard";
 import { employeeData } from "../../utility/data";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { Link } from "react-router-dom";
-
+import EmployeeModal from "../../Modals/EmployeeModal/EmployeeModal";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
-  console.log(sliceOption);
-  // console.log(employeeData.length);
+  const [showModal, setShowModal] = useState(true);
+  console.log(showModal)
+  const clickFunction = () => {
+    setShowModal(!showModal)
+  }
   return (
     <HomeLayout>
+      <EmployeeModal
+      onclickHandle={clickFunction}
+      scaling={showModal?'scale-1':'scale-0'}
+      />
+
       <div className="employeeRight">
         <section className="employeeSection">
           <div className="employee">
@@ -23,7 +31,7 @@ const Employees = () => {
               Get insight into full list of employees registered wip pe company
             </p>
           </div>
-          <div className="employeeonboard">
+          <div onClick={()=> clickFunction()} className="employeeonboard cursor-pointer">
             <p>Onboard New Staff</p>
             <img src="/front.png" alt="" />
           </div>
@@ -62,3 +70,6 @@ const Employees = () => {
 };
 
 export default Employees;
+// popup
+// nav
+// manage
