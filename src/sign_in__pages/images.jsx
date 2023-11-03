@@ -2,9 +2,13 @@
 const Images
  = () => {
     
-    let x = document.querySelector("#box1");
-    let y = document.querySelector("#box2");
+ 
+    useEffect( ()=>{
+        animate();
+    })
     function animate() {
+        let x = document.querySelector("#box1");
+        let y = document.querySelector("#box2");
         setTimeout(function () {
             x.style.left = "-900px";
             y.style.left = "0px";
@@ -12,13 +16,13 @@ const Images
                 x.style.left = "0px";
                 y.style.left = "900px";
                 setTimeout(function () {
-                    animate(); // Call the animate function recursively
-                }, 4000); // Delay before calling animate again
-            }, 9000); // Delay for the second part of the animation
-        }, 5000); // Delay for the first part of the animation
+                    animate();
+                }, 4000); 
+            }, 9000);
+        }, 5000); 
     }
 
-    animate();
+   
 
     return ( <div className="image_wrapper">
 
@@ -29,8 +33,8 @@ const Images
             <div className="display">
             <h3>Fostering Management-Staff Harmony!</h3>
             <p>Efforless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication</p>
-        <div></div>
-        <div></div>
+        <div className="rectangle"></div>
+        <div className="circle"></div>
         </div>
         </div>
 
@@ -38,8 +42,8 @@ const Images
             <div className="display">
             <h3>Task, Report, Connect</h3>
             <p>Revolutionizing Employee Management:</p>
-        <div></div>
-        <div></div>
+         <div className="rectangle"></div>
+        <div className="circle"></div>
         </div>
         </div>
 
@@ -47,5 +51,4 @@ const Images
     </div> );
 }
  
-export default Images
-;
+export default Images;

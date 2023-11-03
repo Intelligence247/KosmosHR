@@ -6,27 +6,17 @@
 
 .logo{
     position: absolute;
-    top: 20px;
+    top: 30px;
+    left: 40px;
     z-index: 10000;
 }
 .signin{
     display: flex;
 }
-.form{
-    z-index: 10000;
-    flex: 1;
-    width: calc(100vw-828px);
-    display: flex;
-    justify-content:center ;
-    align-items: center;
+.texts{
+    color: #fff;
 }
-.sign{
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 24px;
-}
+
 .image_wrapper{
     width: 828px;
     height: 1024px;
@@ -66,6 +56,9 @@
     position: absolute;
     left: 900px;
     transition: 4s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 .display{
 background-image: (255, 255, 255, 0.5);
@@ -76,6 +69,10 @@ width: 60%;
 height: 300px;
 padding: 20px;
 border-radius: 5px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
 }
 
 input[type="text"], input[type="password"], button[type="submit"]{
@@ -107,4 +104,18 @@ font-size: 24px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+}
+
+.form{
+    margin:  auto auto;
+}
+
+
+@media screen and (max-width: 500px) {
+    .texts{
+        display: none;
+    }
+    .signin{
+        display: block;
+    }
 }

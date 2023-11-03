@@ -1,24 +1,24 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 const Sign = () => {
     return ( 
         <div className="form">
-         <div className="sign">
            <h2>Sign into Company Account</h2> 
            <form action="post" noValidate>
            <h3>Email:</h3>
            <input type="text" name="email" id="Email" placeholder="Enter Your Email" required />
            <h3>Password:</h3>
            <input type="password" name="password" id="password" placeholder="Enter Your Password"  required/>
-           <a href="#">Click if ou Lost Your Password</a>
+           <Link>Click if ou Lost Your Password</Link>
            <button type="submit">Log In</button>
            </form>
 
            <div className="register">
             Not a member? 
-            <a href="#">Create an Account</a>
+            <Link>Create an Account</Link>
            </div>
-           </div>
+          
         </div>
      );
 }
