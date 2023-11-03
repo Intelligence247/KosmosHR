@@ -59,7 +59,7 @@
   @apply lg:grid hidden;
 }
 .tableSection .eachInfo p.action {
-  @apply text-primary_SkyBlue underline cursor-pointer;
+  @apply text-primary_SkyBlue underline cursor-pointer lg:flex hidden;
 }
 .tableSection .eachInfo .staffInfo p:last-child {
   @apply text-black opacity-50;

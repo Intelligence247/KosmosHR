@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <LoginSignLayout>
-      <div className="flex justify-center w-full items-center pb-4">
+      <div className="lg:hidden flex justify-center w-full items-center pb-4">
       <img src="/kosmos.png" alt="" />
+
       </div>
       <h1 className="lg:text-2xl text-base font-bold">Sign Into Company Account</h1>
       <div className="inputs">
@@ -20,7 +21,7 @@ const Login = () => {
       </div>
       <button className="h-12 bg-primary_SkyBlue text-white rounded-xl">Login</button>
 <div className="notAmember">
-  <p>Not a member? <Link to='' className="text-primary_SkyBlue">Create an Account</Link></p>
+  <p>Not a member? <Link to='/signin' className="text-primary_SkyBlue">Create an Account</Link></p>
 </div>
     </LoginSignLayout>
   );

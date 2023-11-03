@@ -10,7 +10,7 @@ const LoginSignLayout = ({ children }) => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(incrementCount, 3000); // 2000 milliseconds = 2 seconds
+    const intervalId = setInterval(incrementCount, 5000); 
     return () => clearInterval(intervalId);
   }, []);
   console.log(count % 2);
@@ -32,7 +32,7 @@ const LoginSignLayout = ({ children }) => {
        desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
        
         />}
-      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-6">
+      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-4">
         {children}
       </div>
     </div>
