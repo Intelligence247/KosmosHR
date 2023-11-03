@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Pages/HomePage/Home.css";
-const Header = () => {
+const Header = ({navInOut}) => {
   return (
     <header className="">
       <div
-        className="searchInputs lg:w-[28rem] w-44 flex lg:space-x-2.5 space-x-1 items-center lg:h-12 border-[rgb(29,112,201)] border-[1px]
+        className="searchInputs lg:w-[28rem] w-[10.5rem] flex lg:space-x-2.5 space-x-1 items-center lg:h-12 border-[rgb(29,112,201)] border-[1px]
   rounded-lg px-3 bg-white"
       >
         <button>Search</button>
@@ -26,6 +26,7 @@ const Header = () => {
           alt=""
         />
         <p className="lg:block hidden">HR Admin</p>
+        <img onClick={()=> navInOut()} src="/Vector.png" className="lg:hidden block" alt="" />
       </div>
     </header>
   );

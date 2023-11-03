@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./MainMenu.css";
 import { Link } from "react-router-dom";
-const MainMenu = () => {
+const MainMenu = ({showHide}) => {
   const [view, setToggle] = useState(false);
   return (
-    <div className="mainMenuWrapper">
+
+    <div className={`mainMenuWrapper ${showHide}`}>
       <div>
-        <img src="/kosmos.png" className="w-max lg:block hidden" alt="Logo" />
+        <img src="/kosmos.png" className="w-max" alt="Logo" />
       </div>
       <div className="h-[100%]">
-        <h2 className="lg:block hidden">Main Menu</h2>
+        <h2>Main Menu</h2>
         <ul className="list">
           <Link to="/">
             {" "}
@@ -25,6 +26,7 @@ const MainMenu = () => {
               <img src="/note.png" alt="" />
               Employee
             </li>
+
           </Link>
           <ul className="manageStaff">
             <li onClick={() => setToggle(!view)}>
@@ -63,7 +65,7 @@ const MainMenu = () => {
                 </svg>
               )}
             </li>
-            <ul className={`lg:pl-6 ${view ? "lg:flex hidden" : "hidden"}`}>
+            <ul className={`lg:pl-6 ${view ? "flex" : "hidden"}`}>
               <Link to="/task">
                 <li>
                   {" "}
@@ -90,7 +92,7 @@ const MainMenu = () => {
           </li>
         </ul>
       </div>
-      <div className="w-[100%] pt-3 border-t lg:block hidden">
+      <div className="w-[100%] pt-3 border-t">
         <button>
           <img src="/login.png" alt="" />
           <p>Log Out</p>

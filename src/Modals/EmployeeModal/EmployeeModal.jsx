@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 
 const EmployeeModal = ({scaling, onclickHandle}) => {
-  const handleClicks = () => {
-    setVisible(!visible);
-  };
+ 
   return (
-    // ${visible?'scale-1':'scale-0'}
-    <div
-      className={`w-screen inset-0 h-[100vh] fixed overflow-auto py-6 bg-black bg-opacity-25 backdrop-blur-sm z-10 lg:grid place-content-center lg:px-0 px-4 ${scaling}`}>
-      <div className="lg:w-[70vw] z-50 w-full rounded-xl bg-white pb-4">
+  <div
+      className={` z-50 duration-500 ease-in w-screen inset-0 h-[100vh] fixed overflow-auto py-6 bg-black bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0 px-4 ${scaling}`}>
+      <div className="lg:w-[70vw] w-full rounded-xl bg-white pb-4">
         <header className="flex flex-col justify-center items-center rounded-t-xl pt-4">
           <h1 className="font-bold lg:text-2xl text-xl">New Employees</h1>
           <p>Set up new Employee profiles</p>

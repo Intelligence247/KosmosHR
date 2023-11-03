@@ -7,8 +7,7 @@ import { Link } from "react-router-dom";
 import EmployeeModal from "../../Modals/EmployeeModal/EmployeeModal";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
-  const [showModal, setShowModal] = useState(true);
-  console.log(showModal)
+  const [showModal, setShowModal] = useState(false);
   const clickFunction = () => {
     setShowModal(!showModal)
   }
@@ -70,6 +69,3 @@ const Employees = () => {
 };
 
 export default Employees;
-// popup
-// nav
-// manage
