@@ -9,6 +9,7 @@ const OnboardPage = () => {
      reverse={'flex-row'}
      title={'Fostering Management-Staff Harmony!'}
      desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
+     link={'/onboardpage2'}
       />
     </div>
   )

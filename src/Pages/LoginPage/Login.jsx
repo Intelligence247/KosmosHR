@@ -19,7 +19,7 @@ const Login = () => {
         <input type="password" placeholder="Enter Your Password " />
       <button className="text-right text-black/70 text-[12px]">Click if  You Lost Your Password</button>
       </div>
-      <button className="h-12 bg-primary_SkyBlue text-white rounded-xl">Login</button>
+      <Link to='/home' className="h-12 bg-primary_SkyBlue text-white rounded-xl justify-center items-center flex">Login</Link>
 <div className="notAmember">
   <p>Not a member? <Link to='/signin' className="text-primary_SkyBlue">Create an Account</Link></p>
 </div>

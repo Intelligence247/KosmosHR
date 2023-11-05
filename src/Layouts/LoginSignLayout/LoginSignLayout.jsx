@@ -32,7 +32,7 @@ const LoginSignLayout = ({ children }) => {
        desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
        
         />}
-      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-4">
+      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col lg:h-screen h-max lg:py-0 py-9 justify-center space-y-4">
         {children}
       </div>
     </div>

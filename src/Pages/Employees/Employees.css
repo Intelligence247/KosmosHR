@@ -2,7 +2,7 @@
   @apply flex space-y-8 flex-col w-full;
 }
 .employeeSection {
-  @apply flex lg:flex-row flex-col justify-between items-center;
+  @apply flex lg:flex-row flex-col justify-between lg:items-center lg:space-y-0 space-y-6 items-start;
 }
 .employeeSection .employee {
   @apply flex flex-col justify-center items-start space-y-2.5;
@@ -14,7 +14,7 @@
   @apply font-bold lg:block;
 }
 .employeeSection .employeeonboard {
-  @apply text-primary_DeepBlue bg-[#BAD6F4] lg:flex hidden space-x-2 justify-center
+  @apply text-primary_DeepBlue bg-[#BAD6F4] flex space-x-2 justify-center
      items-center text-[14px] h-12 py-3 px-6 rounded-xl;
 }
 .employeeSection .employeeonboard p {
