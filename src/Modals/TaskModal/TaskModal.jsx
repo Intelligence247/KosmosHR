@@ -10,12 +10,12 @@ const TaskModal = (props) => {
   return (
     <Modal handleClose={handleClose} onClose={() => props.onClose()}>
       <div className="w-[100%] border-b-[2px] pb-2">
-        <h1 className="font-bold">Tasks</h1>
-        <p className="text-[0.9rem]">
+        <h1 className="text-[1.5rem] font-bold">Tasks</h1>
+        <p className="text-[1rem] lg:text-[0.9rem] mt-4 lg:mt-0 mb-2 lg:mb-0">
           Send responsibilities to your staff and get them updated
         </p>
       </div>
-      <div className="w-[100%]">
+      <div className="w-[100%] mt-4 lg:mt-0 text-start">
         <form action="" className="w-[100%] grid grid-cols-1 gap-4">
           <section className="w-[100%] flex items-center gap-4">
             <label htmlFor="recipient" className="font-semibold w-[6rem]">
@@ -103,7 +103,7 @@ const TaskModal = (props) => {
           <section className="w-[100%]">
             <button
               type="submit"
-              className="flex bg-blue-600 text-[#fff] h-9 items-center justify-center rounded-lg w-[18rem] hover:bg-[#fff] hover:border-[1px] hover:border-solid hover:border-blue-600 hover:text-blue-600 ml-[7rem]"
+              className="flex bg-blue-600 text-[#fff] h-9 items-center justify-center rounded-lg w-[15rem] lg:w-[18rem] hover:bg-[#fff] hover:border-[1px] hover:border-solid hover:border-blue-600 hover:text-blue-600 ml-[6rem] lg:ml-[7rem]"
             >
               Submit
             </button>
