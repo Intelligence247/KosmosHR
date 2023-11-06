@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
+// import Navbar from "./Components/Navbar/Navbar";
 // import {BrowserRouter as Route, Routes } from 'react-router-dom'
 import Home from "./Pages/HomePage/Home";
 import Login from "./Pages/LoginPage/Login";
@@ -15,13 +15,13 @@ import { useMediaQuery } from "react-responsive";
 import OnboardPage2 from "./Pages/OnboardPage/OnboardPage2";
 
 function App() {
-  const isTablet = useMediaQuery({ maxWidth: '768px' });
+  const isTablet = useMediaQuery({ maxWidth: "768px" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   return (
     <div className="body">
       <Router>
         <Routes>
-          {isPortrait || isTablet  ? (
+          {isPortrait || isTablet ? (
             <Route path="/" element={<Splash />} />
           ) : (
             <Route path="/" element={<Signin />} />

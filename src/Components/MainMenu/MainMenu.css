@@ -5,16 +5,16 @@
     gap-3 pl-6 pt-[3rem] pb-3 z-40;
 }
 .mainMenuWrapper h2 {
-  @apply opacity-50 py-3 ;
+  @apply opacity-50 py-3;
 }
 .list {
   @apply flex flex-col justify-start overflow-x-hidden
-   items-center h-full w-full space-y-3 overflow-y-auto ;
+   items-center h-full w-full space-y-3 overflow-y-auto;
 }
 .list li,
 .mainMenuWrapper button {
   @apply w-[12.5rem] h-12 hover:bg-[#E9F2FC] flex items-center
-     gap-2.5 cursor-auto rounded-lg pl-7; 
+     gap-2.5 cursor-auto rounded-lg pl-7;
 }
 .manageStaff,
 .manageStaff ul {
