@@ -10,7 +10,7 @@ const LoginSignLayout = ({ children }) => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(incrementCount, 3000); // 2000 milliseconds = 2 seconds
+    const intervalId = setInterval(incrementCount, 5000); 
     return () => clearInterval(intervalId);
   }, []);
   console.log(count % 2);
@@ -23,15 +23,16 @@ const LoginSignLayout = ({ children }) => {
        reverse={'flex-row-reverse'}
        title={'Task, Report, Connect'}
        desc={'Revolutionizing Employee Management:'}
-       
+
        /> :
         <Onboard 
         bghidden="lg:flex hidden lg:bg-[url(/onboard2.png)] bg-[url(/onboardmobile2.png)]" 
        reverse={'flex-row'}
        title={'Fostering Management-Staff Harmony!'}
        desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
+       
         />}
-      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col h-screen justify-center space-y-6">
+      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col lg:h-screen h-max lg:py-0 py-9 justify-center space-y-4">
         {children}
       </div>
     </div>

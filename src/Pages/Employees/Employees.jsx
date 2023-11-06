@@ -4,13 +4,20 @@ import EmployeeTableCard from "./EmployeeTableCard";
 import { employeeData } from "../../utility/data";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { Link } from "react-router-dom";
-
+import EmployeeModal from "../../Modals/EmployeeModal/EmployeeModal";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
-  console.log(sliceOption);
-  console.log(employeeData.length);
+  const [showModal, setShowModal] = useState(false);
+  const clickFunction = () => {
+    setShowModal(!showModal)
+  }
   return (
     <HomeLayout>
+      <EmployeeModal
+      onclickHandle={clickFunction}
+      scaling={showModal?'scale-1':'scale-0'}
+      />
+
       <div className="employeeRight">
         <section className="employeeSection">
           <div className="employee">
@@ -23,24 +30,36 @@ const Employees = () => {
               Get insight into full list of employees registered wip pe company
             </p>
           </div>
-          <div className="employeeonboard">
+          <div onClick={()=> clickFunction()} className="employeeonboard cursor-pointer">
             <p>Onboard New Staff</p>
             <img src="/front.png" alt="" />
           </div>
         </section>
 
         <EmployeeTableCard
-          employeeDataProps={employeeData.slice(2, 8)}
+          employeeDataProps={employeeData.slice(sliceOption, sliceOption + 8)}
           hideViewall={"hidden"}
         />
         <div className="dataController flex justify-center items-center space-x-8">
-          <p onClick={() => setsliceOption(sliceOption - 8)}>
+          <p
+            onClick={() => {
+              sliceOption <= 8
+                ? setsliceOption(sliceOption - 0)
+                : setsliceOption(sliceOption - 8);
+            }}
+          >
             <img src="/displayLeft.png" alt="" />
           </p>
           <p onClick={() => setsliceOption(8)}>1</p>
           <p onClick={() => setsliceOption(16)}>2</p>
           <p onClick={() => setsliceOption(24)}>3</p>
-          <p onClick={() => setsliceOption(sliceOption + 8)}>
+          <p
+            onClick={() => {
+              employeeData.length - 8 <= sliceOption
+                ? setsliceOption(sliceOption + 0)
+                : setsliceOption(sliceOption + 8);
+            }}
+          >
             <img src="/displayRight.png" alt="" />
           </p>
         </div>

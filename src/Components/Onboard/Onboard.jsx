@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../Pages/LoginPage/Login.css";
-const Onboard = ({ bghidden, title, desc, reverse }) => {
+import { Link } from "react-router-dom";
+const Onboard = ({ bghidden, title, desc, reverse, link }) => {
   const [autoPlay, setautoPlay] = useState(false);
 
   return (
@@ -19,9 +20,9 @@ const Onboard = ({ bghidden, title, desc, reverse }) => {
             <p className="flex bg-primary_SkyBlue w-6 lg:h-2 h-1 rounded-full"></p>
             <p className="lg:w-2 lg:h-2 w-1 h-1 bg-white rounded-full"></p>
           </div>
-          <div className="navigationArrow w-6 h-6 bg-white rounded-full flex justify-center items-center lg:hidden">
+          <Link to={link} className="navigationArrow w-6 h-6 bg-white rounded-full flex justify-center items-center lg:hidden">
             <img src="/front.png" className="w-2.5" alt="" />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

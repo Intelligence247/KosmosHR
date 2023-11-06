@@ -9,8 +9,7 @@ html {
   scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
-  width: 8px;
-  border-radius: 10px;
+  @apply lg:w-2 rounded-[10px] lg:block hidden
 }
 ::-webkit-scrollbar-thumb {
   background: #f1f1f1;
