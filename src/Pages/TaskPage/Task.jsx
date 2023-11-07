@@ -6,23 +6,23 @@ import { taskData } from "../../utility/data";
 import TaskTable from "./TaskTable";
 
 const Task = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <HomeLayout>
       <TaskModal isVisible={showModal} onClose={() => setShowModal(false)} />
-      <div className="h-fit flex space-y-8 flex-col w-full">
+      <div className="lg:h-fit flex space-y-6 lg:space-y-8 flex-col w-full">
         <section className="flex justify-between items-center">
-          <div className="flex flex-col justify-center items-start space-y-2.5">
-            <img src="/back.png" alt="" />
-            <h1 className="font-bold">Tasks</h1>
-            <p className="text-[14px]">
+          <div className="flex lg:flex-col flex-row lg:justify-center items-center lg:items-start gap-4 lg:gap-0 lg:space-y-2.5">
+            <img src="/back.png" alt="back" />
+            <h1 className="font-bold text-[1.5rem] lg:text-[1rem]">Tasks</h1>
+            <p className="text-[14px] hidden lg:flex">
               Get your staff updated on their responsibilities
             </p>
           </div>
           <div className="">
             <button
               className="text-primary_DeepBlue bg-[#BAD6F4] flex space-x-2 justify-center
-              items-center text-[14px] h-12 py-3 px-6 rounded-xl"
+              items-center text-[14px] w-[12rem] lg:w-auto h-12 py-3 px-6 rounded-xl"
               onClick={() => setShowModal(true)}
             >
               Send New Tasks
@@ -30,7 +30,9 @@ const Task = () => {
             </button>
           </div>
         </section>
-
+        <p className="text-[16px] lg:hidden flex">
+          Get your staff updated on their responsibilities
+        </p>
         <TaskTable tableDataProps={taskData} hideViewall={"hidden"} />
         <div className="dataController flex justify-center items-center space-x-8">
           <p>

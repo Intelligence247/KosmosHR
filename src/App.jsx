@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
+// import Navbar from "./Components/Navbar/Navbar";
 // import {BrowserRouter as Route, Routes } from 'react-router-dom'
 import Home from "./Pages/HomePage/Home";
 import Login from "./Pages/LoginPage/Login";
@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { TESTAPI } from "./utility/data";
 
 function App() {
-  const isTablet = useMediaQuery({ maxWidth: '768px' });
+  const isTablet = useMediaQuery({ maxWidth: "768px" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
  const [api, setapi] = useState([]);
  console.log(api)
@@ -29,7 +29,7 @@ useEffect(() => {
     <div className="body">
       <Router>
         <Routes>
-          {isPortrait || isTablet  ? (
+          {isPortrait || isTablet ? (
             <Route path="/" element={<Splash />} />
           ) : (
             <Route path="/" element={<Signin />} />
