@@ -9,7 +9,7 @@ const Modal = ({ children, handleClose, onClose }) => {
     >
       <button
         onClick={onClose}
-        className="absolute w-6 h-6 top-8 right-[23.5rem]"
+        className="absolute w-6 h-6 top-[3rem] lg:top-8 right-10 lg:right-[23.5rem]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ const Modal = ({ children, handleClose, onClose }) => {
           />
         </svg>
       </button>
-      <div className="bg-[#fff] flex flex-col items-center text-center p-[2rem] px-8 h-[80%] w-[40%] rounded-[0.5rem] gap-3">
+      <div className="bg-[#fff] flex flex-col items-center text-center p-[2rem] px-8 lg:h-[80%] h-fit w-[85%] lg:w-[40%] rounded-[0.5rem] gap-3">
         {children}
       </div>
     </div>
