@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const employeeData = [
   {
     avartar: "/profile.png",
@@ -450,3 +452,24 @@ export const pricing = [
     price: 60.0,
   },
 ];
+
+const url = "https://kosmoshr.pythonanywhere.com/api/v1/";
+export const TESTAPI = () => {
+  axios
+    .get(url)
+    .then((resp) => {
+      console.log(resp.data);
+      alert("good");
+      console.log(resp.data);
+      return resp.data;
+    })
+    .catch((err) => {
+      alert("err");
+      console.log(err);
+      return err;
+    });
+};
+
+export const employeeurl = 'https://kosmoshr.pythonanywhere.com/api/v1/employees/'
+const baseUrl = "https://backend.getlinked.ai";
+// export const employeeurl = `${baseUrl}/hackathon/categories-list`;

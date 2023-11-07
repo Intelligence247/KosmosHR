@@ -13,7 +13,6 @@ const LoginSignLayout = ({ children }) => {
     const intervalId = setInterval(incrementCount, 5000); 
     return () => clearInterval(intervalId);
   }, []);
-  console.log(count % 2);
 
   return (
     <div className="lg:flex">

@@ -25,28 +25,35 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
         <p>City</p>
         <p>Action</p>
       </div>
-      {employeeDataProps.map((e, i) => (
-        <div key={i} className="eachInfo">
-          <div className="staffInfo">
-            <img src={`${e.avartar}`} alt="" />
-            <div className="nameAndMail">
-              <p>{`${e.staffName} ${i}`}</p>
-              <p>{e.email}</p>
+
+      {employeeDataProps.length > 1 ? (
+        employeeDataProps.map((e, i) => (
+          <div key={i} className="eachInfo">
+            <div className="staffInfo">
+              <img src={`${e.image}`} alt="" />
+              <div className="nameAndMail">
+                <p>{`${e.title} ${e.first_name} ${e.middle_name} ${e.last_name}`}</p>
+                <p>{e.email}</p>
+              </div>
             </div>
-          </div>
-          <p className="department">{e.department}</p>
-          <p>{e.position}</p>
-          <p>{e.phone_no}</p>
-          <p>{e.city}</p>
-          <p className="action items-center">
-            {e.action} <img src="/slantArrow.png" alt="" />
+
+            <p className="department">{e.department?.title}</p>
+            <p>{e.position?.title}</p>
+            <p>{e.phone_number}</p>
+            <p>{''}</p>
+            <p className="action items-center">
+            {'Details'} <img src="/slantArrow.png" alt="" />
           </p>
-          <div className="mobileview lg:hidden">
-            <p>{e.department}</p>
-            <p>{e.position}</p>
+
+            <div className="mobileview lg:hidden flex flex-col justify-start text-start w-24">
+            <p>{e.department?.title}</p>
+            <p>{e.position?.title}</p>
           </div>
-        </div>
-      ))}
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
       <Link
         to="/employee"
         className={`flex items-center 

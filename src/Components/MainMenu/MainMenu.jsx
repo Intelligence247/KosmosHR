@@ -12,7 +12,7 @@ const MainMenu = ({showHide}) => {
       <div className="h-[100%]">
         <h2>Main Menu</h2>
         <ul className="list">
-          <Link to="/">
+          <Link to="/home">
             {" "}
             <li>
               {" "}

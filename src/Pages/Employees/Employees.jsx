@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Employees.css";
 import EmployeeTableCard from "./EmployeeTableCard";
-import { employeeData } from "../../utility/data";
+import { employeeData, employeeurl } from "../../utility/data";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { Link } from "react-router-dom";
 import EmployeeModal from "../../Modals/EmployeeModal/EmployeeModal";
+import axios from "axios";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [EmployeeData, setEmployeeData] = useState([]);
+  console.log(EmployeeData);
   const clickFunction = () => {
-    setShowModal(!showModal)
-  }
+    setShowModal(!showModal);
+  };
+  console.log(employeeurl);
+  const getEmployeeData = async (e) => {
+    try {
+      const response = axios.get(employeeurl).then((response) => {
+        setEmployeeData(response.data);
+        alert('success')
+      });
+    } catch (error) {
+      console.log(error);
+      alert("errr");
+    }
+  };
+  useEffect(() => {
+    getEmployeeData();
+    
+  }, []);
+  
   return (
     <HomeLayout>
       <EmployeeModal
-      onclickHandle={clickFunction}
-      scaling={showModal?'scale-1':'scale-0'}
+        onclickHandle={clickFunction}
+        scaling={showModal ? "scale-1" : "scale-0"}
       />
 
       <div className="employeeRight">
@@ -30,16 +50,20 @@ const Employees = () => {
               Get insight into full list of employees registered wip pe company
             </p>
           </div>
-          <div onClick={()=> clickFunction()} className="employeeonboard cursor-pointer">
+          <div
+            onClick={() => clickFunction()}
+            className="employeeonboard cursor-pointer"
+          >
             <p>Onboard New Staff</p>
             <img src="/front.png" alt="" />
           </div>
         </section>
 
-        <EmployeeTableCard
-          employeeDataProps={employeeData.slice(sliceOption, sliceOption + 8)}
-          hideViewall={"hidden"}
-        />
+          <EmployeeTableCard
+            employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
+            hideViewall={"hidden"}
+          />
+
         <div className="dataController flex justify-center items-center space-x-8">
           <p
             onClick={() => {
