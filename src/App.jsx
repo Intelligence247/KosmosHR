@@ -17,6 +17,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { TESTAPI } from "./utility/data";
 import Department from "./StaffPages/Department/Department";
+import EmployeesProfile from "./StaffPages/EmployeesProfile/EmployeesProfile";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -46,6 +47,7 @@ useEffect(() => {
           <Route path="/onboardpage1" element={<OnboardPage />} />
           <Route path="/onboardpage2" element={<OnboardPage2 />} />
           <Route path="/department" element={<Department />} />
+          <Route path="/employeesprofile" element={<EmployeesProfile />} />
         </Routes>
       </Router>
     </div>

@@ -33,7 +33,11 @@ const Employees = () => {
   
   return (
     <HomeLayout>
-     
+      <EmployeeModal
+        onclickHandle={clickFunction}
+        scaling={showModal ? "scale-1" : "scale-0"}
+      />
+
       <div className="employeeRight">
         <section className="employeeSection">
           <div className="employee">
