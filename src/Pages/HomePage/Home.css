@@ -5,9 +5,9 @@
 .rightHomepageWrapper {
   @apply w-full flex flex-col space-y-8;
 }
-header {
+/* header {
   @apply flex justify-between items-center w-full bg-white;
-}
+} */
 /* .searchInputs {
   @apply ;
 } */

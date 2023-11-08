@@ -2,7 +2,7 @@ import React from "react";
 import "../../Pages/HomePage/Home.css";
 const Header = ({navInOut}) => {
   return (
-    <header className="">
+    <header className="flex justify-between items-center w-full bg-white">
       <div
         className="searchInputs lg:w-[28rem] w-[10.5rem] flex lg:space-x-2.5 space-x-1 items-center lg:h-12 border-[rgb(29,112,201)] border-[1px]
   rounded-lg px-3 bg-white"
@@ -20,11 +20,11 @@ const Header = ({navInOut}) => {
             alt=""
           />
         </div>
-        <img
+        {/* <img
           src="/profile.png"
           className="lg:w-12 lg:h-12 h-9 w-9 rounded-full"
           alt=""
-        />
+        /> */}
         <p className="lg:block hidden">HR Admin</p>
         <img onClick={()=> navInOut()} src="/Vector.png" className="lg:hidden block" alt="" />
       </div>

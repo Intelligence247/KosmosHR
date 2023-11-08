@@ -16,6 +16,7 @@ import OnboardPage2 from "./Pages/OnboardPage/OnboardPage2";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TESTAPI } from "./utility/data";
+import Department from "./StaffPages/Department/Department";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -44,6 +45,7 @@ useEffect(() => {
           <Route path="/pricing_subscription" element={<Pricing />} />
           <Route path="/onboardpage1" element={<OnboardPage />} />
           <Route path="/onboardpage2" element={<OnboardPage2 />} />
+          <Route path="/department" element={<Department />} />
         </Routes>
       </Router>
     </div>
