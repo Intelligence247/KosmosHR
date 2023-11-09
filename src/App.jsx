@@ -19,6 +19,7 @@ import { TESTAPI } from "./utility/data";
 import Department from "./StaffPages/Department/Department";
 import EmployeesProfile from "./StaffPages/EmployeesProfile/EmployeesProfile";
 import FillingCards from "./Pages/FillingCards/FillingCards";
+import FinalReceipt from "./Pages/FinalReceipt/FinalReceipt";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -70,6 +71,8 @@ function App() {
           <Route path="/department" element={<Department />} />
           <Route path="/employeesprofile" element={<EmployeesProfile />} />
           <Route path="/fillingcard" element={<FillingCards />} />
+          <Route path="/finalreceipt" element={<FinalReceipt />} />
+
         </Routes>
       </Router>
     </div>
