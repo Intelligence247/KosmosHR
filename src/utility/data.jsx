@@ -471,5 +471,5 @@ export const TESTAPI = () => {
 };
 
 export const employeeurl = 'https://kosmoshr.pythonanywhere.com/api/v1/employees/'
-const baseUrl = "https://backend.getlinked.ai";
-// export const employeeurl = `${baseUrl}/hackathon/categories-list`;
+// const baseUrl = "https://backend.getlinked.ai";
+// employeeurl = `${baseUrl}/hackathon/categories-list`;

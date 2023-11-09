@@ -18,15 +18,36 @@ import { useEffect, useState } from "react";
 import { TESTAPI } from "./utility/data";
 import Department from "./StaffPages/Department/Department";
 import EmployeesProfile from "./StaffPages/EmployeesProfile/EmployeesProfile";
+import FillingCards from "./Pages/FillingCards/FillingCards";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
- const [api, setapi] = useState([]);
- console.log(api)
-useEffect(() => {
-  // setapi(TESTAPI())
-}, []);
+  const [api, setapi] = useState([]);
+
+  const baseUrl = "https://backend.getlinked.ai";
+  const employeeurl = `${baseUrl}/hackathon/categories-list`;
+
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+  const callAPI = () => {
+    axios
+      .get(employeeurl, {
+        headers: headers,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    callAPI();
+  }, []);
   return (
     <div className="body">
       <Router>
@@ -48,6 +69,7 @@ useEffect(() => {
           <Route path="/onboardpage2" element={<OnboardPage2 />} />
           <Route path="/department" element={<Department />} />
           <Route path="/employeesprofile" element={<EmployeesProfile />} />
+          <Route path="/fillingcard" element={<FillingCards />} />
         </Routes>
       </Router>
     </div>
