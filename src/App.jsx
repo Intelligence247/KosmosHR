@@ -20,6 +20,7 @@ import Department from "./StaffPages/Department/Department";
 import EmployeesProfile from "./StaffPages/EmployeesProfile/EmployeesProfile";
 import FillingCards from "./Pages/FillingCards/FillingCards";
 import FinalReceipt from "./Pages/FinalReceipt/FinalReceipt";
+import Pricing2 from "./Pages/Pricing_SubscriptionPage/Pricing2";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -28,14 +29,16 @@ function App() {
 
   const baseUrl = "https://backend.getlinked.ai";
   const employeeurl = `${baseUrl}/hackathon/categories-list`;
-
+  const url =
+    "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee/?employee_id=kos0009";
+  //  "https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/";
   const headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
   };
   const callAPI = () => {
     axios
-      .get(employeeurl, {
+      .get(url, {
         headers: headers,
       })
       .then((res) => {
@@ -66,13 +69,13 @@ function App() {
           <Route path="/employee" element={<Employees />} />
           <Route path="/task" element={<Task />} />
           <Route path="/pricing_subscription" element={<Pricing />} />
+          <Route path="/pricing_subscription2" element={<Pricing2 />} />
           <Route path="/onboardpage1" element={<OnboardPage />} />
           <Route path="/onboardpage2" element={<OnboardPage2 />} />
           <Route path="/department" element={<Department />} />
           <Route path="/employeesprofile" element={<EmployeesProfile />} />
           <Route path="/fillingcard" element={<FillingCards />} />
           <Route path="/finalreceipt" element={<FinalReceipt />} />
-
         </Routes>
       </Router>
     </div>

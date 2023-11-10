@@ -19,11 +19,9 @@ const Employees = () => {
     try {
       const response = axios.get(employeeurl).then((response) => {
         setEmployeeData(response.data);
-        alert('success')
       });
     } catch (error) {
       console.log(error);
-      alert("errr");
     }
   };
   useEffect(() => {
