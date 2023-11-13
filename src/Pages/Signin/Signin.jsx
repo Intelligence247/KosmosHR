@@ -38,97 +38,39 @@ const Signin = () => {
     password: formData.password,
   };
   
+  const pstData ={
+    email: "uthmanabdullahi2020@gmail.com",
+    first_name: "Usman",
+    last_name: "Abdullahi",
+    middle_name: "Babatunde",
+    nationality: "Nigeria",
+    phone_number: "09135619423",
+    username: "Usman",
+    password: "Welcome",
+  }
+  
   const handleSubmit = () => {
-    axios
-      .get(url, formDatas, {
-        headers: headers,
+    axios.post(url, formDatas, {
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers if needed
+        },
       })
       .then((res) => {
         console.log(res);
+        alert("first Signin!!!")
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const baseUrl = "https://backend.getlinked.ai";
-  const url1 = `${baseUrl}/hackathon/categories-list`
 
- /*
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const config = { "content-type": "application/json" };
-  
-   
-  try {
-   setIsLoading(true)
-    var configs = {
-    }
-    const resp = await axios(url, formDatas);
-    console.log(resp)
-    console.log(`Sucessfully registered`)
-  
-  } catch (error) {
-    console.log(error.message+"Register Post Error is here")
-  }finally{
-  
-  }
-  }*/
 
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault()
-  //   const data = await kosmos_post(url, formDatas)
-  // console.log(data)
-  //   }
+
   useEffect(() => {
     handleSubmit();
   }, []);
-  console.log(formData);
 
-
-  /*const junks = {
-    // const [formDatass, setFormData] = useState({
-    //   email: "admin@gmail.com",
-    //   first_name: "Kosmos",
-    //   last_name: "Admin",
-    //   middle_name: "",
-    //   nationality: "Nigeria",
-    //   phone_number: "07011223344",
-    //   image: "", // image file
-    //   username: "Admin",
-    //   password: "Kosmos",
-    // });
-    // const url =
-    //   "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-    // const headers = {
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json",
-    // };
-    // const formDatas = JSON.stringify({
-    //   email: "uthmanabdullahi2020@gmail.com",
-    //   first_name: "Kosmos2",
-    //   last_name: "Admin2",
-    //   middle_name: "B.3",
-    //   nationality: "Nigeria",
-    //   phone_number: "07011224534",
-    // });
-     const handleSubmit = (e) => {
-    setIsLoading(true);
-    const response = axios
-      .post(url, formDatas)
-      .then((response) => {
-        alert("successful");
-        setFormData(response);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        alert("error oo");
-        console.error("Error: ", error);
-      });
-  };
-  useEffect(() => {
-    handleSubmit();
-  }, []);
-  };*/
 
 
   return (

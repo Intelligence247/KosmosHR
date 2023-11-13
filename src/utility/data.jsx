@@ -453,7 +453,26 @@ export const pricing = [
   },
 ];
 
+const url = "https://kosmoshr.pythonanywhere.com/api/v1/";
+export const TESTAPI = () => {
+  axios
+    .get(url)
+    .then((resp) => {
+      console.log(resp.data);
+      alert("good");
+      console.log(resp.data);
+      return resp.data;
+    })
+    .catch((err) => {
+      alert("err");
+      console.log(err);
+      return err;
+    });
+};
+
 export const employeeurl =
   "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/";
+// const baseUrl = "https://backend.getlinked.ai";
+// employeeurl = `${baseUrl}/hackathon/categories-list`;
 
 
