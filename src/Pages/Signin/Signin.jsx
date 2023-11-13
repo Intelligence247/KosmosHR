@@ -18,14 +18,12 @@ const Signin = () => {
     username: "",
     password: "",
   });
-
   const url =
     "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
     };
-
     
   const formDatas = {
     email: formData.email,
@@ -38,17 +36,7 @@ const Signin = () => {
     password: formData.password,
   };
   
-  const pstData ={
-    email: "uthmanabdullahi2020@gmail.com",
-    first_name: "Usman",
-    last_name: "Abdullahi",
-    middle_name: "Babatunde",
-    nationality: "Nigeria",
-    phone_number: "09135619423",
-    username: "Usman",
-    password: "Welcome",
-  }
-  
+
   const handleSubmit = () => {
     axios.post(url, formDatas, {
         headers: {
