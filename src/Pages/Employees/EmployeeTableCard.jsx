@@ -1,5 +1,6 @@
 import "./Employees.css";
 import { Link } from "react-router-dom";
+import {RotatingLines} from "react-loader-spinner"
 
 const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
   return (
@@ -40,7 +41,7 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
             <p className="department">{e.department?.title}</p>
             <p>{e.position?.title}</p>
             <p>{e.phone_number}</p>
-            <p>{''}</p>
+            <p>{e.nationality}</p>
             <p className="action items-center">
             {'Details'} <img src="/slantArrow.png" alt="" />
           </p>
@@ -52,7 +53,15 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
           </div>
         ))
       ) : (
-        <p>Loading...</p>
+       <div className="h-[10rem] flex justify-center items-center">
+         <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+       </div>
       )}
       <Link
         to="/employee"
@@ -68,3 +77,5 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
 };
 
 export default EmployeeTableCard;
+
+

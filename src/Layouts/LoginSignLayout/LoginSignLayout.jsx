@@ -15,7 +15,8 @@ const LoginSignLayout = ({ children }) => {
   }, []);
 
   return (
-    <div className="lg:flex">
+    <div className="lg:flex justify-end">
+      <section className="w-[57%] fixed left-0">
       {count % 2 ?
        <Onboard 
        bghidden="lg:flex hidden lg:bg-[url(/onboard1.png)] bg-[url(/onboardmobile1.png)]" 
@@ -31,7 +32,8 @@ const LoginSignLayout = ({ children }) => {
        desc={'Effortless Task Delegation, Seamless End-of-Day Reports, Improved cross-department communication'}
        
         />}
-      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col lg:h-screen h-max lg:py-0 py-9 justify-center space-y-4">
+        </section>
+      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col py-9 justify-center">
         {children}
       </div>
     </div>

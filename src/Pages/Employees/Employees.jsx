@@ -6,19 +6,26 @@ import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { Link } from "react-router-dom";
 import EmployeeModal from "../../Modals/EmployeeModal/EmployeeModal";
 import axios from "axios";
+import { kosmos_get } from "../../../kosmos-module/kosmosRequest";
 const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [EmployeeData, setEmployeeData] = useState([]);
-  console.log(EmployeeData);
+  console.log(EmployeeData)
+
+  const datas = kosmos_get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/");
+  // console.log(datas)
+// for (const i in datas.data){
+//   console.log(datas.data[i].id)
+// }
   const clickFunction = () => {
     setShowModal(!showModal);
   };
-  console.log(employeeurl);
   const getEmployeeData = async (e) => {
     try {
-      const response = axios.get(employeeurl).then((response) => {
-        setEmployeeData(response.data);
+      const response = axios.get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/").then((response) => {
+        setEmployeeData(response.data.data);
+
       });
     } catch (error) {
       console.log(error);
@@ -26,9 +33,9 @@ const Employees = () => {
   };
   useEffect(() => {
     getEmployeeData();
-    
+    datas
   }, []);
-  
+
   return (
     <HomeLayout>
       <EmployeeModal
@@ -57,10 +64,10 @@ const Employees = () => {
           </div>
         </section>
 
-          <EmployeeTableCard
-            employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
-            hideViewall={"hidden"}
-          />
+        <EmployeeTableCard
+          employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
+          hideViewall={"hidden"}
+        />
 
         <div className="dataController flex justify-center items-center space-x-8">
           <p

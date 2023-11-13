@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./MainMenu.css";
 import { Link } from "react-router-dom";
-const MainMenu = ({showHide}) => {
+const MainMenu = ({showHide, img}) => {
   const [view, setToggle] = useState(false);
   return (
 
     <div className={`mainMenuWrapper ${showHide}`}>
       <div>
-        <img src="/kosmos.png" className="w-max" alt="Logo" />
+        <img src={img} className="w-max" alt="Logo" />
       </div>
       <div className="h-[100%]">
         <h2>Main Menu</h2>

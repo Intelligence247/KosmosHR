@@ -7,7 +7,7 @@ const Onboard = ({ bghidden, title, desc, reverse, link }) => {
   return (
     <div
       className={`${bghidden} onboard px-8 justify-center
-       items-end lg:pb-[4.8125rem] pb-[2rem] h-screen lg:w-[57%] bg-no-repeat;`}
+       items-end lg:pb-[4.8125rem] pb-[2rem] h-screen bg-no-repeat;`}
     >
       <div
         className="onboardContents lg:w-[30rem] w-full h-[12rem] lg:h-[15rem] backdrop-blur-xl bg-[#0B0A0A]/30
