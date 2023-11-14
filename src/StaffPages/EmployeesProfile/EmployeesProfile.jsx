@@ -13,15 +13,15 @@ const EmployeesProfile = () => {
           </p>
         </header>
 
-        <div className="flex space-x-3 items-center justify-start">
+        <div className="flex lg:flex-row flex-col space-x-3 items-center justify-start">
           <img
             src="/bolanle.png"
             className="lg:w-[128px] bg-black h-[128px] rounded-full"
             alt=""
           />
-          <div className="flex flex-col space-y-2.5 ">
+          <div className="flex flex-col justify-center items-center space-y-2.5 ">
             <h1 className="lg:text-2xl text-base font-bold">Bolanle Awe</h1>
-            <p className="opacity-70">Content Creation</p>
+            <p className="opacity-70 lg:bg-transparent bg-primary_SkyBlue/10 px-2 rounded-full text-primary_SkyBlue">Content Creation</p>
           </div>
         </div>
         <form

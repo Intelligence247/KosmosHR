@@ -8,6 +8,7 @@ import { RotatingLines } from "react-loader-spinner";
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [status, setstatus] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     first_name: "",
@@ -19,12 +20,13 @@ const Signin = () => {
     username: "",
     password: "",
   });
-
+  const fileInput = document.querySelector("#file");
+    console.log(fileInput)
   const createAdminAccount = async (e) => {
     e.preventDefault();
     const url =
       "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-    const fileInput = document.querySelector("#file");
+  
     try {
       setIsLoading(true);
       const formDataD = new FormData();
@@ -37,19 +39,15 @@ const Signin = () => {
       formDataD.append("image", fileInput.files[0]);
       formDataD.append("username", formData.username);
       formDataD.append("password", formData.password);
-      console.log("hello");
-      console.log(formDataD);
-      const response = await axios.post(url, formDataD, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log(response.data);
+      const response = await kosmos_post(url, formDataD);
+      console.log(response, "Responsehere");
+      setstatus(response.data.message);
       setIsLoading(false);
     } catch (error) {
       console.error("Error creating admin account:", error);
       setIsLoading(false);
+      setstatus(error.status);
+      alert("hell");
     }
   };
   useEffect(() => {
@@ -186,16 +184,17 @@ const Signin = () => {
             placeholder="Re-Enter Your Password"
           />
         </div>
+        <p className="lg:text-sm text-xs text-red-500">{status}</p>
         <button
           onClick={createAdminAccount}
-          className="h-12 bg-primary_SkyBlue text-white rounded-xl"
+          className="h-12 bg-primary_SkyBlue text-white rounded-xl grid place-content-center"
         >
           {isLoading ? (
             <RotatingLines
-              strokeColor="grey"
+              strokeColor="white"
               strokeWidth="5"
               animationDuration="0.75"
-              width="20"
+              width="30"
               visible={true}
             />
           ) : (
