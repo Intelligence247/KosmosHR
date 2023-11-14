@@ -4,6 +4,7 @@ import LoginSignLayout from "../../Layouts/LoginSignLayout/LoginSignLayout";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
+import { RotatingLines } from "react-loader-spinner";
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,54 +19,48 @@ const Signin = () => {
     username: "",
     password: "",
   });
-  const url =
-    "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-    const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-    
-  const formDatas = {
-    email: formData.email,
-    first_name: formData.first_name,
-    last_name: formData.last_name,
-    middle_name: formData.middle_name,
-    nationality: formData.nationality,
-    phone_number: formData.phone_number,
-    username: formData.username,
-    password: formData.password,
-  };
-  
 
-  const handleSubmit = () => {
-    axios.post(url, formDatas, {
+  const createAdminAccount = async (e) => {
+    e.preventDefault();
+    const url =
+      "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
+    const fileInput = document.querySelector("#file");
+    try {
+      setIsLoading(true);
+      const formDataD = new FormData();
+      formDataD.append("email", formData.email);
+      formDataD.append("first_name", formData.first_name);
+      formDataD.append("last_name", formData.last_name);
+      formDataD.append("middle_name", formData.middle_name);
+      formDataD.append("nationality", formData.nationality);
+      formDataD.append("phone_number", formData.phone_number);
+      formDataD.append("image", fileInput.files[0]);
+      formDataD.append("username", formData.username);
+      formDataD.append("password", formData.password);
+      console.log("hello");
+      console.log(formDataD);
+      const response = await axios.post(url, formDataD, {
         headers: {
-          'Content-Type': 'application/json',
-          // Add any other headers if needed
+          "Content-Type": "multipart/form-data",
         },
-      })
-      .then((res) => {
-        console.log(res);
-        alert("first Signin!!!")
-      })
-      .catch((err) => {
-        console.log(err);
       });
+
+      console.log(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error creating admin account:", error);
+      setIsLoading(false);
+    }
   };
-
-
-
   useEffect(() => {
-    handleSubmit();
+    createAdminAccount();
   }, []);
-
-
 
   return (
     <LoginSignLayout>
       <form
         className=" w-full flex flex-col justify-center space-y-4 "
-        onSubmit={handleSubmit}
+        onSubmit={createAdminAccount}
       >
         <div className="lg:hidden flex justify-center w-full items-center pb-4">
           <img src="/kosmos.png" alt="" />
@@ -81,7 +76,7 @@ const Signin = () => {
               setFormData({ ...formData, email: e.target.value })
             }
             type="email"
-            placeholder="Enter Your Password "
+            placeholder="Enter Your Password"
           />
         </div>
         <div className="inputs">
@@ -152,6 +147,7 @@ const Signin = () => {
               setFormData({ ...formData, image: e.target.value })
             }
             type="file"
+            id="file"
           />
         </div>
         <div className="inputs">
@@ -190,8 +186,21 @@ const Signin = () => {
             placeholder="Re-Enter Your Password"
           />
         </div>
-        <button className="h-12 bg-primary_SkyBlue text-white rounded-xl">
-          Create an Account
+        <button
+          onClick={createAdminAccount}
+          className="h-12 bg-primary_SkyBlue text-white rounded-xl"
+        >
+          {isLoading ? (
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="20"
+              visible={true}
+            />
+          ) : (
+            " Create an Account"
+          )}
         </button>
         <div className="Amember">
           <p>

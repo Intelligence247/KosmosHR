@@ -18,12 +18,10 @@ const HomeLayout = ({ children }) => {
   };
   const SiteInfo = () => {
     axios
-      .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/", {
-        headers: headers,
-      })
+      .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/")
       .then((resp) => {
-        console.log(resp);
-        setSiteInfo(resp);
+        console.log(resp.data);
+        setSiteInfo(resp.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -34,11 +32,13 @@ const HomeLayout = ({ children }) => {
   useEffect(() => {
     SiteInfo();
   }, []);
+
   const [content, setContent] = useState('');
 
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
+  console.log(siteInfo)
   return (
     <div>
       {siteInfo.length < 1 ? (
@@ -55,7 +55,7 @@ const HomeLayout = ({ children }) => {
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
             <MainMenu
-              img={siteInfo.image}
+              img={`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`}
               showHide={
                 isActive
                   ? "scale-x-100 -left-0"
