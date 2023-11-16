@@ -1,9 +1,30 @@
 import "./Home.css";
 import EmployeeTableCard from "../Employees/EmployeeTableCard";
-import { employeeData, taskData } from "../../utility/data";
+import { taskData } from "../../utility/data";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import TaskTable from "../TaskPage/TaskTable";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Home = () => {
+  const [employeeData, setEmployeeData] = useState([]);
+  console.log(employeeData)
+  const getEmployeeData = async (e) => {
+    
+    try {
+      const response = axios.get(
+          "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/"
+        )
+        .then((response) => {
+          setEmployeeData(response.data.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getEmployeeData();
+  }, []);
+
   return (
     <HomeLayout>
       <div className="rightHomepageWrapper">

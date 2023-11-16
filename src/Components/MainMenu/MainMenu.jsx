@@ -95,7 +95,7 @@ const MainMenu = ({showHide, img}) => {
       <div className="w-[100%] pt-3 border-t">
         <button>
           <img src="/login.png" alt="" />
-          <p>Log Out</p>
+          <Link to={"/login"}>Log Out</Link>
         </button>
       </div>
     </div>

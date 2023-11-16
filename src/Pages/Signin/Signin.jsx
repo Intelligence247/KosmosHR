@@ -20,13 +20,13 @@ const Signin = () => {
     username: "",
     password: "",
   });
-  const fileInput = document.querySelector("#file");
-    console.log(fileInput)
+
   const createAdminAccount = async (e) => {
     e.preventDefault();
     const url =
       "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-  
+    const fileInput = document.querySelector("#file");
+    console.log(fileInput)
     try {
       setIsLoading(true);
       const formDataD = new FormData();
@@ -39,7 +39,8 @@ const Signin = () => {
       formDataD.append("image", fileInput.files[0]);
       formDataD.append("username", formData.username);
       formDataD.append("password", formData.password);
-      const response = await kosmos_post(url, formDataD);
+      // const response = await kosmos_post(url, formDataD);
+      const response = await axios.post(url, formDataD)
       console.log(response, "Responsehere");
       setstatus(response.data.message);
       setIsLoading(false);

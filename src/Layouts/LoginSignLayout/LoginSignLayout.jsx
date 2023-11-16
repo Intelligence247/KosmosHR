@@ -33,7 +33,7 @@ const LoginSignLayout = ({ children }) => {
        
         />}
         </section>
-      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col py-9 justify-center">
+      <div className="lg:w-[47%] w-full lg:px-32 px-8 flex flex-col py-9 justify-center relative">
         {children}
       </div>
     </div>

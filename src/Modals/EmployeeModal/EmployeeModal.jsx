@@ -1,6 +1,25 @@
 import React, { useState } from "react";
 
 const EmployeeModal = ({scaling, onclickHandle}) => {
+   const formData = new FormData();
+    formData.append('email', "johndoe@gmail.com")
+    formData.append("title", "Mr")
+    formData.append('first_name', "John")
+    formData.append('last_name', "Doe")
+    formData.append('middle_name', "B.")
+    formData.append("city", "Ilorin")
+    formData.append('state', "Kwara")
+    formData.append('nationality', "Nigeria")
+    formData.append('phone_number', "09056574634")
+    formData.append('account_type', "employee") // can either be "staff" or "employee"
+    formData.append('position', 2) // (an integer) id of the selected position (check documentation on how to fetch positions and departments), select form field is advised
+    formData.append('department', 1) // same as position
+    formData.append('salary', 150000.00) // a decimal field
+    formData.append('date_of_birth', "1987-02-05")
+    formData.append('appointment_date', "2023-11-05")
+    formData.append('address', "Allen Avenue")
+    formData.append('image', "") // image file
+    formData.append('api_token', "admin-api-token")
  
   return (
   <div
