@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
+// kos0013
 
 const Login = () => {
   const [islogin, setislogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errM, setErrM] = useState("");
+  const [switching, setSwitching] = useState(true);
 
   const navigate = useNavigate();
 
@@ -18,16 +20,22 @@ const Login = () => {
     password: "",
   });
   console.log(inputValues);
- console.log(inputValues.username)
+  const url = `${
+    switching
+      ? "https://kosmoshr.pythonanywhere.com/api/v1/profile/authentication/"
+      : "https://kosmoshr.pythonanywhere.com/api/v2/login"
+  }`;
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const url =
-      "https://kosmoshr.pythonanywhere.com/api/v1/profile/authentication/";
+
     try {
       setLoading(true);
       setErrM("");
-
+      const user_details = JSON.stringify({
+        user_id: inputValues.username,
+        password: inputValues.password,
+      });
       const formData = new FormData();
       formData.append("username", inputValues.username);
       formData.append("password", inputValues.password);
@@ -37,7 +45,7 @@ const Login = () => {
       setislogin(true);
       data.status == "success" ? setislogin(true) : setislogin(false),
         // setErrM("Username and Password might be case sensitive");
-        setErrM(data.message)
+        setErrM(data.message);
       setLoading(false);
     } catch (err) {
       setislogin(false);
@@ -47,13 +55,55 @@ const Login = () => {
       setErrM(err.message);
     }
   };
+
+  const StaffLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const user_details = {
+        user_id: inputValues.username,
+        password: inputValues.password,
+      };
+
+      fetch(url, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(user_details),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+
+        .then((data) => {
+          setLoading(false);
+          console.log(data.status);
+          data.status == "success" ? setislogin(true) : setislogin(false);
+          console.log(data.error);
+          console.log(data.detail)
+
+          data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setErrM(error);
+          setLoading(false);
+        });
+    } catch (error) {}
+  };
+
   useEffect(() => {
-    handleLogin();
+    switching ? handleLogin() : StaffLogin();
   }, []);
+
   return (
     <LoginSignLayout>
       <form
-        onSubmit={handleLogin}
+        onSubmit={switching ? handleLogin : StaffLogin}
         action=""
         className=" w-full min-h-screen flex flex-col justify-center space-y-4 "
         method="get"
@@ -64,14 +114,45 @@ const Login = () => {
         <h1 className="lg:text-2xl text-base font-bold">
           Sign Into Company Account
         </h1>
+        <div className="loginas flex flex-col gap-2">
+          <button className=" text-black rounded-lg px-4 py-1 lg:text-3xl font-bold text-2xl">
+            Login As
+          </button>
+          <div className="flex justify-center items-center gap-4">
+            <p
+              onClick={() => setSwitching(true)}
+              className={`${
+                switching
+                  ? "bg-primary_SkyBlue text-white"
+                  : "bg-transparent text-black"
+              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
+            >
+              An Admin
+            </p>
+            <p
+              onClick={() => setSwitching(false)}
+              className={`${
+                !switching
+                  ? "bg-primary_SkyBlue text-white"
+                  : "bg-transparent text-black"
+              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
+            >
+              A Staff
+            </p>
+          </div>
+        </div>
         <div className="inputs">
-          <label htmlFor="username ">Username:</label>
+          <label htmlFor="username ">
+            {switching ? "Username" : "Staff ID"}:
+          </label>
           <input
             onChange={(e) =>
               setInputValues({ ...inputValues, username: e.target.value })
             }
             type="text"
-            placeholder="Enter Your username "
+            placeholder={
+              switching ? "Enter Your username" : "Enter your unique ID"
+            }
           />
         </div>
         <div className="inputs">
@@ -93,7 +174,7 @@ const Login = () => {
         </div>
 
         <button
-          onCanPlay={handleLogin}
+          onCanPlay={switching ? handleLogin : StaffLogin}
           className="h-12 bg-primary_SkyBlue text-white rounded-xl justify-center items-center flex"
         >
           {loading ? (
@@ -127,7 +208,7 @@ const Login = () => {
           <h1 className="text-xl">Successfully Logged in!!!</h1>
           <Link
             className="bg-primary_SkyBlue text-white h-10 w-52 rounded-xl inline-block flex justify-center items-center lg:text-xl text-lg"
-            to={"/home"}
+            to={switching ? "/home" : "/employeesprofile"}
           >
             Click here to Continue
           </Link>
