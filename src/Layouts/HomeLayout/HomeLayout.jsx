@@ -20,7 +20,7 @@ const HomeLayout = ({ children }) => {
     axios
       .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/")
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
         setSiteInfo(resp.data.data);
       })
       .catch((err) => {
@@ -38,7 +38,7 @@ const HomeLayout = ({ children }) => {
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
-  console.log(siteInfo)
+  // console.log(siteInfo)
   return (
     <div>
       {siteInfo.length < 1 ? (

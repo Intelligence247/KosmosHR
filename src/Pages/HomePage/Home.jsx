@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const Home = () => {
   const [employeeData, setEmployeeData] = useState([]);
-  console.log(employeeData)
+  // console.log(employeeData)
   const getEmployeeData = async (e) => {
     
     try {
