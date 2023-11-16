@@ -33,14 +33,15 @@ const Login = () => {
       const data = await kosmos_post(url, formData);
       console.log(data.status);
       setislogin(true);
+      data.status == 'success'? setislogin(true): setislogin(false)
       setLoading(false)
       setErrM('')
 
     } catch (err) {
-      console.log(err);
-      console.log(err.message)
       setislogin(false);
       setLoading(false);
+      console.log(err);
+      console.log(err.message)
       setErrM(err.message)
 
     }
