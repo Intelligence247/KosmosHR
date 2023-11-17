@@ -455,5 +455,3 @@ export const pricing = [
 
 export const employeeurl =
   "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/";
-
-
