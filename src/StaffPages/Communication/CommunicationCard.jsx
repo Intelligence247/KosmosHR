@@ -4,24 +4,24 @@ import { RotatingLines } from "react-loader-spinner";
 
 const CommunicationCard = () => {
   const [switching, setSwitching] = useState(true);
-const [loading, setloading] = useState(false);  
-const [querieData, setquerieData] = useState([]);
+  const [loading, setloading] = useState(false);
+  const [querieData, setquerieData] = useState([]);
   const getQueries = async () => {
-try {
-    setloading(true)
-  const url = 'https://kosmoshr.pythonanywhere.com/api/v1/queries/get_queries/';
+    try {
+      setloading(true);
+      const url =
+        "https://kosmoshr.pythonanywhere.com/api/v1/queries/get_queries/";
 
-const response = await axios.get(url)
-console.log(response.data.data)
-setquerieData(response.data.data)
-    
-} catch (error) {
-    console.log(error)
-}
-  }
+      const response = await axios.get(url);
+      console.log(response.data.data);
+      setquerieData(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    getQueries()
+    getQueries();
   }, []);
   return (
     <div className="py-5 w-full border-[1px] border-x-primary_SkyBlue rounded-lg">
@@ -71,7 +71,7 @@ setquerieData(response.data.data)
         </div>
       </section>
       <section className=" ">
-        <div className="thead pl-6 w-full flex justify-between items-center bg-primary_SkyBlue/30 h-12">
+        <div className="thead lg:flex hidden lg:pl-6 w-full justify-between items-center bg-primary_SkyBlue/30 h-12">
           <div className="left lg:w-[45%] grid grid-cols-2">
             <p>Email</p>
             <p>Title</p>
@@ -82,43 +82,46 @@ setquerieData(response.data.data)
             <p>Action</p>
           </div>
         </div>
-                <div className="guerylists">
-                    {
-                        querieData.length>=1 ? (
-                            querieData.map((q)=> (
-                                <div className="thead pl-6 w-full flex justify-between items-center border-b-[1px] border-gray-200 h-12">
-                                <div className="left lg:w-[45%] grid grid-cols-2">
-                                  <p className="text-xs">{q.addressed_to?.email}</p>
-                                  <p className="font-bold text-xs">{q.title}</p>
-                                </div>
-                                <span className="flex-grow-1"></span>
-                                <div className="right lg:w-[40%] grid grid-cols-2">
-                                  <div className="staff">
-                                      <p className="text-xs">{q.addressed_to?.first_name}</p>
-                                      <p className="opacity-50 text-xs">{q.addressed_to?.last_name}</p>
-                                  </div>
-                                  <p className="underline text-primary_SkyBlue text-xs flex items-center">Details <img src="/slantArrow.png" className="w-5" alt="" /></p>
-                                </div>
-                              </div> 
-                            ))
-
-                        ):(
-                            <div className="h-[10rem] flex justify-center items-center">
-                            <RotatingLines
-                              strokeColor="grey"
-                              strokeWidth="5"
-                              animationDuration="0.75"
-                              width="70"
-                              visible={true}
-                            />
-                          </div>
-                        )
-                    }
-          
+        <div className="guerylists">
+          {querieData.length >= 1 ? (
+            querieData.map((q) => (
+              <div className="thead lg:pl-6 px-2 lg:gap-x-0 gap-x-3 w-full lg:flex grid grid-cols-9 justify-between items-center border-y-[1px] border-gray-200 h-12">
+                <div className="left lg:grid hidden lg:w-[45%] grid-cols-2">
+                  <p className="text-xs">{q.addressed_to?.email}</p>
+                  <p className="font-bold text-xs">{q.title}</p>
+                </div>
+                <div className="right lg:grid hidden lg:w-[40%] grid-cols-2">
+                  <div className="staff">
+                    <p className="text-xs">{q.addressed_to?.first_name}</p>
+                    <p className="opacity-50 text-xs">
+                      {q.addressed_to?.last_name}
+                    </p>
+                  </div>
+                  <p className="underline text-primary_SkyBlue text-xs flex items-center">
+                    Details <img src="/slantArrow.png" className="w-5" alt="" />
+                  </p>
+                </div>
+                {/* Mobile */}
+                <p className="lg:hidden col-span-4 ">{q.addressed_to?.email}</p>
+                <div className="lg:hidden col-span-4"> 
+                  <p className="font-bold">{q.title}</p>
+                  <p>{`${q.addressed_to?.first_name} ${q.addressed_to?.last_name}`}</p>
+                </div>
+                  <img className="lg:hidden" src="/arrowup.svg" alt="" />
+              </div>
+            ))
+          ) : (
+            <div className="h-[10rem] flex justify-center items-center">
+              <RotatingLines
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="70"
+                visible={true}
+              />
+            </div>
+          )}
         </div>
-
-
-
       </section>
     </div>
   );
