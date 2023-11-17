@@ -38,7 +38,7 @@ const HomeLayout = ({ children }) => {
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
-  // console.log(siteInfo)
+  console.log(siteInfo.error)
   return (
     <div>
       {siteInfo.length < 1 ? (
