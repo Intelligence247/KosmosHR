@@ -1,21 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import DepartmentCard from "./DepartmentCard";
-import { employeeData } from "../../utility/data";
+// import { employeeData } from "../../utility/data";
+import StaffHomeLayout from "../../Layouts/StaffHomeLayout/StaffHomeLayout";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import EmployeeTableCard from "../../Pages/Employees/EmployeeTableCard";
 
 const Department = () => {
   const [sliceOption, setSliceOption] = useState(0);
-  return <HomeLayout>
+  const [EmployeeData, setEmployeeData] = useState([]);
+
+  const getEmployeeData = async (e) => {
+    try {
+      const response = axios.get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/").then((response) => {
+        setEmployeeData(response.data.data);
+
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getEmployeeData();
+  }, []);
+  return <StaffHomeLayout>
      <div className="flex space-y-8 flex-col w-full;">
     
     <header className="flex flex-col space-y-2 justify-start items-start">
         <img src="/back.png" alt="" />
-        <h1 className="lg:text-2xl text-base font-bold">Departments</h1>
+        <h1 className="lg:text-2xl text-base font-bold">Co-workers</h1>
         <p className="opacity-80">Get to know and interact with team members</p>
     </header>
-   <DepartmentCard
-   DepartmentDataProps= {employeeData.slice(sliceOption, sliceOption+8)}
-   />
+   {/* <DepartmentCard
+   DepartmentDataProps= {EmployeeData.slice(sliceOption, sliceOption+8)}
+   /> */}
+    <EmployeeTableCard
+          employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
+          hideViewall={"hidden"}
+          title={"Team members"}
+
+        />
     <div className="dataController flex justify-center items-center space-x-8">
           <p
             onClick={() => {
@@ -40,7 +65,7 @@ const Department = () => {
           </p>
         </div>
     </div>
-  </HomeLayout>;
+  </StaffHomeLayout>;
 };
 
 export default Department;

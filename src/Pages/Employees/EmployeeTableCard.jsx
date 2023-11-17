@@ -2,11 +2,11 @@ import "./Employees.css";
 import { Link } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 
-const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
+const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
   return (
     <section className="tableSection">
       <div className="tableSectionTop flex justify-between h-20 items-center px-4">
-        <h1 className="font-bold lg:block hidden">Employees</h1>
+        <h1 className="font-bold lg:block hidden">{title}</h1>
         <div
           className="searchInputs lg:w-[28rem] flex
            space-x-2.5 items-center lg:h-12 border-[#1D70C9]

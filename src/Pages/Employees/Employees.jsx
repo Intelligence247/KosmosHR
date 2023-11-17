@@ -12,8 +12,6 @@ const Employees = () => {
   const [showModal, setShowModal] = useState(false);
   const [EmployeeData, setEmployeeData] = useState([]);
 
-  const datas = kosmos_get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/");
- 
   const clickFunction = () => {
     setShowModal(!showModal);
   };
@@ -29,7 +27,6 @@ const Employees = () => {
   };
   useEffect(() => {
     getEmployeeData();
-    datas
   }, []);
 
   return (
@@ -64,6 +61,7 @@ const Employees = () => {
         <EmployeeTableCard
           employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
           hideViewall={"hidden"}
+          title={"Employees"}
         />
 
         <div className="dataController flex justify-center items-center space-x-8">

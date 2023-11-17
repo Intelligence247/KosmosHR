@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MainMenu.css";
 import { Link } from "react-router-dom";
-const MainMenu = ({showHide, img}) => {
+const StaffMainMenu = ({showHide, img}) => {
   const [view, setToggle] = useState(false);
   return (
 
@@ -12,23 +12,29 @@ const MainMenu = ({showHide, img}) => {
       <div className="h-[100%]">
         <h2>Main Menu</h2>
         <ul className="list">
-          <Link to="/home">
-            {" "}
-            <li>
-              {" "}
-              <img src="/home.png" alt="" />
-              Home
-            </li>
-          </Link>
-          <Link to="/employee">
+        <Link to="/task">
+                <li>
+                  {" "}
+                  <img src="/task.png" alt="" />
+                  Tasks
+                </li>
+              </Link>
+              <Link>
+              <li>
+                {" "}
+                <img src="/report.png" alt="" />
+                Communicate
+              </li>
+              </Link>
+          <Link to="/department">
             <li>
               {" "}
               <img src="/note.png" alt="" />
-              Employee
+              Co-workers
             </li>
 
           </Link>
-          <ul className="manageStaff">
+          {/* <ul className="manageStaff">
             <li onClick={() => setToggle(!view)}>
               {" "}
               <img src="/people.svg" alt="" />
@@ -78,13 +84,16 @@ const MainMenu = ({showHide, img}) => {
                 <img src="/report.png" alt="" />
                 Communicate
               </li>
-              {/* <li>
+              <li>
                 {" "}
                 <img src="/queries.png" alt="" />
                 Queries
-              </li> */}
+              </li>
             </ul>
-          </ul>
+            
+           
+          </ul> */}
+       
           <li>
             {" "}
             <img src="/setting.png" alt="" />
@@ -102,4 +111,4 @@ const MainMenu = ({showHide, img}) => {
   );
 };
 
-export default MainMenu;
+export default StaffMainMenu;

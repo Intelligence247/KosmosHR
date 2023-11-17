@@ -4,79 +4,76 @@ import { api_token } from "../../../APITOKEN";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { RotatingLines } from "react-loader-spinner";
 
-
 const EditEmployee = () => {
+  const [errM, setErrM] = useState("");
+  const [islogin, setIslogin] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-    const [errM, setErrM] = useState("");
-    const [islogin, setIslogin] = useState(false);
-    const [loading, setLoading] = useState(false);
-  
-    const [employeeInfo, setEmployeeInfo] = useState({
-      email: "",
-     employID: '',
-      first_name: "",
-      last_name: "",
-      middle_name: "",
-      city: "",
-      state: "",
-      nationality: "",
-      phone_number: "",
-      account_type: "",
-      position: "",
-      department: "",
-      salary: "",
-      date_of_birth: "",
-      appointment_date: "",
-      address: "",
-      image: "",
-      api_token: api_token,
-    });
-    const url =
-      "https://kosmoshr.pythonanywhere.com/api/v1/employees/edit_employee/";
-    const formData = new FormData();
-    formData.append("email", employeeInfo.email);
-    formData.append("employee_id", employeeInfo.employID);
-    formData.append("first_name", employeeInfo.first_name);
-    formData.append("last_name", employeeInfo.last_name);
-    formData.append("middle_name", employeeInfo.middle_name);
-    formData.append("city", employeeInfo.city);
-    formData.append("state", employeeInfo.state);
-    formData.append("nationality", employeeInfo.nationality);
-    formData.append("phone_number", employeeInfo.phone_number);
-    formData.append("account_type", employeeInfo.account_type); // can either be "staff" or "employee"
-    formData.append("position", employeeInfo.position); // (an integer) id of the selected position (check documentation on how to fetch positions and departments), select form field is advised
-    formData.append("department", employeeInfo.department);
-    formData.append("salary", employeeInfo.salary); // a decimal field
-    formData.append("date_of_birth", employeeInfo.date_of_birth);
-    formData.append("appointment_date", employeeInfo.appointment_date);
-    formData.append("address", employeeInfo.address);
-    formData.append("image", employeeInfo.image); // image file
-    formData.append("api_token", employeeInfo.api_token);
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      try {
-        setLoading(true);
-        const data = await kosmos_post(url, formData);
-        console.log(data.data);
-        console.log(data);
+  const [employeeInfo, setEmployeeInfo] = useState({
+    email: "",
+    employID: "",
+    first_name: "",
+    last_name: "",
+    middle_name: "",
+    city: "",
+    state: "",
+    nationality: "",
+    phone_number: "",
+    account_type: "",
+    position: "",
+    department: "",
+    salary: "",
+    date_of_birth: "",
+    appointment_date: "",
+    address: "",
+    image: "",
+    api_token: api_token,
+  });
+  const url =
+    "https://kosmoshr.pythonanywhere.com/api/v1/employees/edit_employee/";
+  const formData = new FormData();
+  formData.append("email", employeeInfo.email);
+  formData.append("employee_id", employeeInfo.employID);
+  formData.append("first_name", employeeInfo.first_name);
+  formData.append("last_name", employeeInfo.last_name);
+  formData.append("middle_name", employeeInfo.middle_name);
+  formData.append("city", employeeInfo.city);
+  formData.append("state", employeeInfo.state);
+  formData.append("nationality", employeeInfo.nationality);
+  formData.append("phone_number", employeeInfo.phone_number);
+  formData.append("account_type", employeeInfo.account_type); // can either be "staff" or "employee"
+  formData.append("position", employeeInfo.position); // (an integer) id of the selected position (check documentation on how to fetch positions and departments), select form field is advised
+  formData.append("department", employeeInfo.department);
+  formData.append("salary", employeeInfo.salary); // a decimal field
+  formData.append("date_of_birth", employeeInfo.date_of_birth);
+  formData.append("appointment_date", employeeInfo.appointment_date);
+  formData.append("address", employeeInfo.address);
+  formData.append("image", employeeInfo.image); // image file
+  formData.append("api_token", employeeInfo.api_token);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      const data = await kosmos_post(url, formData);
+      console.log(data.data);
+      console.log(data);
+      setErrM(data.message);
+      setLoading(false);
+      data.status == "success"
+        ? (setIslogin(true), setErrM(""))
+        : setIslogin(false),
         setErrM(data.message);
-        setLoading(false);
-        data.status == "success"
-          ? (setIslogin(true), setErrM(""))
-          : setIslogin(false),
-          setErrM(data.message);
-      } catch (error) {
-        console.log(error);
-        setErrM(error.message);
-        setLoading(false);
-      }
-    };
-    useEffect(() => {
-      handleSubmit();
-    }, []);
-  
-    
+    } catch (error) {
+      console.log(error);
+      setErrM(error.message);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    handleSubmit();
+  }, []);
+
   return (
     <HomeLayout>
       <div
@@ -166,7 +163,7 @@ const EditEmployee = () => {
             </div>
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
               <label htmlFor="name" className="lg:text-[14px] font-bold">
-              Employ ID:
+                Employ ID:
               </label>
               <input
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"

@@ -174,7 +174,7 @@ const Login = () => {
         </div>
 
         <button
-          onCanPlay={switching ? handleLogin : StaffLogin}
+          onClick={switching ? handleLogin : StaffLogin}
           className="h-12 bg-primary_SkyBlue text-white rounded-xl justify-center items-center flex"
         >
           {loading ? (
@@ -208,7 +208,7 @@ const Login = () => {
           <h1 className="text-xl">Successfully Logged in!!!</h1>
           <Link
             className="bg-primary_SkyBlue text-white h-10 w-52 rounded-xl inline-block flex justify-center items-center lg:text-xl text-lg"
-            to={switching ? "/home" : "/employeesprofile"}
+            to={switching ? "/home" : "/department"}
           >
             Click here to Continue
           </Link>
