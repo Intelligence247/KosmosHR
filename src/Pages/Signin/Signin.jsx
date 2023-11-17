@@ -4,9 +4,11 @@ import LoginSignLayout from "../../Layouts/LoginSignLayout/LoginSignLayout";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
+import { RotatingLines } from "react-loader-spinner";
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [status, setstatus] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     first_name: "",
@@ -19,123 +21,45 @@ const Signin = () => {
     password: "",
   });
 
-  const url =
-    "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-    const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-
-    
-  const formDatas = {
-    email: formData.email,
-    first_name: formData.first_name,
-    last_name: formData.last_name,
-    middle_name: formData.middle_name,
-    nationality: formData.nationality,
-    phone_number: formData.phone_number,
-    username: formData.username,
-    password: formData.password,
-  };
-  
-  const handleSubmit = () => {
-    axios
-      .get(url, formDatas, {
-        headers: headers,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const baseUrl = "https://backend.getlinked.ai";
-  const url1 = `${baseUrl}/hackathon/categories-list`
-
- /*
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const config = { "content-type": "application/json" };
-  
-   
-  try {
-   setIsLoading(true)
-    var configs = {
+  const createAdminAccount = async (e) => {
+    e.preventDefault();
+    const url =
+      "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
+    const fileInput = document.querySelector("#file");
+    console.log(fileInput)
+    try {
+      setIsLoading(true);
+      const formDataD = new FormData();
+      formDataD.append("email", formData.email);
+      formDataD.append("first_name", formData.first_name);
+      formDataD.append("last_name", formData.last_name);
+      formDataD.append("middle_name", formData.middle_name);
+      formDataD.append("nationality", formData.nationality);
+      formDataD.append("phone_number", formData.phone_number);
+      formDataD.append("image", fileInput.files[0]);
+      formDataD.append("username", formData.username);
+      formDataD.append("password", formData.password);
+      // const response = await kosmos_post(url, formDataD);
+      const response = await axios.post(url, formDataD)
+      console.log(response, "Responsehere");
+      setstatus(response.data.message);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error creating admin account:", error);
+      setIsLoading(false);
+      setstatus(error.status);
+      alert("hell");
     }
-    const resp = await axios(url, formDatas);
-    console.log(resp)
-    console.log(`Sucessfully registered`)
-  
-  } catch (error) {
-    console.log(error.message+"Register Post Error is here")
-  }finally{
-  
-  }
-  }*/
-
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault()
-  //   const data = await kosmos_post(url, formDatas)
-  // console.log(data)
-  //   }
-  useEffect(() => {
-    handleSubmit();
-  }, []);
-  console.log(formData);
-
-
-  /*const junks = {
-    // const [formDatass, setFormData] = useState({
-    //   email: "admin@gmail.com",
-    //   first_name: "Kosmos",
-    //   last_name: "Admin",
-    //   middle_name: "",
-    //   nationality: "Nigeria",
-    //   phone_number: "07011223344",
-    //   image: "", // image file
-    //   username: "Admin",
-    //   password: "Kosmos",
-    // });
-    // const url =
-    //   "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_admin_account/";
-    // const headers = {
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json",
-    // };
-    // const formDatas = JSON.stringify({
-    //   email: "uthmanabdullahi2020@gmail.com",
-    //   first_name: "Kosmos2",
-    //   last_name: "Admin2",
-    //   middle_name: "B.3",
-    //   nationality: "Nigeria",
-    //   phone_number: "07011224534",
-    // });
-     const handleSubmit = (e) => {
-    setIsLoading(true);
-    const response = axios
-      .post(url, formDatas)
-      .then((response) => {
-        alert("successful");
-        setFormData(response);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        alert("error oo");
-        console.error("Error: ", error);
-      });
   };
   useEffect(() => {
-    handleSubmit();
+    createAdminAccount();
   }, []);
-  };*/
-
 
   return (
     <LoginSignLayout>
       <form
         className=" w-full flex flex-col justify-center space-y-4 "
-        onSubmit={handleSubmit}
+        onSubmit={createAdminAccount}
       >
         <div className="lg:hidden flex justify-center w-full items-center pb-4">
           <img src="/kosmos.png" alt="" />
@@ -151,7 +75,7 @@ const Signin = () => {
               setFormData({ ...formData, email: e.target.value })
             }
             type="email"
-            placeholder="Enter Your Password "
+            placeholder="Enter Your Password"
           />
         </div>
         <div className="inputs">
@@ -222,6 +146,7 @@ const Signin = () => {
               setFormData({ ...formData, image: e.target.value })
             }
             type="file"
+            id="file"
           />
         </div>
         <div className="inputs">
@@ -260,8 +185,22 @@ const Signin = () => {
             placeholder="Re-Enter Your Password"
           />
         </div>
-        <button className="h-12 bg-primary_SkyBlue text-white rounded-xl">
-          Create an Account
+        <p className="lg:text-sm text-xs text-red-500">{status}</p>
+        <button
+          onClick={createAdminAccount}
+          className="h-12 bg-primary_SkyBlue text-white rounded-xl grid place-content-center"
+        >
+          {isLoading ? (
+            <RotatingLines
+              strokeColor="white"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="30"
+              visible={true}
+            />
+          ) : (
+            " Create an Account"
+          )}
         </button>
         <div className="Amember">
           <p>

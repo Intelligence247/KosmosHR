@@ -1,12 +1,12 @@
 import "./Employees.css";
 import { Link } from "react-router-dom";
-import {RotatingLines} from "react-loader-spinner"
+import { RotatingLines } from "react-loader-spinner";
 
-const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
+const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
   return (
     <section className="tableSection">
       <div className="tableSectionTop flex justify-between h-20 items-center px-4">
-        <h1 className="font-bold lg:block hidden">Employees</h1>
+        <h1 className="font-bold lg:block hidden">{title}</h1>
         <div
           className="searchInputs lg:w-[28rem] flex
            space-x-2.5 items-center lg:h-12 border-[#1D70C9]
@@ -31,7 +31,11 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
         employeeDataProps.map((e, i) => (
           <div key={i} className="eachInfo">
             <div className="staffInfo">
-              <img src={`${e.image}`} alt="" />
+              <img
+                src={`https://kosmoshr.pythonanywhere.com${e.image}`}
+                alt=""
+              />
+
               <div className="nameAndMail">
                 <p>{`${e.title} ${e.first_name} ${e.middle_name} ${e.last_name}`}</p>
                 <p>{e.email}</p>
@@ -43,25 +47,25 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
             <p>{e.phone_number}</p>
             <p>{e.nationality}</p>
             <p className="action items-center">
-            {'Details'} <img src="/slantArrow.png" alt="" />
-          </p>
+              {"Details"} <img src="/slantArrow.png" alt="" />
+            </p>
 
             <div className="mobileview lg:hidden flex flex-col justify-start text-start w-24">
-            <p>{e.department?.title}</p>
-            <p>{e.position?.title}</p>
-          </div>
+              <p>{e.department?.title}</p>
+              <p>{e.position?.title}</p>
+            </div>
           </div>
         ))
       ) : (
-       <div className="h-[10rem] flex justify-center items-center">
-         <RotatingLines
+        <div className="h-[10rem] flex justify-center items-center">
+          <RotatingLines
             strokeColor="grey"
             strokeWidth="5"
             animationDuration="0.75"
             width="96"
             visible={true}
           />
-       </div>
+        </div>
       )}
       <Link
         to="/employee"
@@ -77,5 +81,3 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall }) => {
 };
 
 export default EmployeeTableCard;
-
-

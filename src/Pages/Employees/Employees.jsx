@@ -11,13 +11,7 @@ const Employees = () => {
   const [sliceOption, setsliceOption] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [EmployeeData, setEmployeeData] = useState([]);
-  console.log(EmployeeData)
 
-  const datas = kosmos_get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/");
-  // console.log(datas)
-// for (const i in datas.data){
-//   console.log(datas.data[i].id)
-// }
   const clickFunction = () => {
     setShowModal(!showModal);
   };
@@ -33,15 +27,14 @@ const Employees = () => {
   };
   useEffect(() => {
     getEmployeeData();
-    datas
   }, []);
 
   return (
     <HomeLayout>
-      <EmployeeModal
+      {/* <EmployeeModal
         onclickHandle={clickFunction}
         scaling={showModal ? "scale-1" : "scale-0"}
-      />
+      /> */}
 
       <div className="employeeRight">
         <section className="employeeSection">
@@ -55,18 +48,20 @@ const Employees = () => {
               Get insight into full list of employees registered wip pe company
             </p>
           </div>
-          <div
+          <Link
+          to={"/onboardemployee"}
             onClick={() => clickFunction()}
             className="employeeonboard cursor-pointer"
           >
             <p>Onboard New Staff</p>
             <img src="/front.png" alt="" />
-          </div>
+          </Link>
         </section>
 
         <EmployeeTableCard
           employeeDataProps={EmployeeData.slice(sliceOption, sliceOption + 8)}
           hideViewall={"hidden"}
+          title={"Employees"}
         />
 
         <div className="dataController flex justify-center items-center space-x-8">

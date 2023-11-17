@@ -5,8 +5,9 @@ import { kosmos_get } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 import RichTextEditor from "../../Editor/RichTextEditor";
+import StaffMainMenu from "../../Components/MainMenu/StaffMainMenu";
 
-const HomeLayout = ({ children }) => {
+const StaffHomeLayout = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
   const [siteInfo, setSiteInfo] = useState([]);
   const isActiveFuction = () => {
@@ -54,7 +55,7 @@ const HomeLayout = ({ children }) => {
       ) : (
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
-            <MainMenu
+            <StaffMainMenu
               img={`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`}
               showHide={
                 isActive
@@ -80,4 +81,4 @@ const HomeLayout = ({ children }) => {
   );
 };
 
-export default HomeLayout;
+export default StaffHomeLayout;

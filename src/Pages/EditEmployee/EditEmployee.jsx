@@ -4,15 +4,14 @@ import { api_token } from "../../../APITOKEN";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { RotatingLines } from "react-loader-spinner";
 
-
-const EmployeeModal = ({ }) => {
+const EditEmployee = () => {
   const [errM, setErrM] = useState("");
   const [islogin, setIslogin] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [employeeInfo, setEmployeeInfo] = useState({
     email: "",
-    title: "",
+    employID: "",
     first_name: "",
     last_name: "",
     middle_name: "",
@@ -31,10 +30,10 @@ const EmployeeModal = ({ }) => {
     api_token: api_token,
   });
   const url =
-    "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_employee_account/";
+    "https://kosmoshr.pythonanywhere.com/api/v1/employees/edit_employee/";
   const formData = new FormData();
   formData.append("email", employeeInfo.email);
-  formData.append("title", employeeInfo.title);
+  formData.append("employee_id", employeeInfo.employID);
   formData.append("first_name", employeeInfo.first_name);
   formData.append("last_name", employeeInfo.last_name);
   formData.append("middle_name", employeeInfo.middle_name);
@@ -164,20 +163,20 @@ const EmployeeModal = ({ }) => {
             </div>
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
               <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Title:
+                Employ ID:
               </label>
               <input
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 name=""
                 id=""
-                value={employeeInfo.title}
+                value={employeeInfo.employID}
                 onChange={(e) =>
                   setEmployeeInfo({
                     ...employeeInfo,
-                    title: e.target.value,
+                    employID: e.target.value,
                   })
                 }
-                placeholder="Enter Email"
+                placeholder="Enter employee ID"
               />
             </div>
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
@@ -242,13 +241,13 @@ const EmployeeModal = ({ }) => {
                 Account type:
               </label>
               {/* <input
-              className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-              type="text"
-              name=""
-              id=""
-              value={employeeInfo.city}
-              placeholder="Enter name"
-            /> */}
+            className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+            type="text"
+            name=""
+            id=""
+            value={employeeInfo.city}
+            placeholder="Enter name"
+          /> */}
               <select
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 name=""
@@ -450,20 +449,25 @@ const EmployeeModal = ({ }) => {
             </button>
           </div>
         </div>
-       
       </div>
-      <div className={`PromptSuccess w-full  h-screen fixed top-0  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${islogin? "flex": "hidden"} `}>
+      <div
+        className={`PromptSuccess w-full  h-screen fixed top-0  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${
+          islogin ? "flex" : "hidden"
+        } `}
+      >
         <div className="w-60 flex justify-center items-center flex-col space-y-4">
           <h1 className="text-2xl">Successful!!!</h1>
           <p className="text-center text-sm opacity-80">{errM}</p>
-        <button className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1" onClick={()=> setIslogin(false)}>Continue</button>
+          <button
+            className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1"
+            onClick={() => setIslogin(false)}
+          >
+            Continue
+          </button>
         </div>
-        </div>
+      </div>
     </HomeLayout>
   );
 };
 
-export default EmployeeModal;
-
-// Account created successfully. username is kos0013 and password is Usman
-// Account created successfully. username is kos0017 and password is Atunde
+export default EditEmployee;

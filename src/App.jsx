@@ -15,12 +15,13 @@ import { useMediaQuery } from "react-responsive";
 import OnboardPage2 from "./Pages/OnboardPage/OnboardPage2";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { TESTAPI } from "./utility/data";
 import Department from "./StaffPages/Department/Department";
 import EmployeesProfile from "./StaffPages/EmployeesProfile/EmployeesProfile";
 import FillingCards from "./Pages/FillingCards/FillingCards";
 import FinalReceipt from "./Pages/FinalReceipt/FinalReceipt";
 import Pricing2 from "./Pages/Pricing_SubscriptionPage/Pricing2";
+import EmployeeModal from "./Modals/EmployeeModal/EmployeeModal";
+import EditEmployee from "./Pages/EditEmployee/EditEmployee";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -42,7 +43,7 @@ function App() {
         headers: headers,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -76,6 +77,9 @@ function App() {
           <Route path="/employeesprofile" element={<EmployeesProfile />} />
           <Route path="/fillingcard" element={<FillingCards />} />
           <Route path="/finalreceipt" element={<FinalReceipt />} />
+          <Route path="/onboardemployee" element={<EmployeeModal />} />
+          <Route path="/editemployee" element={<EditEmployee />} />
+
         </Routes>
       </Router>
     </div>
