@@ -21,6 +21,7 @@ import FillingCards from "./Pages/FillingCards/FillingCards";
 import FinalReceipt from "./Pages/FinalReceipt/FinalReceipt";
 import Pricing2 from "./Pages/Pricing_SubscriptionPage/Pricing2";
 import EmployeeModal from "./Modals/EmployeeModal/EmployeeModal";
+import EditEmployee from "./Pages/EditEmployee/EditEmployee";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -77,6 +78,7 @@ function App() {
           <Route path="/fillingcard" element={<FillingCards />} />
           <Route path="/finalreceipt" element={<FinalReceipt />} />
           <Route path="/onboardemployee" element={<EmployeeModal />} />
+          <Route path="/editemployee" element={<EditEmployee />} />
 
         </Routes>
       </Router>
