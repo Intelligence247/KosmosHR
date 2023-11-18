@@ -103,11 +103,12 @@ const CommunicationCard = () => {
                 </div>
                 {/* Mobile */}
                 <p className="lg:hidden col-span-4 ">{q.addressed_to?.email}</p>
-                <div className="lg:hidden col-span-4"> 
+                <div className="lg:hidden col-span-4 flex flex-col justify-center items-center"> 
                   <p className="font-bold">{q.title}</p>
                   <p>{`${q.addressed_to?.first_name} ${q.addressed_to?.last_name}`}</p>
                 </div>
                   <img className="lg:hidden" src="/arrowup.svg" alt="" />
+
               </div>
             ))
           ) : (

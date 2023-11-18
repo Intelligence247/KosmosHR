@@ -14,7 +14,8 @@ const RichTextEditor = ({ value, onChange }) => {
       onChange={handleChange}
       modules={RichTextEditor.modules}
       formats={RichTextEditor.formats}
-      placeholder="Write something amazing..."
+      placeholder="Give a description of..."
+      className='h-44'
     />
   );
 };

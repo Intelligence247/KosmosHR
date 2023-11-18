@@ -8,7 +8,7 @@ const OnboardPage2 = () => {
      reverse={'flex-row-reverse'}
      title={'Task, Report, Connect'}
      desc={'Revolutionizing Employee Management:'}
-     link={'/signin'}
+     link={'/login'}
       />
     </div>
   )

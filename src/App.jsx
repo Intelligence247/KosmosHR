@@ -23,6 +23,7 @@ import Pricing2 from "./Pages/Pricing_SubscriptionPage/Pricing2";
 import EmployeeModal from "./Modals/EmployeeModal/EmployeeModal";
 import EditEmployee from "./Pages/EditEmployee/EditEmployee";
 import Communication from "./StaffPages/Communication/Communication";
+import SendCommunication from "./StaffPages/SendCommunication/SendCommunication";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -61,7 +62,7 @@ function App() {
           {isPortrait || isTablet ? (
             <Route path="/" element={<Splash />} />
           ) : (
-            <Route path="/" element={<Signin />} />
+            <Route path="/" element={<Login />} />
           )}
           <Route path="/home" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
@@ -81,6 +82,7 @@ function App() {
           <Route path="/onboardemployee" element={<EmployeeModal />} />
           <Route path="/editemployee" element={<EditEmployee />} />
           <Route path="/communication" element={<Communication />} />
+          <Route path="/sendcommunication" element={<SendCommunication />} />
 
         </Routes>
       </Router>

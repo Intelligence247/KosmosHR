@@ -15,7 +15,7 @@
 }
 .employeeSection .employeeonboard {
   @apply text-primary_DeepBlue bg-[#BAD6F4] flex space-x-2 justify-center
-     items-center text-[14px] h-12 py-3 px-6 rounded-xl;
+     items-center text-[14px] lg:h-12 h-9 lg:py-3 py-1 px-6 rounded-xl;
 }
 .employeeSection .employeeonboard p {
   @apply whitespace-nowrap;

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { kosmos_get } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
-import RichTextEditor from "../../Editor/RichTextEditor";
 
 const HomeLayout = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
@@ -25,7 +24,7 @@ const HomeLayout = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        alert(err.message);
+        // alert(err.message);
       });
   };
 
@@ -71,7 +70,6 @@ const HomeLayout = ({ children }) => {
           </div>
           <div className="w-[100%] space-y-0 flex flex-col gap-8 py-9 lg:px-20 px-6 lg:pt-9 pt-24">
             <Header navInOut={isActiveFuction} />
-            {/* <RichTextEditor value={content} onChange={handleEditorChange} /> */}
             {children}
           </div>
         </div>
