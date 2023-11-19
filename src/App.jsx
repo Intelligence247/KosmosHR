@@ -30,31 +30,31 @@ function App() {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [api, setapi] = useState([]);
 
-  const baseUrl = "https://backend.getlinked.ai";
-  const employeeurl = `${baseUrl}/hackathon/categories-list`;
-  const url =
-    "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee/?employee_id=kos0009";
-  //  "https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/";
-  const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-  const callAPI = () => {
-    axios
-      .get(url, {
-        headers: headers,
-      })
-      .then((res) => {
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const baseUrl = "https://backend.getlinked.ai";
+  // const employeeurl = `${baseUrl}/hackathon/categories-list`;
+  // const url =
+  //   "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee/?employee_id=kos0009";
+  // //  "https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/";
+  // const headers = {
+  //   Accept: "application/json",
+  //   "Content-Type": "application/json",
+  // };
+  // const callAPI = () => {
+  //   axios
+  //     .get(url, {
+  //       headers: headers,
+  //     })
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  useEffect(() => {
-    callAPI();
-  }, []);
+  // useEffect(() => {
+  //   callAPI();
+  // }, []);
   return (
     <div className="body">
       <Router>

@@ -3,23 +3,20 @@ import StaffHomeLayout from "../../Layouts/StaffHomeLayout/StaffHomeLayout";
 import { api_token } from "../../../APITOKEN";
 import RichTextEditor from "../../Editor/RichTextEditor";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
+import axios from "axios";
 
 const SendCommunication = () => {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [errM, setErrM] = useState("");
+  const [category, setCategory] = useState([]);
   const [values, setValues] = useState({
     title: "",
     category: "",
     post: "",
-
   });
-
- 
- 
   const handleSend = async (e) => {
     e.preventDefault();
-    const url = "https://kosmoshr.pythonanywhere.com/api/v1/news/create_news/";
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("post", values.content); // you can use the textarea text editor
@@ -32,22 +29,37 @@ const SendCommunication = () => {
       values.title == "" || values.category == "" || values.content == ""
         ? setErrM("No Input must be empty")
         : "";
+      const url =
+        "https://kosmoshr.pythonanywhere.com/api/v1/news/create_news/";
 
-      const data = await kosmos_post(url, formData);
+      const data = await axios.post(url, formData);
       console.log(data.data);
       console.log(data);
-      setErrM(data.message);
+      setErrM(data.data.message);
       setLoading(false);
-      data.status == "success" ? (setSent(true), setErrM("")) : setSent(false),
-        setErrM(data.message);
+      // data.status == "success" ? (setSent(true), setErrM("")) : setSent(false),
     } catch (error) {
       console.log(error);
       setErrM(error.message);
       setLoading(false);
     }
   };
+  const getCategory = async () => {
+    try {
+      const url =
+        "https://kosmoshr.pythonanywhere.com/api/v1/news_categories/get_categories/";
+
+      const response = await axios.get(url);
+      console.log(response.data.data);
+      setCategory(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-handleSend()
+    handleSend();
+    getCategory();
   }, []);
   const handleEditorChange = (newContent) => {
     setValues({ ...values, post: newContent });
@@ -83,30 +95,33 @@ handleSend()
           <label htmlFor="name" className="lg:text-[14px] font-bold">
             Category:
           </label>
-          <input
+          <select
             className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] lg:w-[50%] w-full pl-2 outline-none rounded-lg"
-            type="text"
-            name=""
             value={values.category}
-            id=""
-            placeholder="Enter title"
             onChange={(e) =>
               setValues({
                 ...values,
                 category: e.target.value,
               })
             }
-          />
+          >
+            <option value="select">Select category</option>
+            {category.length >= 1
+              ? category.map((c) => <option value={c.id}>{c.title}</option>)
+              : ""}
+          </select>
         </div>
         <div className="h-max mb-3">
-          <RichTextEditor
-            value={values.post}
-            onChange={handleEditorChange}
-          />
+          <RichTextEditor value={values.post} onChange={handleEditorChange} />
         </div>
-        <div className=" w-max lg:pt-8 pt-[7rem] text-xs text-red-500">{errM}</div>
+        <div className=" w-max lg:pt-8 pt-[7rem] text-xs text-red-500">
+          {errM}
+        </div>
         <div className="flex justify-end">
-          <button onClick={handleSend} className="px-8 rounded-lg py-2 bg-primary_SkyBlue text-white">
+          <button
+            onClick={handleSend}
+            className="px-8 rounded-lg py-2 bg-primary_SkyBlue text-white"
+          >
             Send
           </button>
         </div>
@@ -114,6 +129,4 @@ handleSend()
     </StaffHomeLayout>
   );
 };
-
 export default SendCommunication;
-

@@ -84,7 +84,7 @@ const Login = () => {
           console.log(data.status);
           data.status == "success" ? setislogin(true) : setislogin(false);
           console.log(data.error);
-          console.log(data.detail)
+          console.log(data.detail);
 
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
         })
@@ -119,7 +119,7 @@ const Login = () => {
             Login As
           </div>
           <div className="flex justify-center items-center gap-4">
-          <p
+            <p
               onClick={() => setSwitching(false)}
               className={`${
                 !switching
@@ -139,7 +139,6 @@ const Login = () => {
             >
               An Admin
             </p>
-           
           </div>
         </div>
         <div className="inputs">
@@ -191,7 +190,7 @@ const Login = () => {
           )}
         </button>
 
-        <div className={`${switching?'block':'hidden'}`}>
+        <div className={`${switching ? "block" : "hidden"}`}>
           <p>
             Not a member?{" "}
             <Link to="/signin" className="text-primary_SkyBlue">

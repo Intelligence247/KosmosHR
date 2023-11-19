@@ -14,8 +14,8 @@ const CommunicationCard = () => {
       const url2 =
         "	https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee_report/";
       const response = await axios.get(url);
-      console.log(response.data.data);
-      setquerieData(response.data.data);
+      // console.log(response.data.data);
+    response.data.data !== undefined ? setquerieData(response.data.data):''
     } catch (error) {
       console.log(error);
     }

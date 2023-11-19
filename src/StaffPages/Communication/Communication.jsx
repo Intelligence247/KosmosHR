@@ -14,7 +14,7 @@ const Communication = () => {
     </header>
           <Link
           to={"/sendcommunication"}
-            onClick={() => clickFunction()}
+            // onClick={() => clickFunction()}
             className="text-primary_DeepBlue bg-[#BAD6F4] flex space-x-2 justify-center
             items-center text-[14px] lg:h-12 h-9 lg:py-3 py-1 px-6 rounded-xl cursor-pointer"
           >
