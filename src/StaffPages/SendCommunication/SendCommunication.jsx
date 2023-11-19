@@ -104,7 +104,7 @@ handleSend()
             onChange={handleEditorChange}
           />
         </div>
-        <div className=" w-max lg:pt-8 pt-[7rem] text-xs text-red-500">hell{errM}</div>
+        <div className=" w-max lg:pt-8 pt-[7rem] text-xs text-red-500">{errM}</div>
         <div className="flex justify-end">
           <button onClick={handleSend} className="px-8 rounded-lg py-2 bg-primary_SkyBlue text-white">
             Send
@@ -116,3 +116,4 @@ handleSend()
 };
 
 export default SendCommunication;
+

@@ -11,7 +11,8 @@ const CommunicationCard = () => {
       setloading(true);
       const url =
         "https://kosmoshr.pythonanywhere.com/api/v1/queries/get_queries/";
-
+      const url2 =
+        "	https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee_report/";
       const response = await axios.get(url);
       console.log(response.data.data);
       setquerieData(response.data.data);
@@ -30,9 +31,9 @@ const CommunicationCard = () => {
           <h1 className="font-bold text-xl lg:block hidden">Communication</h1>
           <div className="btns flex items-center ">
             <button
-              onClick={() => setSwitching(true)}
+              onClick={() =>( setSwitching(true), getQueries())}
               className={`flex h-8 ${
-                switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/0"
+                switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/5"
               } items-center border-[1px] border-gray-400 w-20 rounded-l-lg justify-center space-x-2 bg-primary_SkyBlue/40`}
             >
               {" "}
@@ -46,7 +47,7 @@ const CommunicationCard = () => {
             <button
               onClick={() => setSwitching(false)}
               className={`flex ${
-                !switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/0"
+                !switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/5"
               } items-center border-[1px] border-gray-400 h-8 w-24 rounded-r-lg justify-center space-x-2 bg-primary_SkyBlue/40`}
             >
               {" "}
@@ -103,12 +104,11 @@ const CommunicationCard = () => {
                 </div>
                 {/* Mobile */}
                 <p className="lg:hidden col-span-4 ">{q.addressed_to?.email}</p>
-                <div className="lg:hidden col-span-4 flex flex-col justify-center items-center"> 
+                <div className="lg:hidden col-span-4 flex flex-col justify-center items-center">
                   <p className="font-bold">{q.title}</p>
                   <p>{`${q.addressed_to?.first_name} ${q.addressed_to?.last_name}`}</p>
                 </div>
-                  <img className="lg:hidden" src="/arrowup.svg" alt="" />
-
+                <img className="lg:hidden" src="/arrowup.svg" alt="" />
               </div>
             ))
           ) : (

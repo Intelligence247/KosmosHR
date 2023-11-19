@@ -12,14 +12,14 @@ const StaffMainMenu = ({showHide, img}) => {
       <div className="h-[100%]">
         <h2>Main Menu</h2>
         <ul className="list">
-        <Link to="/task">
+        <Link to="">
                 <li>
                   {" "}
                   <img src="/task.png" alt="" />
                   Tasks
                 </li>
               </Link>
-              <Link>
+              <Link to={'/communication'}>
               <li>
                 {" "}
                 <img src="/report.png" alt="" />

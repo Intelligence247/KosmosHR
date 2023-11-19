@@ -55,7 +55,7 @@ const StaffHomeLayout = ({ children }) => {
       ) : (
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
-            <StaffMainMenu
+          <StaffMainMenu
               img={`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`}
               showHide={
                 isActive
