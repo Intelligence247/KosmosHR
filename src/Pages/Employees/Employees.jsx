@@ -19,7 +19,6 @@ const Employees = () => {
     try {
       const response = axios.get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/").then((response) => {
       response.data.data !== undefined ?  setEmployeeData(response.data.data):''
-
       });
     } catch (error) {
       console.log(error);
