@@ -17,10 +17,14 @@ const Employees = () => {
   };
   const getEmployeeData = async (e) => {
     try {
-      const response = axios.get("https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/").then((response) => {
-        setEmployeeData(response.data.data);
-
-      });
+      const response = axios
+        .get(
+          "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/"
+        )
+        .then((response) => {
+          console.log(response.data.data);
+          setEmployeeData(response.data.data);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +53,7 @@ const Employees = () => {
             </p>
           </div>
           <Link
-          to={"/onboardemployee"}
+            to={"/onboardemployee"}
             onClick={() => clickFunction()}
             className="employeeonboard cursor-pointer"
           >

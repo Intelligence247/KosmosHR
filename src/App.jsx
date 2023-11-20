@@ -79,7 +79,6 @@ function App() {
           <Route path="/finalreceipt" element={<FinalReceipt />} />
           <Route path="/onboardemployee" element={<EmployeeModal />} />
           <Route path="/editemployee" element={<EditEmployee />} />
-
         </Routes>
       </Router>
     </div>

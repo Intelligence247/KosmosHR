@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DateRange from "./DateRange";
+import axios from "axios";
 
 const TaskTable = ({ tableDataProps, hideViewall }) => {
   const navCenterArr = ["Uncompleted", "Completed"];
+  const [url, setUrl] = useState(
+    "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/"
+  );
   const [switchs, setswitchs] = useState(0);
+  const [taskData, setTaskData] = useState([]);
+
+  const getTaskData = async (e) => {
+    try {
+      const response = axios.get(url).then((response) => {
+        console.log(response.data.data);
+        setTaskData(response.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getTaskData();
+  }, []);
   return (
     <section className="border-[#BAD6F4] border-2 rounded-xl">
       <div className="flex flex-col lg:flex-row justify-around h-[6rem] lg:h-[4rem] items-center px-4">
@@ -17,7 +36,15 @@ rounded-lg bg-white"
             {navCenterArr.map((n, i) => (
               <p
                 key={i}
-                onClick={() => setswitchs(i)}
+                onClick={() => {
+                  setswitchs(i);
+                  if (n === "Completed") {
+                    console.log("complete");
+                    setUrl(
+                      "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/?completed=true"
+                    );
+                  }
+                }}
                 className={` text-[13px] border-[1px] w-[8rem] lg:w-[10rem] h-[2rem] flex justify-center first:rounded-l-lg last:rounded-r-lg items-center  ${
                   switchs === i
                     ? "bg-blue-100 border-blue-300"
@@ -40,28 +67,31 @@ rounded-lg bg-white"
         <DateRange h={"h-[2rem]"} />
       </div>
       <div className="overflow-x-auto">
-        <table className="w-[100%] border-spacing-x-[1rem] text-primary_DeepBlue table-auto">
+        <table className="w-[100%] border border-[#E8E8E8] border-spacing-x-[1rem] text-primary_DeepBlue table-auto">
           <thead className="bg-[#E8E8E8] h-12">
-            <tr>
-              <th className="text-[12px] py-4 px-4">Date</th>
-              <th className="text-[12px] px-4">Task</th>
-              <th className="text-[12px] px-4">Staff</th>
-              <th className="text-[12px] px-4">Phone Number</th>
-              <th className="text-[12px] px-4">Action</th>
+            <tr className="text-start">
+              <th className="text-[12px] text-start py-4 px-4">Date</th>
+              <th className="text-[12px] text-start px-4">Task</th>
+              <th className="text-[12px] text-start px-4">Staff</th>
+              <th className="text-[12px] text-start px-4">Phone Number</th>
+              <th className="text-[12px] text-start px-4">Action</th>
             </tr>
           </thead>
           <tbody>
-            {tableDataProps.map((e, i) => (
-              <tr key={i}>
+            {taskData.map((e, i) => (
+              <tr
+                key={i}
+                className="border h-[3rem] text-start border-[#E8E8E8]"
+              >
                 <td className="text-[13px] w-[10rem] py-4 px-4">{e.date}</td>
-                <td className="text-[13px] leading-5 px-4">{e.taskDesc}</td>
-                <td className="text-[13px] w-[10rem] font-semibold px-4">
-                  {e.staff}
+                <td className="text-[13px] leading-5 px-4">{e.description}</td>
+                <td className="text-[13px] w-[10rem] font-semibold px-4">{`${e.assigned_to.first_name} ${e.assigned_to.last_name}`}</td>
+                <td className="text-[13px] px-4">
+                  {e.assigned_to.phone_number}
                 </td>
-                <td className="text-[13px] px-4">{e.phoneNo}</td>
                 <td className="text-[13px] px-4 items-center">
                   <p className="flex text-[13px] w-[5rem] items-center text-blue-600">
-                    {e.action}
+                    action
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
