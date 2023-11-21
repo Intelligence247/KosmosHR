@@ -536,8 +536,4 @@ const EmployeeModal = ({}) => {
     </HomeLayout>
   );
 };
-
-export default EmployeeModal;
-
-// Account created successfully. username is kos0013 and password is Usman
-// Account created successfully. username is kos0017 and password is Atunde
+export default  EmployeeModal
