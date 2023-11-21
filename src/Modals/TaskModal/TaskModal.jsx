@@ -1,8 +1,30 @@
+import { useState } from "react";
 import Modal from "../../Layouts/ModalLayout/Modal";
 import DateRange from "../../Pages/TaskPage/DateRange";
+import { api_token } from "../../../APITOKEN";
 
 const TaskModal = (props) => {
   if (!props.isVisible) return null;
+  const [taskDetails, setTaskDetails] = useState({
+    title: "",
+    description: "",
+    appointed_date: "",
+    deadline: "",
+    file: "",
+    priority: "",
+    employee_id: "",
+    api_token: api_token,
+  });
+  const url = "https://kosmoshr.pythonanywhere.com/api/v1/tasks/create_task/";
+  //post form
+  const formData = new FormData();
+  formData.append("title", taskDetails.title);
+  formData.append("description", taskDetails.description);
+  formData.append("deadline", taskDetails.deadline);
+  formData.append("file", ""); // if there's a file to work on
+  formData.append("employee_id", taskDetails.employee_id);
+  formData.append("reward_id", "id-of-selected-reward"); // if there's a reward for completing task
+  formData.append("api_token", taskDetails.api_token);
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") props.onClose();

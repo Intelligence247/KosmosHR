@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import TaskModal from "../../Modals/TaskModal/TaskModal";
 // import "./Task.css";
 import { taskData } from "../../utility/data";
 import TaskTable from "./TaskTable";
+import axios from "axios";
 
 const Task = () => {
   const [showModal, setShowModal] = useState(false);
+  const [url, setUrl] = useState(
+    "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/"
+  );
   return (
     <HomeLayout>
       <TaskModal isVisible={showModal} onClose={() => setShowModal(false)} />
@@ -33,7 +37,12 @@ const Task = () => {
         <p className="text-[16px] lg:hidden flex">
           Get your staff updated on their responsibilities
         </p>
-        <TaskTable tableDataProps={taskData} hideViewall={"hidden"} />
+        <TaskTable
+          tableDataProps={taskData}
+          hideViewall={"hidden"}
+          url={url}
+          setUrl={setUrl}
+        />
         <div className="dataController flex justify-center items-center space-x-8">
           <p>
             <img src="/displayLeft.png" alt="" />

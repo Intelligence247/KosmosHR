@@ -474,5 +474,3 @@ export const employeeurl =
   "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/";
 // const baseUrl = "https://backend.getlinked.ai";
 // employeeurl = `${baseUrl}/hackathon/categories-list`;
-
-

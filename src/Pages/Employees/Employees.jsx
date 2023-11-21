@@ -48,7 +48,7 @@ const Employees = () => {
             </p>
           </div>
           <Link
-          to={"/onboardemployee"}
+            to={"/onboardemployee"}
             onClick={() => clickFunction()}
             className="employeeonboard cursor-pointer"
           >

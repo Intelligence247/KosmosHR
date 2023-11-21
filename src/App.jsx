@@ -57,7 +57,6 @@ function App() {
           <Route path="/editemployee" element={<EditEmployee />} />
           <Route path="/communication" element={<Communication />} />
           <Route path="/sendcommunication" element={<SendCommunication />} />
-
         </Routes>
       </Router>
     </div>
