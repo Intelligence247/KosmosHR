@@ -19,12 +19,11 @@ const HomeLayout = ({ children }) => {
     axios
       .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/")
       .then((resp) => {
-        // console.log(resp.data);
+        console.log(resp.data);
         setSiteInfo(resp.data.data);
       })
       .catch((err) => {
         console.log(err);
-        // alert(err.message);
       });
   };
 
@@ -54,7 +53,7 @@ const HomeLayout = ({ children }) => {
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
             <MainMenu
-              img={`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`}
+              img={`${siteInfo.logo !== null?`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`: '/kosmos.png'}`}
               showHide={
                 isActive
                   ? "scale-x-100 -left-0"

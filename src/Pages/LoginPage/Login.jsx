@@ -19,7 +19,6 @@ const Login = () => {
     username: "",
     password: "",
   });
-  console.log(inputValues);
   const url = `${
     switching
       ? "https://kosmoshr.pythonanywhere.com/api/v1/profile/authentication/"
@@ -41,7 +40,6 @@ const Login = () => {
       formData.append("password", inputValues.password);
       e.preventDefault();
       const data = await kosmos_post(url, formData);
-      console.log(data);
       setislogin(true);
       data.status == "success" ? setislogin(true) : setislogin(false),
         // setErrM("Username and Password might be case sensitive");
@@ -75,16 +73,12 @@ const Login = () => {
         body: JSON.stringify(user_details),
       })
         .then((response) => {
-          console.log(response);
           return response.json();
         })
 
         .then((data) => {
           setLoading(false);
-          console.log(data.status);
           data.status == "success" ? setislogin(true) : setislogin(false);
-          console.log(data.error);
-          console.log(data.detail);
 
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
         })

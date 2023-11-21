@@ -4,6 +4,7 @@ import { api_token } from "../../../APITOKEN";
 import RichTextEditor from "../../Editor/RichTextEditor";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 
 const SendCommunication = () => {
   const [loading, setLoading] = useState(false);
@@ -33,11 +34,14 @@ const SendCommunication = () => {
         "https://kosmoshr.pythonanywhere.com/api/v1/news/create_news/";
 
       const data = await axios.post(url, formData);
-      console.log(data.data);
-      console.log(data);
-      setErrM(data.data.message);
+  setErrM(data.data.message);
       setLoading(false);
-      // data.status == "success" ? (setSent(true), setErrM("")) : setSent(false),
+console.log(data.data.status)
+      data.data.status == "success" ?
+       setSent(true)
+        : setSent(false)
+
+
     } catch (error) {
       console.log(error);
       setErrM(error.message);
@@ -50,7 +54,7 @@ const SendCommunication = () => {
         "https://kosmoshr.pythonanywhere.com/api/v1/news_categories/get_categories/";
 
       const response = await axios.get(url);
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setCategory(response.data.data);
     } catch (error) {
       console.log(error);
@@ -120,12 +124,37 @@ const SendCommunication = () => {
         <div className="flex justify-end">
           <button
             onClick={handleSend}
-            className="px-8 rounded-lg py-2 bg-primary_SkyBlue text-white"
+            className="w-32 grid place-content-center rounded-lg lg:h-12 h-11  bg-primary_SkyBlue text-white"
           >
-            Send
+            {loading? 
+             <RotatingLines
+             strokeColor="white"
+             strokeWidth="5"
+             animationDuration="0.75"
+             width="30"
+             visible={true}
+           />: 'Send'}
+            
           </button>
         </div>
+      
       </section>
+      <div
+        className={`PromptSuccess w-full top-0 left-0  h-screen fixed  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${
+          sent ? "flex" : "hidden"
+        } `}
+      >
+      <div className="w-60 flex justify-center items-center flex-col space-y-4">
+          <h1 className="text-2xl">Successful!!!</h1>
+          <p className="text-center text-sm opacity-80">{errM}</p>
+          <button
+            className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1"
+            onClick={() => setSent(false)}
+          >
+            Continue
+          </button>
+        </div>
+        </div>
     </StaffHomeLayout>
   );
 };

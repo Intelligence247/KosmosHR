@@ -21,7 +21,6 @@ const StaffHomeLayout = ({ children }) => {
     axios
       .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/")
       .then((resp) => {
-        // console.log(resp.data);
         setSiteInfo(resp.data.data);
       })
       .catch((err) => {

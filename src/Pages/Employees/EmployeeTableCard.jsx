@@ -32,7 +32,8 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall, title, loading }) =
           <div key={i} className="eachInfo">
             <div className="staffInfo">
               <img
-                src={`https://kosmoshr.pythonanywhere.com${e.image}`}
+                // src={`${e.image !== null? https://kosmoshr.pythonanywhere.com'e.image}:'/Logo2.png'`}
+                src={`${e.image !== null ?`https://kosmoshr.pythonanywhere.com${e.image}`:'/avatar.png'}`}
                 alt=""
               />
 

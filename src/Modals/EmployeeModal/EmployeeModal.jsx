@@ -29,7 +29,7 @@ const EmployeeModal = ({}) => {
     date_of_birth: "",
     appointment_date: "",
     address: "",
-    image: "",
+    image: null,
     api_token: api_token,
   });
   console.log(employeeInfo);
@@ -64,6 +64,7 @@ const EmployeeModal = ({}) => {
       console.log(data);
       setErrM(data.message);
       setLoading(false);
+      
       data.status == "success"
         ? (setIslogin(true), setErrM(""))
         : setIslogin(false),
@@ -85,201 +86,200 @@ const EmployeeModal = ({}) => {
       console.log(error);
     }
   };
-const getDepartment = async() => {
-  try {
-    const url = 'https://kosmoshr.pythonanywhere.com/api/v1/departments/get_departments/';
+  const getDepartment = async () => {
+    try {
+      const url =
+        "https://kosmoshr.pythonanywhere.com/api/v1/departments/get_departments/";
 
-    const response = await axios.get(url)
-    console.log(response.data.data)
-setDepartmentArray(response.data.data)
-    
-  } catch (error) {
-    console.log(error)
-  }
-}
+      const response = await axios.get(url);
+      console.log(response.data.data);
+      setDepartmentArray(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     handleSubmit();
     getPosition();
-    getDepartment()
+    getDepartment();
   }, []);
 
   return (
     <HomeLayout>
       <div
-        className={`duration-500 ease-in  overflow-auto py-6 bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0 px-4`}
+        className={`duration-500 ease-in  overflow-auto py-6 bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0`}
       >
-        <div className="lg:w-[70vw] w-full rounded-xl bg-white pb-4">
+        <div className="lg:w-[70vw] w-[100%] rounded-xl bg-white pb-4">
           <header className="flex flex-col justify-center items-center rounded-t-xl pt-4">
             <h1 className="font-bold lg:text-2xl text-xl">New Employees</h1>
             <p>Set up new Employee profiles</p>
           </header>
-          {
-            positionArray.length !==0 && departmentArray.length !== 0 ?(
-          <div className="inputEmployeedata grid lg:grid-cols-2 lg:gap-x-12 gap-x-0 gap-y-4 place-content-center p-4 rounded-b-xl ">
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Firstname:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.first_name}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    first_name: e.target.value,
-                  })
-                }
-                placeholder="Enter name"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Middle Name:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.middle_name}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    middle_name: e.target.value,
-                  })
-                }
-                placeholder="Enter name"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Last name:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.last_name}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    last_name: e.target.value,
-                  })
-                }
-                placeholder="Enter name"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Email:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="email"
-                name=""
-                id=""
-                value={employeeInfo.email}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    email: e.target.value,
-                  })
-                }
-                placeholder="Enter Email"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Title:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                name=""
-                id=""
-                value={employeeInfo.title}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    title: e.target.value,
-                  })
-                }
-                placeholder="Enter Email"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                City:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.city}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    city: e.target.value,
-                  })
-                }
-                placeholder="Enter name"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                State:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.state}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    state: e.target.value,
-                  })
-                }
-                placeholder="Enter name"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Nationality:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.nationality}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    nationality: e.target.value,
-                  })
-                }
-                placeholder="Enter nationality"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Account type:
-              </label>
-              {/* <input
+          {positionArray.length !== 0 && departmentArray.length !== 0 ? (
+            <div className="inputEmployeedata grid lg:grid-cols-2 lg:gap-x-12 gap-x-0 gap-y-4 place-content-center p-4 rounded-b-xl ">
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Firstname:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.first_name}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      first_name: e.target.value,
+                    })
+                  }
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Middle Name:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px]  pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.middle_name}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      middle_name: e.target.value,
+                    })
+                  }
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Last name:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.last_name}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      last_name: e.target.value,
+                    })
+                  }
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Email:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="email"
+                  name=""
+                  id=""
+                  value={employeeInfo.email}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      email: e.target.value,
+                    })
+                  }
+                  placeholder="Enter Email"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Title:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  name=""
+                  id=""
+                  value={employeeInfo.title}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      title: e.target.value,
+                    })
+                  }
+                  placeholder="Enter Email"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  City:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.city}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      city: e.target.value,
+                    })
+                  }
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  State:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.state}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      state: e.target.value,
+                    })
+                  }
+                  placeholder="Enter name"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Nationality:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.nationality}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      nationality: e.target.value,
+                    })
+                  }
+                  placeholder="Enter nationality"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Account type:
+                </label>
+                {/* <input
               required
               className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
               type="text"
@@ -288,206 +288,206 @@ setDepartmentArray(response.data.data)
               value={employeeInfo.city}
               placeholder="Enter name"
             /> */}
-              <select
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                name=""
-                id=""
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    account_type: e.target.value,
-                  })
-                }
-              >
-                <option value={"Staff"}>Staff</option>
-                <option value="Employee">Employee</option>
-              </select>
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Date of birth:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="date"
-                name=""
-                value={employeeInfo.date_of_birth}
-                id=""
-                placeholder="Enter Address"
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    date_of_birth: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Image:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="file"
-                name=""
-                value={employeeInfo.image}
-                id=""
-                placeholder="Enter Address"
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    image: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Phone Number:
-              </label>
-              <div className="flex lg:space-x-4 space-x-2">
-                <button className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] pl-2 outline-none rounded-lg lg:px-4 px-2">
-                  +234
-                </button>
+                <select
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  name=""
+                  id=""
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      account_type: e.target.value,
+                    })
+                  }
+                >
+                  <option value={"Staff"}>Staff</option>
+                  <option value="Employee">Employee</option>
+                </select>
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Date of birth:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="date"
+                  name=""
+                  value={employeeInfo.date_of_birth}
+                  id=""
+                  placeholder="Enter Address"
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      date_of_birth: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Image:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="file"
+                  name=""
+                  // value={employeeInfo.image}
+                  id="image"
+                  placeholder="Enter Address"
+                  // accept="image/png, image/jpeg, image/jpg, image/svg"
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      image: e.target.files[0],
+                    })
+                  }
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Phone Number:
+                </label>
+                <div className="flex lg:space-x-4 space-x-2">
+                  <button className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] pl-2 outline-none rounded-lg lg:px-4 px-2">
+                    +234
+                  </button>
+                  <input
+                    required
+                    className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                    type="text"
+                    name=""
+                    id=""
+                    value={employeeInfo.phone_number}
+                    onChange={(e) =>
+                      setEmployeeInfo({
+                        ...employeeInfo,
+                        phone_number: e.target.value,
+                      })
+                    }
+                    placeholder="Enter Phone Number"
+                  />
+                </div>
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Address:
+                </label>
                 <input
                   required
                   className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                   type="text"
                   name=""
                   id=""
-                  value={employeeInfo.phone_number}
+                  value={employeeInfo.address}
                   onChange={(e) =>
                     setEmployeeInfo({
                       ...employeeInfo,
-                      phone_number: e.target.value,
+                      address: e.target.value,
                     })
                   }
-                  placeholder="Enter Phone Number"
+                  placeholder="Enter Address"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Department:
+                </label>
+
+                <select
+                  name=""
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  value={employeeInfo.department}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      department: e.target.value,
+                    })
+                  }
+                >
+                  <option value="select">Select department</option>
+                  {departmentArray.length >= 1
+                    ? departmentArray.map((p) => (
+                        <option value={p.id}>{p.title}</option>
+                      ))
+                    : ""}
+                </select>
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Position:
+                </label>
+                <select
+                  name=""
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  value={employeeInfo.position}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      position: e.target.value,
+                    })
+                  }
+                >
+                  <option value="select">Select position</option>
+                  {positionArray.length >= 1
+                    ? positionArray.map((p) => (
+                        <option value={p.id}>{p.title}</option>
+                      ))
+                    : ""}
+                </select>
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Salary:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="text"
+                  name=""
+                  id=""
+                  value={employeeInfo.salary}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      salary: e.target.value,
+                    })
+                  }
+                  placeholder="Enter Salary"
+                />
+              </div>
+              <div className="name flex flex-col lg:space-y-1.5 space-y-1">
+                <label htmlFor="name" className="lg:text-[14px] font-bold">
+                  Appointment Date:
+                </label>
+                <input
+                  required
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  type="date"
+                  name=""
+                  id=""
+                  value={employeeInfo.appointment_date}
+                  onChange={(e) =>
+                    setEmployeeInfo({
+                      ...employeeInfo,
+                      appointment_date: e.target.value,
+                    })
+                  }
+                  placeholder="Enter Address"
                 />
               </div>
             </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Address:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.address}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    address: e.target.value,
-                  })
-                }
-                placeholder="Enter Address"
+          ) : (
+            <div className="flex justify-center items-center h-40">
+              <RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="30"
+                visible={true}
               />
             </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Department:
-              </label>
-             
-               <select
-                name=""
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                value={employeeInfo.department}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    department: e.target.value,
-                  })
-                }
-              >
-                <option value="select">Select department</option>
-                {departmentArray.length >= 1
-                  ? departmentArray.map((p) => (
-                      <option value={p.id}>{p.title}</option>
-                    ))
-                  : ""}
-              </select>
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Position:
-              </label>
-              <select
-                name=""
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                value={employeeInfo.position}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    position: e.target.value,
-                  })
-                }
-              >
-                <option value="select">Select position</option>
-                {positionArray.length >= 1
-                  ? positionArray.map((p) => (
-                      <option value={p.id}>{p.title}</option>
-                    ))
-                  : ""}
-              </select>
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Salary:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
-                name=""
-                id=""
-                value={employeeInfo.salary}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    salary: e.target.value,
-                  })
-                }
-                placeholder="Enter Salary"
-              />
-            </div>
-            <div className="name flex flex-col lg:space-y-1.5 space-y-1">
-              <label htmlFor="name" className="lg:text-[14px] font-bold">
-                Appointment Date:
-              </label>
-              <input
-                required
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="date"
-                name=""
-                id=""
-                value={employeeInfo.appointment_date}
-                onChange={(e) =>
-                  setEmployeeInfo({
-                    ...employeeInfo,
-                    appointment_date: e.target.value,
-                  })
-                }
-                placeholder="Enter Address"
-              />
-            </div>
-          </div>
-            ):(
-              <div className="flex justify-center items-center h-40">
-                  <RotatingLines
-                  strokeColor="white"
-                  strokeWidth="5"
-                  animationDuration="0.75"
-                  width="30"
-                  visible={true}
-                />
-              </div>
-            )
-}
+          )}
           <p className="err lg:text-sm text-xs text-red-400 py-4 pl-5">
             {errM}
           </p>
@@ -522,7 +522,7 @@ setDepartmentArray(response.data.data)
           islogin ? "flex" : "hidden"
         } `}
       >
-        <div className="w-60 flex justify-center items-center flex-col space-y-4">
+        <div className="lg:w-64 w-[80%] flex justify-center items-center flex-col space-y-4">
           <h1 className="text-2xl">Successful!!!</h1>
           <p className="text-center text-sm opacity-80">{errM}</p>
           <button

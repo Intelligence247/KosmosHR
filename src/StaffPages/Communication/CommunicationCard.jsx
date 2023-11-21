@@ -11,10 +11,10 @@ const CommunicationCard = () => {
       setloading(true);
       const url =
         "https://kosmoshr.pythonanywhere.com/api/v1/queries/get_queries/";
+const url3 = "https://kosmoshr.pythonanywhere.com/api/v1/news/news_list/"
       const url2 =
         "	https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employee_report/";
-      const response = await axios.get(url);
-      // console.log(response.data.data);
+      const response = await axios.get(url3);
     response.data.data !== undefined ? setquerieData(response.data.data):''
     } catch (error) {
       console.log(error);
@@ -88,12 +88,12 @@ const CommunicationCard = () => {
             querieData.map((q) => (
               <div className="thead lg:pl-6 px-2 lg:gap-x-0 gap-x-3 w-full lg:flex grid grid-cols-9 justify-between items-center border-y-[1px] border-gray-200 h-12">
                 <div className="left lg:grid hidden lg:w-[45%] grid-cols-2">
-                  <p className="text-xs">{q.addressed_to?.email}</p>
-                  <p className="font-bold text-xs">{q.title}</p>
+                  <p className="text-xs">{q?.author?.email}</p>
+                  <p className="font-bold text-xs">{q?.title}</p>
                 </div>
                 <div className="right lg:grid hidden lg:w-[40%] grid-cols-2">
                   <div className="staff">
-                    <p className="text-xs">{q.addressed_to?.first_name}</p>
+                    <p className="text-xs">{q.author?.last_name}</p>
                     <p className="opacity-50 text-xs">
                       {q.addressed_to?.last_name}
                     </p>
@@ -103,10 +103,10 @@ const CommunicationCard = () => {
                   </p>
                 </div>
                 {/* Mobile */}
-                <p className="lg:hidden col-span-4 ">{q.addressed_to?.email}</p>
+                <p className="lg:hidden col-span-4 ">{q?.author?.email}</p>
                 <div className="lg:hidden col-span-4 flex flex-col justify-center items-center">
-                  <p className="font-bold">{q.title}</p>
-                  <p>{`${q.addressed_to?.first_name} ${q.addressed_to?.last_name}`}</p>
+                  <p className="font-bold">{q?.title}</p>
+                  <p>{`${q.author?.first_name} ${q.author?.last_name}`}</p>
                 </div>
                 <img className="lg:hidden" src="/arrowup.svg" alt="" />
               </div>
