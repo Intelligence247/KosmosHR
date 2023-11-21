@@ -20,8 +20,6 @@ const SendCommunication = () => {
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("post", values.content); // you can use the textarea text editor
-    formData.append("verified", true);
-    formData.append("active", true); // employees can only see active news
     formData.append("category_id", values.category); // id of selected news category
     formData.append("api_token", api_token);
     try {
@@ -50,8 +48,8 @@ const SendCommunication = () => {
         "https://kosmoshr.pythonanywhere.com/api/v1/news_categories/get_categories/";
 
       const response = await axios.get(url);
-      console.log(response.data.data);
-      setCategory(response.data.data);
+      response.data.data != undefined ? setCategory(response.data.data): '';
+      
     } catch (error) {
       console.log(error);
     }
