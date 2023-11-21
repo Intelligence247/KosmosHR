@@ -4,9 +4,10 @@ import { api_token } from "../../../APITOKEN";
 import RichTextEditor from "../../Editor/RichTextEditor";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 
 const SendCommunication = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [errM, setErrM] = useState("");
   const [category, setCategory] = useState([]);
@@ -123,9 +124,17 @@ console.log(data.data.status)
         <div className="flex justify-end">
           <button
             onClick={handleSend}
-            className="px-8 rounded-lg py-2 bg-primary_SkyBlue text-white"
+            className="w-32 grid place-content-center rounded-lg lg:h-12 h-11  bg-primary_SkyBlue text-white"
           >
-            Send
+            {loading? 
+             <RotatingLines
+             strokeColor="white"
+             strokeWidth="5"
+             animationDuration="0.75"
+             width="30"
+             visible={true}
+           />: 'Send'}
+            
           </button>
         </div>
       

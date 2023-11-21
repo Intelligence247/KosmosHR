@@ -29,26 +29,6 @@ function App() {
   const [api, setapi] = useState([]);
 
  
-
-  
-//   const callAPI= () => {
-//     try {
-// const url = 'https://kosmoshr.pythonanywhere.com/api/v1/check_admin_account/' 
-//       const response = axios.get(url).then((response) => {
-//       // response.data.data !== undefined ?  setapi(response.data.data):''
-//       console.log(response)
-//       });
-//     } catch (error) {
-//       console.log(error);
-//       alert('err')
-
-//     }
-//   };
-
-
-//   useEffect(() => {
-//     callAPI();
-//   }, []);
   return (
     <div className="body">
       <Router>
