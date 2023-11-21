@@ -11,7 +11,7 @@ const Login = () => {
   const [islogin, setislogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errM, setErrM] = useState("");
-  const [switching, setSwitching] = useState(true);
+  const [switching, setSwitching] = useState(false);
 
   const navigate = useNavigate();
 
@@ -84,7 +84,7 @@ const Login = () => {
           console.log(data.status);
           data.status == "success" ? setislogin(true) : setislogin(false);
           console.log(data.error);
-          console.log(data.detail)
+          console.log(data.detail);
 
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
         })
@@ -115,20 +115,10 @@ const Login = () => {
           Sign Into Company Account
         </h1>
         <div className="loginas flex flex-col gap-2">
-          <button className=" text-black rounded-lg px-4 py-1 lg:text-3xl font-bold text-2xl">
+          <div className=" text-black rounded-lg px-4 py-1 lg:text-3xl font-bold text-2xl w-max m-auto">
             Login As
-          </button>
+          </div>
           <div className="flex justify-center items-center gap-4">
-            <p
-              onClick={() => setSwitching(true)}
-              className={`${
-                switching
-                  ? "bg-primary_SkyBlue text-white"
-                  : "bg-transparent text-black"
-              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
-            >
-              An Admin
-            </p>
             <p
               onClick={() => setSwitching(false)}
               className={`${
@@ -138,6 +128,16 @@ const Login = () => {
               } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
             >
               A Staff
+            </p>
+            <p
+              onClick={() => setSwitching(true)}
+              className={`${
+                switching
+                  ? "bg-primary_SkyBlue text-white"
+                  : "bg-transparent text-black"
+              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
+            >
+              An Admin
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@ const Login = () => {
           )}
         </button>
 
-        <div className="notAmember">
+        <div className={`${switching ? "block" : "hidden"}`}>
           <p>
             Not a member?{" "}
             <Link to="/signin" className="text-primary_SkyBlue">

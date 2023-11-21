@@ -2,7 +2,7 @@ import "./Employees.css";
 import { Link } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 
-const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
+const EmployeeTableCard = ({ employeeDataProps, hideViewall, title, loading }) => {
   return (
     <section className="tableSection">
       <div className="tableSectionTop flex justify-between h-20 items-center px-4">
@@ -27,7 +27,7 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
         <p>Action</p>
       </div>
 
-      {employeeDataProps.length > 1 ? (
+      {!loading ? (
         employeeDataProps.map((e, i) => (
           <div key={i} className="eachInfo">
             <div className="staffInfo">
@@ -37,7 +37,7 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
               />
 
               <div className="nameAndMail">
-                <p>{`${e.title} ${e.first_name} ${e.middle_name} ${e.last_name}`}</p>
+                <p>{`${e.first_name} ${e.last_name}`}</p>
                 <p>{e.email}</p>
               </div>
             </div>
@@ -62,7 +62,7 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall, title }) => {
             strokeColor="grey"
             strokeWidth="5"
             animationDuration="0.75"
-            width="96"
+            width="70"
             visible={true}
           />
         </div>

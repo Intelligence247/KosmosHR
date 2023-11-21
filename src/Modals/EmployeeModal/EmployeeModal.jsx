@@ -3,12 +3,14 @@ import { kosmos_get, kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import { api_token } from "../../../APITOKEN";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { RotatingLines } from "react-loader-spinner";
+import axios from "axios";
 
-
-const EmployeeModal = ({ }) => {
+const EmployeeModal = ({}) => {
   const [errM, setErrM] = useState("");
   const [islogin, setIslogin] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [positionArray, setPositionArray] = useState([]);
+  const [departmentArray, setDepartmentArray] = useState([]);
 
   const [employeeInfo, setEmployeeInfo] = useState({
     email: "",
@@ -30,6 +32,7 @@ const EmployeeModal = ({ }) => {
     image: "",
     api_token: api_token,
   });
+  console.log(employeeInfo);
   const url =
     "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_employee_account/";
   const formData = new FormData();
@@ -71,8 +74,33 @@ const EmployeeModal = ({ }) => {
       setLoading(false);
     }
   };
+
+  const getPosition = async () => {
+    try {
+      const positionUrl =
+        "https://kosmoshr.pythonanywhere.com/api/v1/positions/get_positions/";
+      const response = await axios.get(positionUrl);
+      setPositionArray(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+const getDepartment = async() => {
+  try {
+    const url = 'https://kosmoshr.pythonanywhere.com/api/v1/departments/get_departments/';
+
+    const response = await axios.get(url)
+    console.log(response.data.data)
+setDepartmentArray(response.data.data)
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
   useEffect(() => {
     handleSubmit();
+    getPosition();
+    getDepartment()
   }, []);
 
   return (
@@ -85,12 +113,15 @@ const EmployeeModal = ({ }) => {
             <h1 className="font-bold lg:text-2xl text-xl">New Employees</h1>
             <p>Set up new Employee profiles</p>
           </header>
+          {
+            positionArray.length !==0 && departmentArray.length !== 0 ?(
           <div className="inputEmployeedata grid lg:grid-cols-2 lg:gap-x-12 gap-x-0 gap-y-4 place-content-center p-4 rounded-b-xl ">
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
               <label htmlFor="name" className="lg:text-[14px] font-bold">
                 Firstname:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -110,6 +141,7 @@ const EmployeeModal = ({ }) => {
                 Middle Name:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -129,6 +161,7 @@ const EmployeeModal = ({ }) => {
                 Last name:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -148,6 +181,7 @@ const EmployeeModal = ({ }) => {
                 Email:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="email"
                 name=""
@@ -167,6 +201,7 @@ const EmployeeModal = ({ }) => {
                 Title:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 name=""
                 id=""
@@ -185,6 +220,7 @@ const EmployeeModal = ({ }) => {
                 City:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -204,6 +240,7 @@ const EmployeeModal = ({ }) => {
                 State:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -223,6 +260,7 @@ const EmployeeModal = ({ }) => {
                 Nationality:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -242,6 +280,7 @@ const EmployeeModal = ({ }) => {
                 Account type:
               </label>
               {/* <input
+              required
               className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
               type="text"
               name=""
@@ -269,6 +308,7 @@ const EmployeeModal = ({ }) => {
                 Date of birth:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="date"
                 name=""
@@ -288,6 +328,7 @@ const EmployeeModal = ({ }) => {
                 Image:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="file"
                 name=""
@@ -311,6 +352,7 @@ const EmployeeModal = ({ }) => {
                   +234
                 </button>
                 <input
+                  required
                   className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                   type="text"
                   name=""
@@ -331,6 +373,7 @@ const EmployeeModal = ({ }) => {
                 Address:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -349,10 +392,10 @@ const EmployeeModal = ({ }) => {
               <label htmlFor="name" className="lg:text-[14px] font-bold">
                 Department:
               </label>
-              <input
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="text"
+             
+               <select
                 name=""
+                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 value={employeeInfo.department}
                 onChange={(e) =>
                   setEmployeeInfo({
@@ -360,19 +403,22 @@ const EmployeeModal = ({ }) => {
                     department: e.target.value,
                   })
                 }
-                id=""
-                placeholder="Enter Department"
-              />
+              >
+                <option value="select">Select department</option>
+                {departmentArray.length >= 1
+                  ? departmentArray.map((p) => (
+                      <option value={p.id}>{p.title}</option>
+                    ))
+                  : ""}
+              </select>
             </div>
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
               <label htmlFor="name" className="lg:text-[14px] font-bold">
                 Position:
               </label>
-              <input
-                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
-                type="number"
+              <select
                 name=""
-                id=""
+                className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 value={employeeInfo.position}
                 onChange={(e) =>
                   setEmployeeInfo({
@@ -380,14 +426,21 @@ const EmployeeModal = ({ }) => {
                     position: e.target.value,
                   })
                 }
-                placeholder="Enter Position"
-              />
+              >
+                <option value="select">Select position</option>
+                {positionArray.length >= 1
+                  ? positionArray.map((p) => (
+                      <option value={p.id}>{p.title}</option>
+                    ))
+                  : ""}
+              </select>
             </div>
             <div className="name flex flex-col lg:space-y-1.5 space-y-1">
               <label htmlFor="name" className="lg:text-[14px] font-bold">
                 Salary:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="text"
                 name=""
@@ -407,6 +460,7 @@ const EmployeeModal = ({ }) => {
                 Appointment Date:
               </label>
               <input
+                required
                 className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
                 type="date"
                 name=""
@@ -422,6 +476,18 @@ const EmployeeModal = ({ }) => {
               />
             </div>
           </div>
+            ):(
+              <div className="flex justify-center items-center h-40">
+                  <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="30"
+                  visible={true}
+                />
+              </div>
+            )
+}
           <p className="err lg:text-sm text-xs text-red-400 py-4 pl-5">
             {errM}
           </p>
@@ -450,15 +516,23 @@ const EmployeeModal = ({ }) => {
             </button>
           </div>
         </div>
-       
       </div>
-      <div className={`PromptSuccess w-full  h-screen fixed top-0  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${islogin? "flex": "hidden"} `}>
+      <div
+        className={`PromptSuccess w-full  h-screen fixed top-0  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${
+          islogin ? "flex" : "hidden"
+        } `}
+      >
         <div className="w-60 flex justify-center items-center flex-col space-y-4">
           <h1 className="text-2xl">Successful!!!</h1>
           <p className="text-center text-sm opacity-80">{errM}</p>
-        <button className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1" onClick={()=> setIslogin(false)}>Continue</button>
+          <button
+            className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1"
+            onClick={() => setIslogin(false)}
+          >
+            Continue
+          </button>
         </div>
-        </div>
+      </div>
     </HomeLayout>
   );
 };

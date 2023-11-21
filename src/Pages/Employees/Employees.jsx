@@ -22,8 +22,9 @@ const Employees = () => {
           "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/"
         )
         .then((response) => {
-          console.log(response.data.data);
-          setEmployeeData(response.data.data);
+          response.data.data !== undefined
+            ? setEmployeeData(response.data.data)
+            : "";
         });
     } catch (error) {
       console.log(error);

@@ -73,11 +73,13 @@ const MainMenu = ({showHide, img}) => {
                   Tasks
                 </li>
               </Link>
+              <Link to={"/communication"}>
               <li>
                 {" "}
                 <img src="/report.png" alt="" />
                 Communicate
               </li>
+              </Link>
               {/* <li>
                 {" "}
                 <img src="/queries.png" alt="" />

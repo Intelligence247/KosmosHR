@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 import DateRange from "./DateRange";
 import axios from "axios";
 
-const TaskTable = ({ tableDataProps, hideViewall }) => {
+const TaskTable = ({ tableDataProps, hideViewall, url, setUrl }) => {
   const navCenterArr = ["Uncompleted", "Completed"];
-  const [url, setUrl] = useState(
-    "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/"
-  );
+
   const [switchs, setswitchs] = useState(0);
   const [taskData, setTaskData] = useState([]);
-
+  const [empty, setEmpty] = useState(false);
+  console.log(url);
   const getTaskData = async (e) => {
     try {
       const response = axios.get(url).then((response) => {
-        console.log(response.data.data);
-        setTaskData(response.data.data);
+        console.log(response.data);
+        {
+          response.message === "No task found"
+            ? setTaskData(response.data)
+            : setEmpty(true);
+        }
       });
     } catch (error) {
       console.log(error);
@@ -23,7 +26,7 @@ const TaskTable = ({ tableDataProps, hideViewall }) => {
   };
   useEffect(() => {
     getTaskData();
-  }, []);
+  }, [url]);
   return (
     <section className="border-[#BAD6F4] border-2 rounded-xl">
       <div className="flex flex-col lg:flex-row justify-around h-[6rem] lg:h-[4rem] items-center px-4">
@@ -42,6 +45,10 @@ rounded-lg bg-white"
                     console.log("complete");
                     setUrl(
                       "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/?completed=true"
+                    );
+                  } else {
+                    setUrl(
+                      "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/?completed=false"
                     );
                   }
                 }}
@@ -73,43 +80,55 @@ rounded-lg bg-white"
               <th className="text-[12px] text-start py-4 px-4">Date</th>
               <th className="text-[12px] text-start px-4">Task</th>
               <th className="text-[12px] text-start px-4">Staff</th>
-              <th className="text-[12px] text-start px-4">Phone Number</th>
+              <th className="text-[12px] text-start px-4">Email</th>
               <th className="text-[12px] text-start px-4">Action</th>
             </tr>
           </thead>
           <tbody>
-            {taskData.map((e, i) => (
-              <tr
-                key={i}
-                className="border h-[3rem] text-start border-[#E8E8E8]"
-              >
-                <td className="text-[13px] w-[10rem] py-4 px-4">{e.date}</td>
-                <td className="text-[13px] leading-5 px-4">{e.description}</td>
-                <td className="text-[13px] w-[10rem] font-semibold px-4">{`${e.assigned_to.first_name} ${e.assigned_to.last_name}`}</td>
-                <td className="text-[13px] px-4">
-                  {e.assigned_to.phone_number}
+            {empty ? (
+              <tr>
+                <td colSpan={5} className="text-[13px] text-center h-[3rem]">
+                  No task found
                 </td>
-                <td className="text-[13px] px-4 items-center">
-                  <p className="flex text-[13px] w-[5rem] items-center text-blue-600">
-                    action
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="w-4 h-4"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                      />
-                    </svg>
-                  </p>
-                </td>
+                {/* <td colSpan={5}>bjj</td> */}
               </tr>
-            ))}
+            ) : (
+              taskData.map((e, i) => (
+                <tr
+                  key={i}
+                  className="border h-[3rem] text-start border-[#E8E8E8]"
+                >
+                  <td className="text-[13px] w-[10rem] py-4 px-4">{e.date}</td>
+                  <td className="text-[13px] leading-5 px-4">
+                    {e.description}
+                  </td>
+                  <td className="text-[13px] w-[10rem] font-semibold px-4">{`${e.assigned_to.first_name} ${e.assigned_to.last_name}`}</td>
+                  {/* <td className="text-[13px] px-4">
+                    {e.assigned_to.phone_number}
+                  </td> */}
+                  <td className="text-[13px] px-4">{e.assigned_to.email}</td>
+                  <td className="text-[13px] px-4 items-center">
+                    <p className="flex text-[13px] w-[5rem] items-center text-blue-600">
+                      action
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    </p>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
