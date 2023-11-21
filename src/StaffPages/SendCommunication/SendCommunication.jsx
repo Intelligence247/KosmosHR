@@ -6,7 +6,7 @@ import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
 
 const SendCommunication = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [sent, setSent] = useState(false);
   const [errM, setErrM] = useState("");
   const [category, setCategory] = useState([]);
@@ -20,6 +20,8 @@ const SendCommunication = () => {
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("post", values.content); // you can use the textarea text editor
+    formData.append("verified", true);
+    formData.append("active", true); // employees can only see active news
     formData.append("category_id", values.category); // id of selected news category
     formData.append("api_token", api_token);
     try {
@@ -31,11 +33,14 @@ const SendCommunication = () => {
         "https://kosmoshr.pythonanywhere.com/api/v1/news/create_news/";
 
       const data = await axios.post(url, formData);
-      console.log(data.data);
-      console.log(data);
-      setErrM(data.data.message);
+  setErrM(data.data.message);
       setLoading(false);
-      // data.status == "success" ? (setSent(true), setErrM("")) : setSent(false),
+console.log(data.data.status)
+      data.data.status == "success" ?
+       setSent(true)
+        : setSent(false)
+
+
     } catch (error) {
       console.log(error);
       setErrM(error.message);
@@ -48,8 +53,8 @@ const SendCommunication = () => {
         "https://kosmoshr.pythonanywhere.com/api/v1/news_categories/get_categories/";
 
       const response = await axios.get(url);
-      response.data.data != undefined ? setCategory(response.data.data): '';
-      
+      // console.log(response.data.data);
+      setCategory(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -123,7 +128,24 @@ const SendCommunication = () => {
             Send
           </button>
         </div>
+      
       </section>
+      <div
+        className={`PromptSuccess w-full top-0 left-0  h-screen fixed  bg-white/30 backdrop-blur-lg justify-center items-center flex-col ${
+          sent ? "flex" : "hidden"
+        } `}
+      >
+      <div className="w-60 flex justify-center items-center flex-col space-y-4">
+          <h1 className="text-2xl">Successful!!!</h1>
+          <p className="text-center text-sm opacity-80">{errM}</p>
+          <button
+            className="bg-primary_SkyBlue text-white rounded-lg px-6 py-1"
+            onClick={() => setSent(false)}
+          >
+            Continue
+          </button>
+        </div>
+        </div>
     </StaffHomeLayout>
   );
 };
