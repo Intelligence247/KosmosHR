@@ -19,7 +19,6 @@ const Login = () => {
     username: "",
     password: "",
   });
-  console.log(inputValues);
   const url = `${
     switching
       ? "https://kosmoshr.pythonanywhere.com/api/v1/profile/authentication/"

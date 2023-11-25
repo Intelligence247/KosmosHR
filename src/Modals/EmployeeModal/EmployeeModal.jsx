@@ -107,9 +107,9 @@ const EmployeeModal = ({}) => {
   return (
     <HomeLayout>
       <div
-        className={`duration-500 ease-in  overflow-auto py-6 bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0 px-4`}
+        className={`duration-500 ease-in  overflow-auto py-6 bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0`}
       >
-        <div className="lg:w-[70vw] w-full rounded-xl bg-white pb-4">
+        <div className="lg:w-[70vw] w-[100%] rounded-xl bg-white pb-4">
           <header className="flex flex-col justify-center items-center rounded-t-xl pt-4">
             <h1 className="font-bold lg:text-2xl text-xl">New Employees</h1>
             <p>Set up new Employee profiles</p>
@@ -142,7 +142,7 @@ const EmployeeModal = ({}) => {
                 </label>
                 <input
                   required
-                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px] w-full pl-2 outline-none rounded-lg"
+                  className="text-[12px] lg:h-12 h-9 border-[#000]/40 border-[2px]  pl-2 outline-none rounded-lg"
                   type="text"
                   name=""
                   id=""
@@ -522,7 +522,7 @@ const EmployeeModal = ({}) => {
           islogin ? "flex" : "hidden"
         } `}
       >
-        <div className="w-60 flex justify-center items-center flex-col space-y-4">
+        <div className="lg:w-64 w-[80%] flex justify-center items-center flex-col space-y-4">
           <h1 className="text-2xl">Successful!!!</h1>
           <p className="text-center text-sm opacity-80">{errM}</p>
           <button
@@ -536,8 +536,4 @@ const EmployeeModal = ({}) => {
     </HomeLayout>
   );
 };
-
-export default EmployeeModal;
-
-// Account created successfully. username is kos0013 and password is Usman
-// Account created successfully. username is kos0017 and password is Atunde
+export default  EmployeeModal
