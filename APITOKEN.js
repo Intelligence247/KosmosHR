@@ -1,3 +1,22 @@
- 
-// export const api_token = '6s0gjrqr61xrrt7omzo8lmp4vo0dsgwamlzvoa7ygxsw8ledxadfp68ygjtr'
-export const api_token = 'fhgt345yru5y67urth54yfr475uj6j8knv9dfh23sjhfg2310o'
+export let DataFromAdminLogin = [];
+const AdminDataFunction2 = () => {
+  const AdminDataString = localStorage.getItem("AdminData");
+  if (AdminDataString) {
+    const AdminData = JSON.parse(AdminDataString);
+    DataFromAdminLogin = AdminData;
+    return AdminData;
+  }
+};
+
+export let DataFromEmployeeLogin = [];
+export const EmployeeDataFunction = () => {
+  const EmployeeLoginDataString = localStorage.getItem("EmployeeLoginData");
+  if (EmployeeLoginDataString) {
+    const EmployeeLoginData = JSON.parse(EmployeeLoginDataString);
+    DataFromEmployeeLogin = EmployeeLoginData;
+    return EmployeeLoginData;
+  }
+};
+
+EmployeeDataFunction();
+AdminDataFunction2();

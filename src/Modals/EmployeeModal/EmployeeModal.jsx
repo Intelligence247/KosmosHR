@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { kosmos_get, kosmos_post } from "../../../kosmos-module/kosmosRequest";
-import { api_token } from "../../../APITOKEN";
+import { DataFromAdminLogin } from "../../../APITOKEN";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const EmployeeModal = ({}) => {
   const [errM, setErrM] = useState("");
@@ -11,7 +12,6 @@ const EmployeeModal = ({}) => {
   const [loading, setLoading] = useState(false);
   const [positionArray, setPositionArray] = useState([]);
   const [departmentArray, setDepartmentArray] = useState([]);
-
   const [employeeInfo, setEmployeeInfo] = useState({
     email: "",
     title: "",
@@ -30,9 +30,8 @@ const EmployeeModal = ({}) => {
     appointment_date: "",
     address: "",
     image: null,
-    api_token: api_token,
+    api_token: DataFromAdminLogin.api_token,
   });
-  console.log(employeeInfo);
   const url =
     "https://kosmoshr.pythonanywhere.com/api/v1/profile/create_employee_account/";
   const formData = new FormData();
@@ -60,8 +59,6 @@ const EmployeeModal = ({}) => {
     try {
       setLoading(true);
       const data = await kosmos_post(url, formData);
-      console.log(data.data);
-      console.log(data);
       setErrM(data.message);
       setLoading(false);
       
@@ -92,7 +89,6 @@ const EmployeeModal = ({}) => {
         "https://kosmoshr.pythonanywhere.com/api/v1/departments/get_departments/";
 
       const response = await axios.get(url);
-      console.log(response.data.data);
       setDepartmentArray(response.data.data);
     } catch (error) {
       console.log(error);
@@ -109,7 +105,7 @@ const EmployeeModal = ({}) => {
       <div
         className={`duration-500 ease-in  overflow-auto py-6 bg-opacity-25 backdrop-blur-sm lg:grid place-content-center lg:px-0`}
       >
-        <div className="lg:w-[70vw] w-[100%] rounded-xl bg-white pb-4">
+        <div className="lg:w-[70vw] w-full rounded-xl bg-white pb-4">
           <header className="flex flex-col justify-center items-center rounded-t-xl pt-4">
             <h1 className="font-bold lg:text-2xl text-xl">New Employees</h1>
             <p>Set up new Employee profiles</p>
@@ -492,12 +488,12 @@ const EmployeeModal = ({}) => {
             {errM}
           </p>
           <div className="btnFooter flex lg:justify-end justify-between px-4 space-x-8">
-            <button
+            <Link
               onClick={() => onclickHandle()}
-              className="lg:h-12 h-9 border-[1px] lg:w-[12rem] w-[40%] rounded-lg border-primary_SkyBlue hover:bg-primary_SkyBlue hover:text-white"
+              className="lg:h-12 h-9 border-[1px] lg:w-[12rem] w-[40%] rounded-lg flex justify-center items-center border-primary_SkyBlue hover:bg-primary_SkyBlue hover:text-white"
             >
               Cancel
-            </button>
+            </Link>
             <button
               onClick={handleSubmit}
               className="grid place-content-center lg:h-12 h-9 border-[1px] lg:w-[12rem] w-[40%] rounded-lg border-primary_SkyBlue bg-primary_SkyBlue hover:bg-primary_DeepBlue text-white"

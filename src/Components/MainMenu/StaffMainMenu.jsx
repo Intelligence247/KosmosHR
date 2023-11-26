@@ -7,12 +7,12 @@ const StaffMainMenu = ({showHide, img}) => {
 
     <div className={`mainMenuWrapper ${showHide}`}>
       <div>
-        <img src={img} className="lg:w-12 w-10 " alt="Logo" />
+        <img src={img} className="lg:w-20 w-14 " alt="Logo" />
       </div>
       <div className="h-[100%]">
         <h2>Main Menu</h2>
         <ul className="list">
-        <Link to="/task">
+        <Link to="/stafftasks">
                 <li>
                   {" "}
                   <img src="/task.png" alt="" />

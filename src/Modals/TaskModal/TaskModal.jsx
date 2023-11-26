@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Modal from "../../Layouts/ModalLayout/Modal";
 import DateRange from "../../Pages/TaskPage/DateRange";
-import { api_token } from "../../../APITOKEN";
+import { DataFromAdminLogin } from "../../../APITOKEN";
 
 const TaskModal = (props) => {
+  
   if (!props.isVisible) return null;
   const [taskDetails, setTaskDetails] = useState({
     title: "",
@@ -13,7 +14,7 @@ const TaskModal = (props) => {
     file: "",
     priority: "",
     employee_id: "",
-    api_token: api_token,
+    api_token: DataFromAdminLogin.api_token,
   });
   const url = "https://kosmoshr.pythonanywhere.com/api/v1/tasks/create_task/";
   //post form

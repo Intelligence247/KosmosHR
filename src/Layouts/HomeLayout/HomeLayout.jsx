@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { kosmos_get } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
+import { DataFromAdminLogin } from "../../../APITOKEN";
 
 const HomeLayout = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
   const [siteInfo, setSiteInfo] = useState([]);
+
+  console.log(DataFromAdminLogin);
+
   const isActiveFuction = () => {
     setIsActive(!isActive);
   };
@@ -19,7 +23,6 @@ const HomeLayout = ({ children }) => {
     axios
       .get("https://kosmoshr.pythonanywhere.com/api/v1/site/get_site_info/")
       .then((resp) => {
-        console.log(resp.data);
         setSiteInfo(resp.data.data);
       })
       .catch((err) => {
@@ -31,12 +34,12 @@ const HomeLayout = ({ children }) => {
     SiteInfo();
   }, []);
 
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
-  console.log(siteInfo.error)
+  console.log(siteInfo.error);
   return (
     <div>
       {siteInfo.length < 1 ? (
@@ -53,7 +56,11 @@ const HomeLayout = ({ children }) => {
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
             <MainMenu
-              img={`${siteInfo.logo !== null?`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`: '/kosmos.png'}`}
+              img={`${
+                siteInfo.logo !== null
+                  ? `https://kosmoshr.pythonanywhere.com${siteInfo.logo}`
+                  : "/kosmos.png"
+              }`}
               showHide={
                 isActive
                   ? "scale-x-100 -left-0"

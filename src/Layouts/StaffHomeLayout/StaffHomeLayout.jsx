@@ -1,11 +1,12 @@
 import MainMenu from "../../Components/MainMenu/MainMenu";
-import Header from "../../Components/Header/Header";
 import { useEffect, useState } from "react";
 import { kosmos_get } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 import RichTextEditor from "../../Editor/RichTextEditor";
 import StaffMainMenu from "../../Components/MainMenu/StaffMainMenu";
+import { DataFromEmployeeLogin } from "../../../APITOKEN";
+import StaffHeader from "../../Components/Header/StaffHeader";
 
 const StaffHomeLayout = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
@@ -39,6 +40,7 @@ const StaffHomeLayout = ({ children }) => {
     setContent(newContent);
   };
   // console.log(siteInfo)
+  console.log(DataFromEmployeeLogin)
   return (
     <div>
       {siteInfo.length < 1 ? (
@@ -55,12 +57,12 @@ const StaffHomeLayout = ({ children }) => {
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
           <StaffMainMenu
-              img={`https://kosmoshr.pythonanywhere.com${siteInfo.logo}`}
               showHide={
                 isActive
                   ? "scale-x-100 -left-0"
                   : "lg:-left-0 -left-[35%] lg:scale-x-100 scale-x-0 "
               }
+              img={'/kosmos.png'}
             />
             <div
               onClick={() => setIsActive(!isActive)}
@@ -70,7 +72,7 @@ const StaffHomeLayout = ({ children }) => {
             ></div>
           </div>
           <div className="w-[100%] space-y-0 flex flex-col gap-8 py-9 lg:px-20 px-6 lg:pt-9 pt-24">
-            <Header navInOut={isActiveFuction} />
+            <StaffHeader navInOut={isActiveFuction} />
             {/* <RichTextEditor value={content} onChange={handleEditorChange} /> */}
             {children}
           </div>

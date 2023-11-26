@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { kosmos_get, kosmos_post } from "../../../kosmos-module/kosmosRequest";
-import { api_token } from "../../../APITOKEN";
+import { DataFromAdminLogin } from "../../../APITOKEN";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import { RotatingLines } from "react-loader-spinner";
 
@@ -27,7 +27,7 @@ const EditEmployee = () => {
     appointment_date: "",
     address: "",
     image: "",
-    api_token: api_token,
+    api_token: DataFromAdminLogin.api_token,
   });
   const url =
     "https://kosmoshr.pythonanywhere.com/api/v1/employees/edit_employee/";

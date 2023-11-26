@@ -22,6 +22,8 @@ import EmployeeModal from "./Modals/EmployeeModal/EmployeeModal";
 import EditEmployee from "./Pages/EditEmployee/EditEmployee";
 import Communication from "./StaffPages/Communication/Communication";
 import SendCommunication from "./StaffPages/SendCommunication/SendCommunication";
+import StaffTasks from "./StaffPages/StaffTasks/StaffTasks";
+import NotFound from "./NotFound";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -42,7 +44,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/forgotpassword2" element={<ForgotPassword2 />} />
+          <Route path="/resetpassword" element={<ForgotPassword2 />} />
           <Route path="/employee" element={<Employees />} />
           <Route path="/task" element={<Task />} />
           <Route path="/pricing_subscription" element={<Pricing />} />
@@ -57,6 +59,8 @@ function App() {
           <Route path="/editemployee" element={<EditEmployee />} />
           <Route path="/communication" element={<Communication />} />
           <Route path="/sendcommunication" element={<SendCommunication />} />
+          <Route path="/stafftasks" element={<StaffTasks />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StaffHomeLayout from "../../Layouts/StaffHomeLayout/StaffHomeLayout";
-import { api_token } from "../../../APITOKEN";
+import { DataFromAdminLogin } from "../../../APITOKEN";
 import RichTextEditor from "../../Editor/RichTextEditor";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import axios from "axios";
@@ -24,7 +24,7 @@ const SendCommunication = () => {
     formData.append("verified", true);
     formData.append("active", true); // employees can only see active news
     formData.append("category_id", values.category); // id of selected news category
-    formData.append("api_token", api_token);
+    formData.append("api_token", DataFromAdminLogin.api_token);
     try {
       setLoading(true);
       values.title == "" || values.category == "" || values.content == ""

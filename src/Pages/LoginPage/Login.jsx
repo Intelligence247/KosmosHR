@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
 import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
-// kos0013
+
 
 const Login = () => {
   const [islogin, setislogin] = useState(false);
@@ -29,6 +29,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
+
       setLoading(true);
       setErrM("");
       const user_details = JSON.stringify({
@@ -43,6 +44,8 @@ const Login = () => {
       setislogin(true);
       data.status == "success" ? setislogin(true) : setislogin(false),
         // setErrM("Username and Password might be case sensitive");
+        console.log(data)
+        localStorage.setItem("AdminData", JSON.stringify(data.data))
         setErrM(data.message);
       setLoading(false);
     } catch (err) {
@@ -65,7 +68,6 @@ const Login = () => {
 
       fetch(url, {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
         },
@@ -79,12 +81,13 @@ const Login = () => {
         .then((data) => {
           setLoading(false);
           data.status == "success" ? setislogin(true) : setislogin(false);
-
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
+          localStorage.setItem("EmployeeLoginData", JSON.stringify(data.data))
+      console.log(data.data)
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrM(error);
+          setErrM("All inputs must not be empty")
           setLoading(false);
         });
     } catch (error) {}
@@ -213,4 +216,3 @@ const Login = () => {
 };
 
 export default Login;
-// 22, 24.8
