@@ -1,9 +1,11 @@
 import React from "react";
-import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
+import StaffHomeLayout from "../../Layouts/StaffHomeLayout/StaffHomeLayout";
+import { DataFromEmployeeLogin } from "../../../APITOKEN";
 
 const EmployeesProfile = () => {
+  console.log(DataFromEmployeeLogin)
   return (
-    <HomeLayout>
+    <StaffHomeLayout>
       <div className="flex space-y-8 flex-col w-full">
         <header className="flex flex-col space-y-2 justify-start items-start">
           <img src="/back.png" alt="" />
@@ -15,13 +17,13 @@ const EmployeesProfile = () => {
 
         <div className="flex lg:flex-row flex-col space-x-3 items-center justify-start">
           <img
-            src="/bolanle.png"
-            className="lg:w-[128px] bg-black h-[128px] rounded-full"
+            src={`${DataFromEmployeeLogin.image != null ? `https://kosmoshr.pythonanywhere.com${DataFromEmployeeLogin.image}`: '/avatar.png'}`}
+            className="w-[128px] bg-black h-[128px] rounded-full"
             alt=""
           />
-          <div className="flex flex-col justify-center items-center space-y-2.5 ">
-            <h1 className="lg:text-2xl text-base font-bold">Bolanle Awe</h1>
-            <p className="opacity-70 lg:bg-transparent bg-primary_SkyBlue/10 px-2 rounded-full text-primary_SkyBlue">Content Creation</p>
+          <div className="flex flex-col justify-center lg:items-start items-center space-y-2.5 ">
+            <h1 className="lg:text-2xl text-base font-bold">{`${DataFromEmployeeLogin?.title} ${DataFromEmployeeLogin.first_name} ${DataFromEmployeeLogin.last_name}`}</h1>
+            <p className="opacity-70 lg:bg-transparent bg-primary_SkyBlue/10 px-2 rounded-full text-primary_SkyBlue">{DataFromEmployeeLogin.position}</p>
           </div>
         </div>
         <form
@@ -36,6 +38,7 @@ const EmployeesProfile = () => {
             <input
               className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
               type="text"
+              value={DataFromEmployeeLogin.email}
               name=""
               id=""
               placeholder="Enter email"
@@ -44,7 +47,7 @@ const EmployeesProfile = () => {
           {/*  */}
           <div className="name flex flex-col lg:space-y-1.5 space-y-1">
             <label htmlFor="phone_number" className="lg:text-[14px] font-bold">
-              Email:
+              Phone number:
             </label>
             <div className="flex lg:space-x-4 space-x-2">
               <button className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] pl-2 outline-none rounded-lg lg:px-4 px-2">
@@ -53,6 +56,7 @@ const EmployeesProfile = () => {
               <input
                 className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
                 type="text"
+                value={DataFromEmployeeLogin.phone_number}
                 name=""
                 id=""
                 placeholder="Enter Phone Number"
@@ -68,6 +72,7 @@ const EmployeesProfile = () => {
               className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
               type="text"
               name=""
+              value={DataFromEmployeeLogin.address}
               id=""
               placeholder="Enter Address"
             />
@@ -81,6 +86,7 @@ const EmployeesProfile = () => {
               className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
               type="text"
               name=""
+              value={DataFromEmployeeLogin.department}
               id=""
               placeholder="Enter Department"
             />
@@ -94,6 +100,7 @@ const EmployeesProfile = () => {
               className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
               type="text"
               name=""
+              value={DataFromEmployeeLogin.position}
               id=""
               placeholder="Enter position"
             />
@@ -107,13 +114,15 @@ const EmployeesProfile = () => {
               className="text-[12px] lg:h-12 h-9 bg-[#E9F2FC] w-full pl-2 outline-none rounded-lg"
               type="date"
               name=""
+              value={DataFromEmployeeLogin.appointment_date}
               id=""
               placeholder="Enter Date of Employment"
             />
           </div>
         </form>
+        <div className="text-primary_SkyBlue underline flex justify-center items-center">Edit Details <img src="/slantArrow.png " alt="" /></div>
       </div>
-    </HomeLayout>
+    </StaffHomeLayout>
   );
 };
 

@@ -3,8 +3,8 @@ import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 
 const StaffTaskCard = () => {
-    const querieData = 'hello'
-    const [switching, setSwitching] = useState(true);
+  const querieData = "hello";
+  const [switching, setSwitching] = useState(true);
   return (
     <div className="py-5 w-full border-[1px] border-x-primary_SkyBlue rounded-lg">
       <section className="headSection lg:h-12 w-full lg:flex-row flex-col-reverse flex justify-between lg:px-4 px-2 lg:space-y-0 gap-4 lg:py-0 py-2 items-center">
@@ -65,24 +65,49 @@ const StaffTaskCard = () => {
         <div className="guerylists">
           {querieData.length >= 1 ? (
             // querieData.map((q) => (
-              <div className="thead lg:pl-6 px-2 lg:gap-x-0 gap-x-5 w-full grid grid-cols-3 border-y-[1px] border-gray-200 h-12">
-                <div className="tasks">
-                  <p>
-                    Conduct outreach to potential customers via phone, email,
-                    and social media.
-                  </p>
-                  <div className="mark flex space-x-2 items-center">
-                    <p className="h-[18px] w-[18px] border-[1px] border-primary_SkyBlue rounded-full"></p>{" "}
-                    <span className="text-primary_SkyBlue text-xs">Mark as completed</span>
-                  </div>
+            <div className="thead lg:pl-6 px-2 lg:gap-x-0 gap-x-5 w-full grid grid-cols-5 border-y-[1px] border-gray-200 py-6">
+              <div className="tasks col-span-2 lg:flex hidden flex-col space-y-4">
+                <p>
+                  Conduct outreach to potential customers via phone, email, and
+                  social media.
+                </p>
+                <div className="mark flex space-x-2 items-center">
+                  <p className="h-[18px] w-[18px] border-[1px] border-primary_SkyBlue rounded-full"></p>{" "}
+                  <span className="text-primary_SkyBlue text-xs">
+                    Mark as completed
+                  </span>
                 </div>
-                <span></span>
-                <span></span>
-                {/* Mobile */}
-            
               </div>
-            // ))
+              <span className="lg:block hidden col-span-1"></span>
+              <div className="col-span-2 lg:grid hidden grid-cols-2">
+                <div className="date flex justify-end">22nd October 2023</div>
+                <div className="btns flex justify-center items-center flex-col space-y-3">
+                  <button className="flex justify-center items-center rounded-xl w-28 h-12 bg-primary_SkyBlue text-white underline ">
+                    View Details
+                  </button>
+                  <button className="flex justify-center items-center rounded-xl w-28 h-12 border-[1px] border-primary_SkyBlue text-primary_SkyBlue underline">
+                    Delete <img src="/delete.png" alt="" />
+                  </button>
+                </div>
+              </div>
+              {/* Mobile */}
+              <div className="date lg:hidden flex col-span-2">22nd October, 2023</div>
+
+              <div className="tasks col-span-3 flex lg:hidden flex-col space-y-4">
+                <p>
+                  Conduct outreach to potential customers via phone, email, and
+                  social media.
+                </p>
+                <div className="mark flex space-x-2 items-center">
+                  <p className="h-[18px] w-[18px] border-[1px] border-primary_SkyBlue rounded-full"></p>{" "}
+                  <span className="text-primary_SkyBlue text-xs">
+                    Mark as completed
+                  </span>
+                </div>
+              </div>
+            </div>
           ) : (
+            // ))
             <div className="h-[10rem] flex justify-center items-center">
               <RotatingLines
                 strokeColor="grey"
