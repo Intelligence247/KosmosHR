@@ -10,7 +10,6 @@ const HomeLayout = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
   const [siteInfo, setSiteInfo] = useState([]);
 
-  console.log(DataFromAdminLogin);
 
   const isActiveFuction = () => {
     setIsActive(!isActive);
@@ -39,7 +38,6 @@ const HomeLayout = ({ children }) => {
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
-  console.log(siteInfo.error);
   return (
     <div>
       {siteInfo.length < 1 ? (

@@ -3,8 +3,6 @@ import "../../Pages/HomePage/Home.css";
 import { DataFromEmployeeLogin } from "../../../APITOKEN";
 
 const StaffHeader = () => {
-  console.log(DataFromEmployeeLogin.image);
-
   return (
     <header className="flex justify-between items-center w-full bg-white">
       <div

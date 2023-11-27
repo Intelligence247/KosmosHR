@@ -40,10 +40,9 @@ const StaffHomeLayout = ({ children }) => {
     setContent(newContent);
   };
   // console.log(siteInfo)
-  console.log(DataFromEmployeeLogin)
   return (
     <div>
-      {siteInfo.length < 1 ? (
+      {/* {siteInfo.length < 1 ? (
         <div className="w-full h-screen grid place-content-center">
           <RotatingLines
             strokeColor="grey"
@@ -53,7 +52,7 @@ const StaffHomeLayout = ({ children }) => {
             visible={true}
           />
         </div>
-      ) : (
+      ) : ( */}
         <div className="w-[100%] h-fit flex lg:flex-row flex-col">
           <div className="lg:w-[17rem] w-full">
           <StaffMainMenu
@@ -77,7 +76,7 @@ const StaffHomeLayout = ({ children }) => {
             {children}
           </div>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Onboard = ({ bghidden, title, desc, reverse, link }) => {
         className="onboardContents lg:w-[30rem] w-full h-[12rem] lg:h-[15rem] backdrop-blur-xl bg-[#0B0A0A]/30
          text-white flex justify-center items-center flex-col space-y-4 rounded-lg px-8"
       >
-        <h1 className="lg:text-[30px] text-center ">{title}</h1>
+        <h1 className="lg:text-[30px] leading-[32px] text-center ">{title}</h1>
         <p className="text-center">{desc}</p>
         <div className="flex space-x-8 justify-between items-center w-full ">
           <div className={`twodots flex gap-2 ${reverse}`}>

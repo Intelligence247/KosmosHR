@@ -24,6 +24,8 @@ import Communication from "./StaffPages/Communication/Communication";
 import SendCommunication from "./StaffPages/SendCommunication/SendCommunication";
 import StaffTasks from "./StaffPages/StaffTasks/StaffTasks";
 import NotFound from "./NotFound";
+import AdminForgotPassword from "./Pages/ForgotPassword/AdminForgotPassword";
+import AdminRessetPassword from "./Pages/ForgotPassword/AdminRessetPassword";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -45,6 +47,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ForgotPassword2 />} />
+          <Route path="/adminforgotpassword" element={<AdminForgotPassword />} />
+          <Route path="/adminresetpassword" element={<AdminRessetPassword />} />
           <Route path="/employee" element={<Employees />} />
           <Route path="/task" element={<Task />} />
           <Route path="/pricing_subscription" element={<Pricing />} />

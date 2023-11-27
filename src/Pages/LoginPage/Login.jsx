@@ -3,7 +3,6 @@ import LoginSignLayout from "../../Layouts/LoginSignLayout/LoginSignLayout";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { kosmos_post } from "../../../kosmos-module/kosmosRequest";
-import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 
 
@@ -13,7 +12,6 @@ const Login = () => {
   const [errM, setErrM] = useState("");
   const [switching, setSwitching] = useState(false);
 
-  const navigate = useNavigate();
 
   const [inputValues, setInputValues] = useState({
     username: "",
@@ -44,7 +42,6 @@ const Login = () => {
       setislogin(true);
       data.status == "success" ? setislogin(true) : setislogin(false),
         // setErrM("Username and Password might be case sensitive");
-        console.log(data)
         localStorage.setItem("AdminData", JSON.stringify(data.data))
         setErrM(data.message);
       setLoading(false);
@@ -83,7 +80,6 @@ const Login = () => {
           data.status == "success" ? setislogin(true) : setislogin(false);
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
           localStorage.setItem("EmployeeLoginData", JSON.stringify(data.data))
-      console.log(data.data)
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -163,7 +159,7 @@ const Login = () => {
           />
           <p className="err text-red-500 text-xs">{errM}</p>
           <Link
-            to={"/forgotpassword"}
+            to={`${switching?'/adminforgotpassword':"/forgotpassword"}`}
             className="text-right text-black/70 text-[12px]"
           >
             Click if You Lost Your Password
