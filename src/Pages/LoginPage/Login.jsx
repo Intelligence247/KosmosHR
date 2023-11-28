@@ -83,12 +83,7 @@ const Login = () => {
             username:'',
             image: null,
           }))
-          console.log(data.data)
-          console.log(data.detail)
-          console.log(data.error)
-
           
-
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -210,7 +205,7 @@ const Login = () => {
           <h1 className="text-xl">Successfully Logged in!!!</h1>
           <Link
             className="bg-primary_SkyBlue text-white h-10 w-52 rounded-xl inline-block flex justify-center items-center lg:text-xl text-lg"
-            to={switching ? "/home" : "/department"}
+            to={switching ? "/home" : "/stafftasks"}
           >
             Click here to Continue
           </Link>
