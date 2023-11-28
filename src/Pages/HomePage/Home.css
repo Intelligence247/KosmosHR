@@ -30,7 +30,7 @@
   @apply flex lg:flex-row flex-col lg:space-y-0 space-y-6 justify-between items-center pt-8;
 }
 .Info .eachInfo {
-  @apply lg:w-[16rem] w-full h-[7rem] border-[#1D70C9] border-[1px] rounded-lg
+  @apply lg:w-[19rem] w-full h-[7rem] border-[#1D70C9] border-[0.5px] rounded-lg
  flex flex-col space-y-6 justify-center pl-6 font-bold;
 }
 .Info .eachInfo .value {

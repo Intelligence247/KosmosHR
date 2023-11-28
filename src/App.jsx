@@ -32,7 +32,6 @@ function App() {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [api, setapi] = useState([]);
 
- 
   return (
     <div className="body">
       <Router>
@@ -47,7 +46,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ForgotPassword2 />} />
-          <Route path="/adminforgotpassword" element={<AdminForgotPassword />} />
+          <Route
+            path="/adminforgotpassword"
+            element={<AdminForgotPassword />}
+          />
           <Route path="/adminresetpassword" element={<AdminRessetPassword />} />
           <Route path="/employee" element={<Employees />} />
           <Route path="/task" element={<Task />} />

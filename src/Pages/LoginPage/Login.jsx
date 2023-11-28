@@ -79,7 +79,16 @@ const Login = () => {
           setLoading(false);
           data.status == "success" ? setislogin(true) : setislogin(false);
           data.error == undefined ? setErrM(data.detail) : setErrM(data.error);
-          localStorage.setItem("EmployeeLoginData", JSON.stringify(data.data))
+          data.data != undefined ? localStorage.setItem("EmployeeLoginData", JSON.stringify(data.data)):localStorage.setItem("EmployeeLoginData", JSON.stringify({
+            username:'',
+            image: null,
+          }))
+          console.log(data.data)
+          console.log(data.detail)
+          console.log(data.error)
+
+          
+
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -118,7 +127,7 @@ const Login = () => {
                 !switching
                   ? "bg-primary_SkyBlue text-white"
                   : "bg-transparent text-black"
-              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
+              } border-[1px] border-black/20 justify-center items-center flex rounded-lg w-32 h-9`}
             >
               A Staff
             </p>
@@ -128,7 +137,7 @@ const Login = () => {
                 switching
                   ? "bg-primary_SkyBlue text-white"
                   : "bg-transparent text-black"
-              } border-[1px] border-black justify-center items-center flex rounded-lg w-32 h-9`}
+              } border-[1px] border-black/20 justify-center items-center flex rounded-lg w-32 h-9`}
             >
               An Admin
             </p>

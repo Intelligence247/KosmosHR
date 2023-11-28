@@ -11,7 +11,7 @@ const AdminDataFunction2 = () => {
 export let DataFromEmployeeLogin = [];
 export const EmployeeDataFunction = () => {
   const EmployeeLoginDataString = localStorage.getItem("EmployeeLoginData");
-  if (EmployeeLoginDataString) {
+  if (EmployeeLoginDataString != undefined) {
     const EmployeeLoginData = JSON.parse(EmployeeLoginDataString);
     DataFromEmployeeLogin = EmployeeLoginData;
     return EmployeeLoginData;

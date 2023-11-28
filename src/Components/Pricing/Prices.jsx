@@ -2,11 +2,11 @@ import { pricing } from "../../utility/data";
 
 const Prices = () => {
   return (
-    <div className="flex gap-8 text-[0.7rem]">
+    <div className="flex lg:flex-row flex-col gap-8 text-[0.7rem]">
       {pricing.map((e, i) => (
         <div
           key={i}
-          className="w-[24rem] text-left p-6 border-[1px] border-solid border-blue-100 rounded-xl text-[0.7rem]"
+          className="lg:w-[24rem] w-full text-left p-6 border-[1px] border-solid border-blue-100 rounded-xl text-[0.7rem]"
         >
           <div className="w-[100%]">
             <span className="py-1 px-4 bg-blue-200 rounded-[1.2rem] text-[0.7rem]">
