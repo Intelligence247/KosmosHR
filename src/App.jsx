@@ -27,6 +27,7 @@ import NotFound from "./NotFound";
 import AdminForgotPassword from "./Pages/ForgotPassword/AdminForgotPassword";
 import AdminRessetPassword from "./Pages/ForgotPassword/AdminRessetPassword";
 import PostReward from "./Pages/Posts/PostReward";
+import ComA from "./Pages/CommunicationAdmin/ComA";
 
 function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
@@ -65,7 +66,7 @@ function App() {
           <Route path="/onboardemployee" element={<EmployeeModal />} />
           <Route path="/editemployee" element={<EditEmployee />} />
           <Route path="/communication" element={<Communication />} />
-          <Route path="/admincommunication" element={<Communication />} />
+          <Route path="/admincommunication" element={<ComA />} />
           <Route path="/sendcommunication" element={<SendCommunication />} />
           <Route path="/stafftasks" element={<StaffTasks />} />
           <Route path="add_reward" element={<PostReward />} />

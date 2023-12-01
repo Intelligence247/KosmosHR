@@ -87,11 +87,22 @@ const MainMenu = ({showHide, img}) => {
               </li> */}
             </ul>
           </ul>
+
+          <Link to="/pricing_subscription2">
+            <li>
+              {" "}
+              <img src="/dollar.png" alt="" />
+              Subscription
+            </li>
+
+          </Link>
+          
           <li>
             {" "}
             <img src="/setting.png" alt="" />
             Settings
           </li>
+          
         </ul>
       </div>
       <div className="w-[100%] pt-3 border-t">
