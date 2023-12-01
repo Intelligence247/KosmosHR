@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import PaymentProgress from "../../Components/PaymentProgess/PaymentProgress";
 import { pricing } from "../../utility/data";
+import { Link } from "react-router-dom";
 
 const Pricing2 = () => {
   const [switchPlan, setSwitchPlan] = useState(0);
@@ -80,7 +81,11 @@ const Pricing2 = () => {
                       : "text-black bg-primary_SkyBlue/50"
                   }`}
                 >
+                <Link to={'/fillingcard'}>
+
                   {m}
+                </Link>
+
                 </button>
               ))}
             </div>

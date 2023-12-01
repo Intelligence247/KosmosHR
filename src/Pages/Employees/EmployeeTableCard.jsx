@@ -23,7 +23,7 @@ const EmployeeTableCard = ({ employeeDataProps, hideViewall, title, loading }) =
         <p>Department</p>
         <p>Position</p>
         <p>Phone Number</p>
-        <p>City</p>
+        <p>Country</p>
         <p>Action</p>
       </div>
 

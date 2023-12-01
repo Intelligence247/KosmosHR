@@ -30,7 +30,7 @@ const url3 = "https://kosmoshr.pythonanywhere.com/api/v1/news/news_list/"
         <div className="left flex items-center lg:space-x-12">
           <h1 className="font-bold text-xl lg:block hidden">Communication</h1>
           <div className="btns flex items-center ">
-            <button
+            {/* <button
               onClick={() =>( setSwitching(true), getQueries())}
               className={`flex h-8 ${
                 switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/5"
@@ -43,8 +43,8 @@ const url3 = "https://kosmoshr.pythonanywhere.com/api/v1/news/news_list/"
                 }`}
               ></p>{" "}
               <span>Sent</span>
-            </button>
-            <button
+            </button> */}
+            {/* <button
               onClick={() => setSwitching(false)}
               className={`flex ${
                 !switching ? "bg-primary_SkyBlue/40" : "bg-primary_SkyBlue/5"
@@ -57,7 +57,7 @@ const url3 = "https://kosmoshr.pythonanywhere.com/api/v1/news/news_list/"
                 }`}
               ></p>{" "}
               <span>Received</span>
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="">
