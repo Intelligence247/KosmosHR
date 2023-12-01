@@ -87,7 +87,7 @@ const Login = () => {
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrM("All inputs must not be empty")
+          setErrM("Check your internet connection")
           setLoading(false);
         });
     } catch (error) {}

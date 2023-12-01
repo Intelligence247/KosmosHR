@@ -26,7 +26,7 @@ const Modal = ({ children, handleClose, onClose }) => {
           />
         </svg>
       </button>
-      <div className="bg-[#fff] flex flex-col items-center text-center p-[2rem] px-8 lg:h-[80%] h-fit w-[85%] lg:w-[40%] rounded-[0.5rem] gap-3">
+      <div className="bg-[#fff] flex flex-col items-center text-center p-[2rem] px-8 lg:h-fit h-fit w-[85%] lg:w-[40%] rounded-[0.5rem] gap-3">
         {children}
       </div>
     </div>

@@ -5,7 +5,6 @@ import { DataFromAdminLogin } from "../../../APITOKEN";
 import { kosmos_get, kosmos_post } from "../../../kosmos-module/kosmosRequest";
 
 const TaskModal = (props) => {
-  console.log(DataFromAdminLogin.api_token)
   if (!props.isVisible) return null;
   const [taskDetails, setTaskDetails] = useState({
     title: "",
@@ -37,7 +36,6 @@ const TaskModal = (props) => {
       console.log(error)
     }
   };
-  console.log(taskDetails);
   const handleClose = (e) => {
     if (e.target.id === "wrapper") props.onClose();
   };

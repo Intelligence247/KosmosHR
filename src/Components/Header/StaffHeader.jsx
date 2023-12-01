@@ -2,7 +2,7 @@ import React from "react";
 import "../../Pages/HomePage/Home.css";
 import { DataFromEmployeeLogin } from "../../../APITOKEN";
 
-const StaffHeader = () => {
+const StaffHeader = ({navInOut}) => {
   return (
     <header className="flex justify-between items-center w-full bg-white">
       <div

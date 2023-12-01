@@ -14,11 +14,9 @@ const TaskTable = ({ tableDataProps, hideViewall, url, setUrl }) => {
     try {
       const response = axios.get(url).then((response) => {
         console.log(response.data);
-        {
-          response.message === "No task found"
-            ? setTaskData(response.data)
-            : setEmpty(true);
-        }
+        
+            setTaskData(response.data.data)
+        
       });
     } catch (error) {
       console.log(error);
@@ -28,7 +26,7 @@ const TaskTable = ({ tableDataProps, hideViewall, url, setUrl }) => {
     getTaskData();
   }, [url]);
   return (
-    <section className="border-[#BAD6F4] border-2 rounded-xl">
+    <section className="border-[#BAD6F4]  border-2 rounded-xl">
       <div className="flex flex-col lg:flex-row justify-around h-[6rem] lg:h-[4rem] items-center px-4">
         <h1 className="font-bold hidden lg:flex">Tasks</h1>
         <div
@@ -98,9 +96,13 @@ rounded-lg bg-white"
                   key={i}
                   className="border h-[3rem] text-start border-[#E8E8E8]"
                 >
-                  <td className="text-[13px] w-[10rem] py-4 px-4">{e.date}</td>
+                  <td className="text-[13px] w-[10rem] py-4 px-4">{e.deadline.slice(0,10)}</td>
                   <td className="text-[13px] leading-5 px-4">
-                    {e.description}
+                    <div>
+                    {/* {e.description} */}
+                    <div contentEditable='true' dangerouslySetInnerHTML={{ __html: e.description }}></div>
+
+                    </div>
                   </td>
                   <td className="text-[13px] w-[10rem] font-semibold px-4">{`${e.assigned_to.first_name} ${e.assigned_to.last_name}`}</td>
                   {/* <td className="text-[13px] px-4">

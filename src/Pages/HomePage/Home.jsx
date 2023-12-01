@@ -1,27 +1,48 @@
 import "./Home.css";
 import EmployeeTableCard from "../Employees/EmployeeTableCard";
-import { taskData } from "../../utility/data";
 import HomeLayout from "../../Layouts/HomeLayout/HomeLayout";
 import TaskTable from "../TaskPage/TaskTable";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 const Home = () => {
   const [employeeData, setEmployeeData] = useState([]);
+  const [taskData, setTaskData] = useState([]);
+  const [url, setUrl] = useState(
+    "https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/"
+  );
+
   // console.log(employeeData)
   const getEmployeeData = async (e) => {
-    
     try {
-      const response = axios.get(
+      const response = axios
+        .get(
           "https://kosmoshr.pythonanywhere.com/api/v1/employees/get_employees/"
         )
         .then((response) => {
-         response.data.data !== undefined ? setEmployeeData(response.data.data):'';
-
+          response.data.data !== undefined
+            ? setEmployeeData(response.data.data)
+            : "";
         });
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const getTaskData = async (e) => {
+  //   try {
+  //     const respons = axios
+  //       .get("https://kosmoshr.pythonanywhere.com/api/v1/tasks/get_tasks/")
+  //       .then((respons) => {
+  //         console.log(respons.data);
+  //         setTaskData(respons.data.data);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  // }, [url]);
   useEffect(() => {
     getEmployeeData();
   }, []);
@@ -58,7 +79,12 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <TaskTable tableDataProps={taskData.slice(0, 3)} />
+        <TaskTable
+          tableDataProps={taskData}
+          hideViewall={"hidden"}
+          url={url}
+          setUrl={setUrl}
+        />
         <EmployeeTableCard employeeDataProps={employeeData.slice(0, 3)} />
       </div>
     </HomeLayout>
