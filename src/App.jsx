@@ -33,7 +33,6 @@ function App() {
   const isTablet = useMediaQuery({ maxWidth: "768px" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [api, setapi] = useState([]);
-
   return (
     <div className="body">
       <Router>
